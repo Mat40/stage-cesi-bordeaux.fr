@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('grade', 50)->nullable();
             $table->string('permission', 50);
             $table->string('email', 50)->Unique();
-            $table->string('password', 50);
+            $table->string('user_password', 255);
             $table->timestamps();
         });
     }
