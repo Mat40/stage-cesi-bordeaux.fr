@@ -47,7 +47,7 @@
       const menuHamburger = document.querySelector(".menu-hamburger");
 	  const responsive = document.querySelector(".responsive");
 
-	menuHamburger.addEventListener('click', () => {
+		menuHamburger.addEventListener('click', () => {
   		responsive.classList.toggle('mobile-menu');
 });
 </script>

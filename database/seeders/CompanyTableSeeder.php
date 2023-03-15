@@ -34,6 +34,43 @@ class CompanyTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ],
+
+        [    
+            'name' => 'Arianne',    
+            'activity_area' => 'avion',
+            'number_of_trainees' => '10000',
+            'trust'=> '4.0',
+            'description'=> 'ça decolle les avions et les fusées',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],
+        [    
+            'name' => 'Arianne',    
+            'activity_area' => 'avion',
+            'number_of_trainees' => '10000',
+            'trust'=> '4.0',
+            'description'=> 'ça decolle les avions et les fusées',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],
+        [    
+            'name' => 'Arianne',    
+            'activity_area' => 'avion',
+            'number_of_trainees' => '10000',
+            'trust'=> '4.0',
+            'description'=> 'ça decolle les avions et les fusées',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],
+        [    
+            'name' => 'Arianne',    
+            'activity_area' => 'avion',
+            'number_of_trainees' => '10000',
+            'trust'=> '4.0',
+            'description'=> 'ça decolle les avions et les fusées',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],
     
     
     
