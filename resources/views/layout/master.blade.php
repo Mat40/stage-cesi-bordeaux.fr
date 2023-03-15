@@ -9,11 +9,11 @@
 	<title>Stage</title>
 </head>
 <body>
-	<header>	
+	<header>
 		<nav>
 			<ul class="menu-responsive">
-				
-				<li><a class="logo" href="#home"><img src="{{asset('css/cesi.png')}}" class="logo"></a></li>
+
+				<li><a class="logo" href="#home"><img src="{{asset('assets/images/cesi.png')}}" class="logo"></a></li>
 				<div class="responsive">
 					<li class="Recherche_Stage"><a href="#recherche">Recherche de stage</a></li>
 					<li class="icon" id="fav"><a href="#favoris" ><i class="fa-regular fa-heart"></i></a></li>
@@ -25,17 +25,17 @@
 						<a href="#">CHOISIR</a>
 						<a href="#">CHOISIR</a>
 		  			 </div>
-					</li>	
+					</li>
 				</div>
-				<button class="menu-hamburger"><i class="fa fa-bars"></i></button>	
-				
+				<button class="menu-hamburger"><i class="fa fa-bars"></i></button>
+
 	 		 </ul>
-			 
+
 		</nav>
-	</header>	
+	</header>
 	<main>
-	
-        @yield("contenu") 
+
+        @yield("contenu")
 
     </main>
 </body>
