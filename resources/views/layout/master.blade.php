@@ -22,14 +22,14 @@
 					<li class="icon">
 		  			<a href="#user" ><i class="fa-regular fa-user"></i></a>
 		 	 		<div class="contenu">
-						<a href="#">CHOISIR</a>
+						<a href="login.blade.php">connexion</a>
 						<a href="#">CHOISIR</a>
 						<a href="#">CHOISIR</a>
 		  			 </div>
 					</li>
 				</div>
 				<button class="menu-hamburger"><i class="fa fa-bars"></i></button>
-
+	
 	 		 </ul>
 
 		</nav>

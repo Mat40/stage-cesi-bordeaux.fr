@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,8 @@ use App\Http\Controllers\CompanyController;
 
 Route::get('/', [CompanyController::class, 'index']);
 
+Route::get('login.blade.php', function () {
+    return view('../layout/login');    
+});
 
+Route::get('login', [UserController::class, 'login'])->name('login');

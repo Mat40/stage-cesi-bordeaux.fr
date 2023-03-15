@@ -1,0 +1,105 @@
+/*div {
+  background-image: url('main.jpg');
+  background-size: 66% auto;
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 100%;
+}*/
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: "Segoe UI" , "Segoe" , "SegoeUI-Regular-final", Tahoma, Helvetica, Arial, sans-serif;
+  }
+  
+  
+  .image_gauche {
+     width: 68.5%;
+  }
+  
+  .image_gauche img {
+     width: 100%;
+     height: 105%;
+     object-fit: cover;
+     margin-left: 0;
+  }
+  
+  
+  
+  .header-right {
+     margin-top: 9%;
+     
+  }
+  
+  .header-right img {
+     width: 65%;
+     height: 75%;
+     object-fit: cover;
+     padding-left: 2%;
+  
+  }
+  .right{
+     display: column;
+     margin-left: 1%;
+  }
+  
+  .formulaire{
+     
+    
+     padding-left: 30px;
+     padding-top: 25px;
+     margin-top: 5%;
+  }
+  .indication{
+     font-size: 15px;
+     margin-bottom: 13%;
+  }
+  .formulaire input{
+     width: 120%;
+     height: 28px;
+      padding: 0px 3px 0px 3px;
+      border: solid 1px #BABABA;
+      font-size: 0.9em;
+  }
+  .formulaire input#top{
+     margin-bottom: 3%;
+  }
+  button {
+     border: none;
+      background-color: rgb(251, 226, 22);
+      width: 40%;
+      height: 30px;
+      margin-top: 15%;
+  }
+  
+  button:hover{
+     background-color: black;
+     color:rgb(251, 226, 22);
+  }
+  
+  li a{
+     text-decoration: none;
+     color: black;
+  
+  }
+  
+  li a:hover{
+     
+     color: rgb(251, 226, 22);
+  }
+  ul{
+     margin-left:-8% ;
+     /* margin-top: ; */
+  }
+  .aide{
+     font-weight: bold;
+  }
+  
+  footer {
+     position: fixed;
+     bottom: 3%;
+     margin-left: 2%;
+     width: 100%;
+     font-size: 10px;
+     
+  }

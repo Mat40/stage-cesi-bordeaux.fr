@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
                 'grade' => "CPI A2 Info",
                 'permission' => "user",
                 'email' => "matthieu.estines@viacesi.fr",
-                'password' => "test",
+                'user_password' => "test",
             ],
             [
                 'firstname' => "Thomas",
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
                 'grade' => "CPI A2 Info",
                 'permission' => "pilote",
                 'email' => "thomas.stenger@viacesi.fr",
-                'password' => "test",
+                'user_password' => "test",
             ],
             [
                 'firstname' => "Timothee",
@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'grade' => "CPI A2 Info",
                 'permission' => "admin",
                 'email' => "timothee.lourme@viacesi.fr",
-                'password' => "test",
+                'user_password' => "test",
             ]
         ]);
     }
