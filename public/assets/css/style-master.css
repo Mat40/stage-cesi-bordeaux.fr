@@ -10,7 +10,7 @@ nav {
   top: 0;
   width: 100%;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.25s ease;
 }
 nav.hide-nav {
   opacity: 0;
