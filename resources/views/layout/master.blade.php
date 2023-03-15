@@ -2,10 +2,11 @@
 <html>
 <head>
 	<html lang="fr">
-	<link rel="stylesheet" href="{{asset('css/style-master.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/style-welcome.css')}}">
-	<link  rel="stylesheet"href="{{asset('fontawesome/css/all.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/style-master.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-welcome.css')}}">
+	<link  rel="stylesheet"href="{{asset('assets/fontawesome/css/all.min.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+	<script src="{{asset('assets/js/script-master.js')}}"></script>
 	<title>Stage</title>
 </head>
 <body>

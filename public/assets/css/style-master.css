@@ -2,12 +2,24 @@ body{
   margin:0;
 
   font-family: Inter, sans-serif;
-  
+
 }
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+nav.hide-nav {
+  opacity: 0;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;  
+  padding: 0;
   background-color: rgba(39, 37, 31, 0.15);
   position: fixed;
   top: 0;
@@ -29,7 +41,7 @@ float: left;
 }
 .icon {
   float: right;
- 
+
 }
 
 #fav{
@@ -49,14 +61,14 @@ float: left;
   float: right;
   margin-left: 20px;
   margin-right: 20px;
- 
+
 }
 
 .logo{
  height: 60px;
  width: 200;
  background-color: #fff;
- 
+
 }
 
 li a:hover {
@@ -84,7 +96,7 @@ background-color: #FFC853;
  .mention {
   text-decoration: none;
   color: #27251F;
-  line-height: 50px 
+  line-height: 50px
  }
 
  .mention:hover {
@@ -121,7 +133,7 @@ background-color: #FFC853;
   border-style: none;
   background-color: rgba(39, 37, 31,0);
   width: 50px;
- 
+
 }
 .menu-hamburger:hover{
   background-color: #FFC853;
@@ -157,8 +169,8 @@ background-color: #FFC853;
   align-items: center;
   backdrop-filter: blur(8px);
   margin-left: -100%;
-  
-  
+
+
 }
 .responsive.mobile-menu{
   margin-left: 0px;
