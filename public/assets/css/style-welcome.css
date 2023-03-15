@@ -1,7 +1,5 @@
 /*style barre de recherche et bouton rechercher*/
-body{
-  font-family: ;
-}
+
 .container div {
     width: 869px;
     border: 1px solid black;
@@ -120,28 +118,61 @@ body{
 
 /*positionment filtre et barre de recherhce*/
 
-main{
-    text-align: center;
-}
+
 
 .filtre-recherche{
     display: inline-block;
-    margin-top: 170px;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    text-align: center;
  }
 
-/*style affichage-annonce */
 
 
-.affichage-annonce{
-    margin-top: 90px;
-    background-color:rgba(39, 37, 31, 0.05);
-    height: 100vh;
-}
+
+
 
  @media screen and (max-width: 900px){
    
  }
 
+
+
+ /*style affichage des annonces*/
+ .display{
+  width: 100%;
+  background-color:rgba(39, 37, 31, 0.05);
+  height: 192px ;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.display-list_offer{
+  overflow-y: scroll;
+  height: 100%;
+  width: 30%;
+  margin-left: 5%;
+  
+}
+ .annonce{
+  border:1px solid black;
+  max-width: 100%;
+  max-height: 111%;
+  border-radius: 15px;
+  padding-left: 1%;
+  box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+  background-color: #fff;
+  margin-bottom: 5%;
+
+}
+.titre_offre{
+  display: flex;
+}
+
+.name_entreprise {
+  padding-left: 5%;
+  
+}
 
 
 

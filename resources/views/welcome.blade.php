@@ -62,25 +62,22 @@
 		</div>
 </form>	
 
-<div class="affichage-annonce">
-<tr>
-            <th>name</th>
-            <th>activity_area</th>
-            <th>number_of_trainees</th>
-            <th>trust</th>
-			<th>description</th>
-            
-        </tr>
-        @foreach ($company as $company)
-        <tr>
-            <td>{{ $company->name }}</td>
-            <td>{{ $company->activity_area }}</td>
-            <td>{{ $company->number_of_trainees }}</td>
-            <td>{{ $company->trust}}</td>
-			<td>{{ $company->description}}</td>
-
-            <td>
-		@endforeach		
+<div class="display">
+	<div class="display-list_offer">
+@foreach ($company as $companies)
+	<div class="annonce">
+		<div class="titre_offre">
+			<img src="" alt="logo"> 
+			<h3 class="name_entreprise">{{ $companies->name }}</h3>
+		</div>
+		<div class="description">
+			<p>{{ $companies->name }}  {{ $companies->trust	 }} etoile(fontawesome)</p>
+			<p>Lieux</p>
+			<p>lorem hgdvyuedc eubvfduyebfd efkjrebfibre  feibfejbhfpe vjezbfezbfzejfh beupfb hjuvy</p>
+		</div>
+	</div>  
+@endforeach
+</div>         		
 </div>
 
 
