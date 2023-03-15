@@ -63,7 +63,24 @@
 </form>	
 
 <div class="affichage-annonce">
-    
+<tr>
+            <th>name</th>
+            <th>activity_area</th>
+            <th>number_of_trainees</th>
+            <th>trust</th>
+			<th>description</th>
+            
+        </tr>
+        @foreach ($company as $company)
+        <tr>
+            <td>{{ $company->name }}</td>
+            <td>{{ $company->activity_area }}</td>
+            <td>{{ $company->number_of_trainees }}</td>
+            <td>{{ $company->trust}}</td>
+			<td>{{ $company->description}}</td>
+
+            <td>
+		@endforeach		
 </div>
 
 
