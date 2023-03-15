@@ -13,10 +13,10 @@ class CompanyTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    { 
+    {
         \DB::table('company')->insert([
-        [    
-            'name' => 'Google',    
+        [
+            'name' => 'Google',
             'number_of_trainees' => '10000',
             'trust'=> '4.5',
             'description'=> 'super bien au top la machine',
@@ -24,8 +24,8 @@ class CompanyTableSeeder extends Seeder
             'updated_at' => now(),
         ],
 
-        [    
-            'name' => 'Arian',    
+        [
+            'name' => 'Arian',
             'number_of_trainees' => '10000',
             'trust'=> '4.0',
             'description'=> 'ça decolle les avions et les fusées',
@@ -33,46 +33,42 @@ class CompanyTableSeeder extends Seeder
             'updated_at' => now(),
         ],
 
-        [    
-            'name' => 'Arianne',    
-            'activity_area' => 'avion',
+        [
+            'name' => 'Arianne',
             'number_of_trainees' => '10000',
             'trust'=> '4.0',
             'description'=> 'ça decolle les avions et les fusées',
             'created_at' => now(),
             'updated_at' => now(),
         ],
-        [    
-            'name' => 'Arianne',    
-            'activity_area' => 'avion',
+        [
+            'name' => 'Arianne',
             'number_of_trainees' => '10000',
             'trust'=> '4.0',
             'description'=> 'ça decolle les avions et les fusées',
             'created_at' => now(),
             'updated_at' => now(),
         ],
-        [    
-            'name' => 'Arianne',    
-            'activity_area' => 'avion',
+        [
+            'name' => 'Arianne',
             'number_of_trainees' => '10000',
             'trust'=> '4.0',
             'description'=> 'ça decolle les avions et les fusées',
             'created_at' => now(),
             'updated_at' => now(),
         ],
-        [    
-            'name' => 'Arianne',    
-            'activity_area' => 'avion',
+        [
+            'name' => 'Arianne',
             'number_of_trainees' => '10000',
             'trust'=> '4.0',
             'description'=> 'ça decolle les avions et les fusées',
             'created_at' => now(),
             'updated_at' => now(),
         ],
-    
-    
-    
+
+
+
     ]);
-            
+
     }
 }
