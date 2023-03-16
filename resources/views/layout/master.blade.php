@@ -22,9 +22,7 @@
 					<li class="icon">
 		  			<a href="#user" ><i class="fa-regular fa-user"></i></a>
 		 	 		<div class="contenu">
-						<a href="#">CHOISIR</a>
-						<a href="#">CHOISIR</a>
-						<a href="#">CHOISIR</a>
+						<a href="{{ route('logout') }}">Déconnexion</a>
 		  			 </div>
 					</li>
 				</div>

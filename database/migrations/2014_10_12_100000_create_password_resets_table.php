@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('CV', function (Blueprint $table) {
-            $table->id();
-            $table->string('file_name', 50);
-            $table->string('file_path', 50);
-            $table->bigInteger('id_User')->unsigned();
-            $table->foreign('id_User') ->references('id')->on('users');
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
-
     }
 
     /**
@@ -31,7 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-
-        Schema::dropIfExists('CV');
+        Schema::dropIfExists('password_resets');
     }
 };

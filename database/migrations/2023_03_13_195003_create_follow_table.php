@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('follow', function (Blueprint $table) {
             $table->bigInteger('id')->unsigned();
             $table->bigInteger('id_User')->unsigned();
-            $table->foreign('id_User') ->references('id')->on('user');
+            $table->foreign('id_User') ->references('id')->on('users');
             $table->foreign('id') ->references('id')->on('offer');
 
-            $table->primary(['id', 'id_User']);    
-            $table->timestamps();    
-            
+            $table->primary(['id', 'id_User']);
+            $table->timestamps();
+
         });
-        
-       
+
+
     }
 
     /**
@@ -34,8 +34,8 @@ return new class extends Migration
      */
     public function down()
     {
-        
+
         Schema::dropIfExists('follow');
-        
+
     }
 };
