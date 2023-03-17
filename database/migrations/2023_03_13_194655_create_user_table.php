@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lastname', 255);
             $table->string('campus', 50)->nullable();
             $table->string('grade', 50)->nullable();
-            $table->string('permission', 50);
+            $table->string('permission', 50)->nullable();
             $table->string('email', 255)->Unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
