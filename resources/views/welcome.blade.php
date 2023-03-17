@@ -1,7 +1,7 @@
 @extends("layout.master")
 
 @section("contenu")
-<form class="filtre-recherche" type="get" action="">
+<form class="search_filter" type="get" action="">
 		<section class="container">
   			<div>
   				<i class="fa-solid fa-magnifying-glass"></i>
@@ -9,7 +9,7 @@
   			</div>
   			<button type="submit" value="Submit">Rechercher</button>
 		</section>
-		<div class="filtre">
+		<div class="filter">
 			<div class = "select">
 				<select class="selecteur">
 					<option value="">Type</option>
@@ -64,21 +64,47 @@
 
 <div class="display">
 	<div class="display-list_offer">
-@foreach ($company as $companies)
-	<div class="annonce">
-		<div class="titre_offre">
+@foreach ($offer as $offers)
+	<div class="annonce" id="{{ $offers->id}}">
+		<div class="title_offer">
 			<img src="" alt="logo"> 
-			<h3 class="name_entreprise">{{ $companies->name }}</h3>
+			<h3 class="name_entreprise">{{ $offers->title}}</h3>
 		</div>
 		<div class="description">
-			<p>{{ $companies->name }}  {{ $companies->trust	 }} etoile(fontawesome)</p>
-			<p>Lieux</p>
-			<p>lorem hgdvyuedc eubvfduyebfd efkjrebfibre  feibfejbhfpe vjezbfezbfzejfh beupfb hjuvy</p>
+			<p> {{ $offers->company->name}} {{ number_format($offers->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
+			<p>{{ $offers->address->city}}</p>
+			<p>{{ Str::limit($offers->description, 50) }}</p>
 		</div>
 	</div>  
 @endforeach
 </div>         		
 </div>
+<script>
+    // Sélectionnez tous les éléments .annonce
+    var annonces = document.querySelectorAll('.annonce');
 
+    // Bouclez sur chaque élément et ajoutez un gestionnaire d'événement "click"
+    annonces.forEach(function(annonce) {
+        annonce.addEventListener('click', function() {
+            // Sélectionnez l'élément div à cloner
+            var divOriginal = annonce;
+
+            // Cloner l'élément div
+            var divClone = divOriginal.cloneNode(true);
+
+            // Modifier le titre dans le div cloné
+            var titreClone = divClone.querySelector('.name_entreprise');
+            titreClone.textContent = 'Nouveau titre';
+
+            // Ajouter un style à l'élément cloné
+            divClone.style.backgroundColor = 'red';
+            divClone.style.color = 'white';
+            divClone.style.marginLeft = '250px';
+
+            // Ajouter le clone à la page
+            document.body.appendChild(divClone);
+        });
+    });
+</script>
 
 @endsection 

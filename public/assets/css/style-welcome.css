@@ -81,7 +81,7 @@
   width: 19.91px;
 }
 
-.filtre {
+.filter {
   
   display: flex;
   margin-left: 50px;
@@ -120,8 +120,9 @@
 
 
 
-.filtre-recherche{
+.search_filter{
     display: inline-block;
+    
     margin-top: 8%;
     margin-bottom: 8%;
     text-align: center;
@@ -145,6 +146,7 @@
   height: 192px ;
   padding-top: 5%;
   padding-bottom: 5%;
+  
 }
 
 .display-list_offer{
@@ -165,13 +167,17 @@
   margin-bottom: 5%;
 
 }
-.titre_offre{
+.title_offer{
   display: flex;
 }
 
 .name_entreprise {
   padding-left: 5%;
   
+}
+
+.fa-solid.fa-star{
+  color: #FFC853;
 }
 
 

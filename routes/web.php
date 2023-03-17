@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\Auth\LogoutController;
 
 /*
@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\LogoutController;
 |
 */
 
-Route::get('/', [CompanyController::class, 'index'])->middleware('auth')->name('index');;
+Route::get('/', [OfferController::class, 'index'])->middleware('auth')->name('index');;
 
 
 Route::group(['middleware' => ['auth']], function() {
