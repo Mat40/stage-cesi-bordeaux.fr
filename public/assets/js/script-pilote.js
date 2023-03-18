@@ -1,7 +1,7 @@
 
-    var elements = document.getElementsByClassName("switch_page"); 
-    for(var i=0; i<elements.length; i++){ 
-     elements[i].style.width = "133%"; 
+    var elements = document.getElementsByTagName("button"); 
+    for(var i=0; i<elements.length-1; i++){ 
+     elements[i].style.width = "29%"; 
      
     }
 

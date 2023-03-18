@@ -12,5 +12,6 @@ class OfferController extends Controller
     {
         $offer = Offer::all();
         return view('welcome', ['offer' => $offer]);
+       
     }
 }

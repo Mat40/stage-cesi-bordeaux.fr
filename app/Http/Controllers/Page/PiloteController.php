@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Page;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PiloteController extends Controller
 {
@@ -29,15 +31,18 @@ class PiloteController extends Controller
     }
 
     public function Etudiant(){
-
+        $user = User::all();
         $title='Panel administration';
         $path1="/Pilote_offre";
         $path2="/Pilote_entreprise";
         $path3="/Pilote_etudiant";
         $button="";
         $placeholder="Nom, prénom, centre, promotion...";
-        return view('/Pilote/Pilote_etudiant', compact('placeholder','title','button','path1','path2','path3'));
+        return view('/Pilote/Pilote_etudiant', compact('placeholder','title','button','path1','path2','path3','user'));
     }
 
     
 }
+
+
+
