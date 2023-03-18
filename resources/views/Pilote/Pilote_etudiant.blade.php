@@ -1,9 +1,13 @@
 @extends("layout.master")
 
-@section('contenu')
+@section("contenu")
 
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+@include("layout.section_search_all_role")
+<script src="{{asset('assets/js/script-pilote.js')}}"></script>
+<div class="display">
+  <div class="position_student" > 
+        <form class="form_student" method="POST" action="{{ route('register') }}">
+            @csrf
 
                         <div class="">
                             <label for="firstname" class="">{{ __('Firstname') }}</label>
@@ -104,6 +108,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
- 
+        </form>
+    </div>
+</div>
 @endsection
