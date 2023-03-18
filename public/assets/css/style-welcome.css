@@ -34,7 +34,7 @@
     font-size: 30px;
   }
 
-  button{
+  .container button{
   color: rgba(0, 0, 0, 0.8) ;
   background-color: #FFC853;
   border-style: none;
@@ -122,7 +122,7 @@
 
 .search_filter{
     display: inline-block;
-    
+    margin-left: 15%;
     margin-top: 8%;
     margin-bottom: 8%;
     text-align: center;
@@ -143,8 +143,8 @@
  .display{
   width: 100%;
   background-color:rgba(39, 37, 31, 0.05);
-  height: 192px ;
-  padding-top: 5%;
+  height: 100% ;
+  padding-top: 3%;
   padding-bottom: 5%;
   
 }
