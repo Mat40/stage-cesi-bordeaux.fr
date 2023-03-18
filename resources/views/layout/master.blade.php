@@ -22,6 +22,7 @@
 					<li class="icon">
 		  			<a href="#user" ><i class="fa-regular fa-user"></i></a>
 		 	 		<div class="contenu">
+						<a href="{{ route('profile') }}">Profil</a>
 						<a href="{{ route('logout') }}">Déconnexion</a>
 		  			 </div>
 					</li>
