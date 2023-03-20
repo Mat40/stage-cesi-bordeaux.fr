@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('email', 255)->Unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
+            $table->string('pp_path', 50)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

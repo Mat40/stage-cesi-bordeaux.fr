@@ -4,12 +4,14 @@
 	<html lang="fr">
 	<link rel="stylesheet" href="{{asset('assets/css/style-master.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-welcome.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-profile.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-section-search_all_role.css')}}">
 	<link  rel="stylesheet"href="{{asset('assets/fontawesome/css/all.min.css')}}">
-	
+
 	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 	<script src="{{asset('assets/js/script-master.js')}}"></script>
-	
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
 	<title>Stage</title>
 </head>
 <body>
