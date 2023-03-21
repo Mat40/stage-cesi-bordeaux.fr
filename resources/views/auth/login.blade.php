@@ -21,16 +21,18 @@
 			<img src="{{asset('assets/images/cesi.png')}}">
 		</div>
 		<div class="formulaire">
+            <br></br>
+            <br></br>
+            <br></br>
 
 			<p class="indication">Connexion avec votre compte professionnel</p>
 
 			<form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div>
-                    <label for="email" class="">{{ __('Email Address') }}</label>
 
                     <div>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" placeholder="{{ __('xyz@example.com') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -39,11 +41,12 @@
                         @enderror
                     </div>
                 </div>
+                <br></br>
+    
 				<div>
-                    <label for="password" class="">{{ __('Password') }}</label>
 
                     <div>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" placeholder="{{ __('Mot de Passe') }}" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -57,12 +60,6 @@
                         <button type="submit" class="btn btn-primary">
                             {{ __('Login') }}
                         </button>
-
-                        @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                        @endif
                     </div>
                 </div>
 			</form>
