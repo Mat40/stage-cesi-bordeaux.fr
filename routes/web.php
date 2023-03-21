@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
  });
 Auth::routes();
 
-Route::get('/profil', [ProfileController::class, 'index'])->middleware('auth')->name('profile');
+Route::get('/profil', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profil', [CvController::class, 'upload'])->middleware('auth')->name('cv.upload');
 Route::put('/profil', [CvController::class, 'update'])->middleware('auth')->name('cv.update');
 Route::delete('/profil', [CvController::class, 'delete'])->middleware('auth')->name('cv.delete');
