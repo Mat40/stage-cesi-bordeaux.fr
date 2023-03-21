@@ -20,7 +20,7 @@ use App\Http\Controllers\Auth\LogoutController;
 |
 */
 
-Route::get('/', [OfferController::class, 'index'])->middleware('auth')->name('index');;
+Route::get('/', [OfferController::class, 'index'])->name('index');;
 Route::get('/register')->middleware('auth')->name('register');;
 
 Route::get('/Admin_offre', [AdministrateursController::class, 'Offer'])->middleware('auth');

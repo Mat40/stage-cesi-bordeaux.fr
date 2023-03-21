@@ -75,36 +75,44 @@
 			<p>{{ $offers->address->city}}</p>
 			<p>{{ Str::limit($offers->description, 50) }}</p>
 		</div>
-	</div>  
+	</div>
+</div>  
 @endforeach
+<div class="grande_offre">
+    <header>
+        <h1 class="titre">
+        	Titre de l'offre
+        </h1>
+        <div class="entreprise">
+                <div class="titreentreprise">
+                    Entreprise
+                </div>
+                <div class="note">
+                    X,X
+                </div>
+                	<i class="fa-solid fa-star"></i>
+                </div>
+                <br>
+                <div class="lieux">
+                    Lieux
+                </div>
+                <br>
+                <div class="divbtns">
+                    <div class="divpostul">
+                        <button class="btnpostul" type="submit">Postuler</button>
+                    </div>
+                    <div class="divfavoris">
+                        <button class="btnfavoris"><i class="fa-solid fa-heart"></i></button>
+                    </div>
+                </div>
+    </header>
+    <div class="titredescription">
+        <h2>Description de l'offre</h2>
+    </div>
+        <div class="description">
+        	<div class="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et iusto rem expedita alias harum, voluptates nesciunt culpa sequi perferendis ea vitae ipsum excepturi earum ullam ratione consequuntur placeat, amet asperiores.</div>
+        </div>
+    </div>
 </div>         		
-</div>
-<script>
-    // Sélectionnez tous les éléments .annonce
-    var annonces = document.querySelectorAll('.annonce');
-
-    // Bouclez sur chaque élément et ajoutez un gestionnaire d'événement "click"
-    annonces.forEach(function(annonce) {
-        annonce.addEventListener('click', function() {
-            // Sélectionnez l'élément div à cloner
-            var divOriginal = annonce;
-
-            // Cloner l'élément div
-            var divClone = divOriginal.cloneNode(true);
-
-            // Modifier le titre dans le div cloné
-            var titreClone = divClone.querySelector('.name_entreprise');
-            titreClone.textContent = 'Nouveau titre';
-
-            // Ajouter un style à l'élément cloné
-            divClone.style.backgroundColor = 'red';
-            divClone.style.color = 'white';
-            divClone.style.marginLeft = '250px';
-
-            // Ajouter le clone à la page
-            document.body.appendChild(divClone);
-        });
-    });
-</script>
 
 @endsection 

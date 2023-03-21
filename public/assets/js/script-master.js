@@ -12,3 +12,10 @@ window.onscroll = function() {
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("nav").classList.remove("hide-nav");
 });
+
+$(document).ready(function() {
+  $(".annonce").click(function() {
+    
+    $(".grande_offre").css("visibility", "visible");
+  });
+});

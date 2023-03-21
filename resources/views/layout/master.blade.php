@@ -10,8 +10,8 @@
 	<link  rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
 
 	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+	<script src="{{asset('assets/js/jquery-3.6.3.js')}}"></script>
 	<script src="{{asset('assets/js/script-master.js')}}"></script>
-	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 	<title>Stage</title>
 </head>
