@@ -33,6 +33,9 @@ Route::get('/Pilote_offre', [PiloteController::class, 'Offer'])->middleware('aut
 Route::get('/Pilote_entreprise', [PiloteController::class, 'Entreprise'])->middleware('auth');
 Route::get('/Pilote_etudiant', [PiloteController::class,'Etudiant'])->middleware('auth');
 
+Route::get('/delete/{id}', [UserController::class, 'softDelete'])->middleware('auth');
+Route::post('/update/{id}', [UserController::class, 'update'])->middleware('auth');
+
 
 
 Route::group(['middleware' => ['auth']], function() {

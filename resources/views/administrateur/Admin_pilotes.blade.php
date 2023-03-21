@@ -10,29 +10,29 @@
 <div class="display-list_offer_min">
 
 @foreach ($user as $users)
-   
+
 	<div class="annonce" id="{{ $users->id }}">
 		<div class="title_offer">
-			<img src="" alt="logo"> 
+			<img src="" alt="logo">
 			<h3 class="name_entreprise">{{ $users->firstname}} {{ $users->lastname}}</h3>
 		</div>
 		<div class="description">
 			<p class="email">{{ $users->email}}</p>
             <p class="grade_campus">{{ $users->grade}} {{ $users->campus}}</p>
-            
+
 		</div>
-	</div>  
+	</div>
 @endforeach
 
-</div>         		
+</div>
 
 
-  <div class="position_student" > 
+  <div class="position_student" >
 
         <form class="form_creation" method="post" action="{{ route('register') }}">
             @csrf
                         <div class="">
-                            
+
 
                             <div class="">
                                 <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname')}}" required autocomplete="firstname" autofocus placeholder="Nom">
@@ -100,15 +100,15 @@
                                 <button id="soumettre" type="submit" class="">
                                     {{ __('Soumettre') }}
                                 </button>
-                                <a href="Update/{{$users->id}}"  id="update" type="update" class="">
+                                <a href=""  id="update" type="update" class="">
                                     {{ __('update') }}
                                 </a>
-                                <a href="SoftDelete/{{$users->id}}"  id="delete" type="delete" class="">
+                                <a href=""  id="delete" type="delete" class="">
                                 <i class="fa-solid fa-trash-can"></i>
                                 </a>
-                               
+
                             </div>
-                        
+
         </form>
 
     </div>

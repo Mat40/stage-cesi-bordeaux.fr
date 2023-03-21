@@ -12,7 +12,7 @@
 @foreach ($companies as $company)
 	<div class="annonce" id="{{ $company->id}}">
 		<div class="title_offer">
-			<img src="" alt="logo"> 
+			<img src="" alt="logo">
 			<h3 class="name_entreprise">{{ $company->name}}   {{ number_format($company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </h3>
 		</div>
 		<div class="description">
@@ -21,18 +21,18 @@
             @endforeach
 		</div>
         <p>{{ $company->description}}</p>
-	</div>  
+	</div>
 @endforeach
 
-</div>         		
+</div>
 
 
-  <div class="position_entreprise" > 
+  <div class="position_entreprise" >
 
         <form class="form_creation" method="post" action="{{ route('register') }}">
             @csrf
                         <div class="">
-                            
+
 
                             <div class="">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name')}}" required autocomplete="name" autofocus placeholder="Nom de l'entreprise">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="stars">
                             <div class="">
                                <!-- <input id="trust" type="text" class="form-control @error('trust') is-invalid @enderror" name="trust" value="{{ old('trust') }}" required autocomplete="trust" placeholder="confiance du pilote de formation ">
@@ -110,7 +110,7 @@
                             <div class="text_area">
                                  <label for="description">Description:</label></br>
                                 <textarea id="description" name="descriptions" rows="10" cols="70"></textarea>
-                            
+
                             </div>
                         </div>
 
@@ -124,9 +124,9 @@
                                 <a href=""  id="delete" type="delete" class="">
                                 <i class="fa-solid fa-trash-can"></i>
                                 </a>
-                               
+
                             </div>
-                        
+
         </form>
 
     </div>

@@ -6,7 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-welcome.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-profile.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-section-search_all_role.css')}}">
-	<link  rel="stylesheet"href="{{asset('assets/fontawesome/css/all.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanel.css')}}">
+	<link  rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
 
 	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 	<script src="{{asset('assets/js/script-master.js')}}"></script>

@@ -18,7 +18,7 @@
     width: 100%;
     background-color:rgba(39, 37, 31, 0) ;
     height: 30px;
-  
+
   }
 
 #search::placeholder{
@@ -82,7 +82,7 @@
 }
 
 .filter {
-  
+
   display: flex;
   margin-left: 50px;
 }
@@ -110,9 +110,9 @@
 }
 
 .select#Entreprise i{
-  
+
   margin-left: 173px;
- 
+
 }
 
 
@@ -134,64 +134,5 @@
 
 
  @media screen and (max-width: 900px){
-   
+
  }
-
-
-
- /*style affichage des annonces*/
- .display{
-  width: 100%;
-  background-color:rgba(39, 37, 31, 0.05);
-  height: 920px ;
-  padding-top: 3%;
-  padding-bottom: 5%;
-  display: flex;
-  
-}
-
-.display-list_offer{
-  overflow-y: scroll;
-  height: 89%;
-  width: 30%;
-  margin-left: 5%;
-  margin-top: 4%;
-  
-  
-}
- .annonce{
-  border:1px solid black;
-  max-width: 100%;
-  margin-right: 2%;
-  border-radius: 15px;
-  padding-left: 1%;
-  box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
-  background-color: #fff;
-  margin-bottom: 5%;
-
-}
-.title_offer{
-  display: flex;
-}
-
-.name_entreprise {
-  padding-left: 5%;
-  
-}
-
-.fa-solid.fa-star{
-  color: #FFC853;
-}
-
-
-.description{
-  margin-left: 17%;
-}
-
-.place{
-  margin-left: 3%;
-}
-
-
-
-

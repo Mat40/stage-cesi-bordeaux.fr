@@ -12,7 +12,7 @@
 @foreach ($offer as $offers)
 	<div class="annonce" id="{{ $offers->id}}">
 		<div class="title_offer">
-			<img src="" alt="logo"> 
+			<img src="" alt="logo">
 			<h3 class="name_entreprise">{{ $offers->title}}</h3>
 		</div>
 		<div class="description">
@@ -20,18 +20,18 @@
 			<p>{{ $offers->address->city}}</p>
 			<p>{{ Str::limit($offers->description, 50) }}</p>
 		</div>
-	</div>  
+	</div>
 @endforeach
 
-</div>         		
+</div>
 
 
-  <div class="position_offer" > 
+  <div class="position_offer" >
 
         <form class="form_creation" method="post" action="{{ route('register') }}">
             @csrf
                         <div class="">
-                            
+
 
                             <div class="">
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')}}" required autocomplete="title" autofocus placeholder="Titre de l'offre">
@@ -108,7 +108,7 @@
                             </div>
                         </div>
 
-                        
+
                           <div class="">
 
                             <div class="">
@@ -122,7 +122,7 @@
                             </div>
                         </div>
 
-                        
+
                           <div class="">
 
                             <div class="">
@@ -141,7 +141,7 @@
                             <div class="text_area">
                             <label for="description">Description:</label></br>
                             <textarea id="description" name="descriptions" rows="10" cols="70"></textarea>
-                            
+
                             </div>
                         </div>
 
@@ -149,15 +149,15 @@
                                 <button id="soumettre" type="submit" class="">
                                     {{ __('Soumettre') }}
                                 </button>
-                                <a href="Update/{{$offers->id}}"  id="update" type="update" class="">
-                                    {{ __('update') }}
+                                <a href=""  id="update" type="update" class="">
+                                    {{ __('Mettre a jour') }}
                                 </a>
-                                <a href="SoftDelete/{{$offers->id}}"  id="delete" type="delete" class="">
+                                <a href=""  id="delete" type="delete" class="">
                                 <i class="fa-solid fa-trash-can"></i>
                                 </a>
-                               
+
                             </div>
-                        
+
         </form>
 
     </div>

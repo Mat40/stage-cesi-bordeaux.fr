@@ -31,14 +31,14 @@ class AdministrateursController extends Controller
     }
 
     public function Etudiant(){
-        $user = User::all();
+        $users = User::all();
         $path1="/Admin_offre";
         $path2="/Admin_entreprise";
         $path3="/Admin_etudiant";
         $placeholder="Nom, prénom, centre, promotion...";
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         $title='Panel administration';
-        return view('/administrateur/Admin_etudiant', compact('placeholder','button','title','path1','path2','path3','user'));
+        return view('/administrateur/Admin_etudiant', compact('placeholder','button','title','path1','path2','path3','users'));
     }
 
     public function Pilotes(){
@@ -50,6 +50,6 @@ class AdministrateursController extends Controller
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         $title='Panel administration';
         return view('/administrateur/Admin_pilotes', compact('placeholder','button','title','path1','path2','path3','user'));
-        
+
     }
 }
