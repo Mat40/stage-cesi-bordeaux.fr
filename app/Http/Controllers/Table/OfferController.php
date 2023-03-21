@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Offer;
+namespace App\Http\Controllers\Table;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Offer;
 
 class OfferController extends Controller
 {
@@ -10,5 +12,6 @@ class OfferController extends Controller
     {
         $offer = Offer::all();
         return view('welcome', ['offer' => $offer]);
+       
     }
 }

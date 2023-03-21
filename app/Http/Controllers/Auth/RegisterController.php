@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -29,17 +30,21 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo()
+        {
+
+            return route('register');
+        }
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('guest');
-    }
+    }*/
 
     /**
      * Get a validator for an incoming registration request.
@@ -55,7 +60,7 @@ class RegisterController extends Controller
             'campus' => ['required', 'string', 'max:50'],
             'grade' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -73,7 +78,10 @@ class RegisterController extends Controller
             'campus' => $data['campus'],
             'grade' => $data['grade'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make(Str::random(8)),
         ]);
+       
     }
 }
+
+
