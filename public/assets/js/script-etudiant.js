@@ -1,25 +1,28 @@
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
     // Récupération de tous les éléments avec la classe "annonce"
-    const annonces = document.querySelectorAll('.annonce');
+    const users = document.querySelectorAll('.user-item');
     document.querySelector("#update").style.display = "none";
+    document.querySelector("#delete").style.display = "none";
 
     const updateBtn = document.getElementById('update');
     const deleteBtn = document.getElementById('delete');
 
-     // Boucle sur chaque élément pour ajouter l'événement de clic
-    annonces.forEach(annonce => {
-        annonce.addEventListener('click', () => {
-            // Récupération des valeurs à partir de l'annonce cliquée
-            const id = annonce.getAttribute('id');
-            const nom = annonce.querySelector('.name_entreprise').textContent;
-            const email = annonce.querySelector('.email').textContent;
-            const campus = annonce.querySelector('.grade_campus').textContent.split(' ')[1];
-            const grade = annonce.querySelector('.grade_campus').textContent.split(' ')[0];
+    // Boucle sur chaque élément pour ajouter l'événement de clic
+    users.forEach(user => {
+        const id = user.getAttribute('id');
+        user.addEventListener('click', () => {
+            // Récupération des valeurs à partir de l'user cliquée
+
+            const firstname = user.querySelector('.user-firstname').textContent;
+            const lastname = user.querySelector('.user-lastname').textContent;
+            const email = user.querySelector('.user-email').textContent;
+            const campus = user.querySelector('.user-campus').textContent;
+            const grade = user.querySelector('.user-grade').textContent;
 
             // Remplissage du formulaire avec les valeurs récupérées
-            document.getElementById('firstname').value = nom.split(' ')[1];
-            document.getElementById('lastname').value = nom.split(' ')[0];
+            document.getElementById('firstname').value = firstname;
+            document.getElementById('lastname').value = lastname;
             document.getElementById('campus').value = campus;
             document.getElementById('grade').value = grade;
             document.getElementById('email').value = email;
@@ -30,21 +33,23 @@
             // // Affichage des boutons "update" et "delete"
             // document.getElementById('update').style.display = 'inline-block';
             // document.getElementById('delete').style.display = 'inline-block';
-            document.querySelector("#soumettre").style.display = "none";
+            document.querySelector("#submit").style.display = "none";
+            document.querySelector("#delete").style.display = "block";
             updateBtn.style.display = "block";
         });
 
         deleteBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            const id = annonce.getAttribute('id');
             window.location.href = '/delete/' + id;
-            });
-
         });
 
-        document.querySelector(".add").addEventListener("click", function() {
-        document.querySelector("#soumettre").style.display = "block";
+    });
+
+    document.querySelector(".add").addEventListener("click", function() {
+        document.querySelector("#submit").style.display = "block";
         document.querySelector("#update").style.display = "none";
+        document.querySelector("#delete").style.display = "none";
+
         document.getElementById('firstname').value = "";
         document.getElementById('lastname').value = "";
         document.getElementById('campus').value = "";
@@ -57,4 +62,5 @@
         event.preventDefault();
         document.querySelector('.form_creation').submit();
     });
+
 });
