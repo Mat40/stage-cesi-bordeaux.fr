@@ -4,33 +4,39 @@
 
 @include("layout.section_search_all_role")
 <script src="{{asset('assets/js/script-pilote.js')}}"></script>
+<script src="{{asset('assets/js/script-etudiant.js')}}"></script>
 <div class="display">
-<div class="display-list_offer">
+<button class ="add" type="button">+Ajouter etudiant</button>
+
+<div class="display-list_offer_min">
+
 @foreach ($user as $users)
-	<div class="annonce" id="">
+   
+	<div class="annonce" id="{{ $users->id }}">
 		<div class="title_offer">
 			<img src="" alt="logo"> 
 			<h3 class="name_entreprise">{{ $users->firstname}} {{ $users->lastname}}</h3>
 		</div>
 		<div class="description">
-			<p>{{ $users->email}}</p>
-            <p>{{ $users->grade}} {{ $users->campus}}</p>
+			<p class="email">{{ $users->email}}</p>
+            <p class="grade_campus">{{ $users->grade}} {{ $users->campus}}</p>
             
 		</div>
 	</div>  
 @endforeach
+
 </div>         		
 
 
   <div class="position_student" > 
-        <form class="form_student" method="POST" action="{{ route('register') }}">
-            @csrf
 
+        <form class="form_creation" method="post" action="{{ route('register') }}">
+            @csrf
                         <div class="">
                             
 
                             <div class="">
-                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus placeholder="Nom">
+                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname')}}" required autocomplete="firstname" autofocus placeholder="Nom">
 
                                 @error('firstname')
                                     <span class="invalid-feedback" role="alert">
@@ -95,12 +101,17 @@
                                 <button id="soumettre" type="submit" class="">
                                     {{ __('Soumettre') }}
                                 </button>
-                                <button  id="delete" type="delete" class="">
-                                    {{ __('bin') }}
-                                </button>
+                                <a href="Update/{{$users->id}}"  id="update" type="update" class="">
+                                    {{ __('update') }}
+                                </a>
+                                <a href="SoftDelete/{{$users->id}}"  id="delete" type="delete" class="">
+                                <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                               
                             </div>
                         
         </form>
+
     </div>
 </div>
 @endsection

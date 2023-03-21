@@ -31,10 +31,10 @@ class RegisterController extends Controller
      * @var string
      */
     protected function redirectTo()
-    {
+        {
 
-        return route('register');
-    }
+            return route('register');
+        }
 
     /**
      * Create a new controller instance.
@@ -78,8 +78,9 @@ class RegisterController extends Controller
             'campus' => $data['campus'],
             'grade' => $data['grade'],
             'email' => $data['email'],
-            'password' => Str::random(8),
+            'password' => Hash::make(Str::random(8)),
         ]);
+       
     }
 }
 
