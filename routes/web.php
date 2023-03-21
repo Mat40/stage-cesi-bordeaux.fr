@@ -24,9 +24,9 @@ Route::get('/', [OfferController::class, 'index'])->middleware('auth')->name('in
 Route::get('/register')->middleware('auth')->name('register');;
 
 Route::get('/Admin_offre', [AdministrateursController::class, 'Offer'])->middleware('auth');
-Route::get('/Admin_etudiant', [AdministrateursController::class,'Etudiant'])->middleware('auth');
-Route::get('/Admin_entreprise', [AdministrateursController::class, 'Entreprise'])->middleware('auth');
-Route::get('/Admin_pilotes', [AdministrateursController::class, 'Pilotes'])->middleware('auth');
+Route::get('/Admin_etudiant', [AdministrateursController::class,'Etudiant']);
+Route::get('/Admin_entreprise', [AdministrateursController::class, 'Entreprise']);
+Route::get('/Admin_pilotes', [AdministrateursController::class, 'Pilotes']);
 
 
 Route::get('/Pilote_offre', [PiloteController::class, 'Offer'])->middleware('auth');

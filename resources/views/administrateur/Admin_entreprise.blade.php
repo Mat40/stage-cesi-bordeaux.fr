@@ -9,17 +9,18 @@
 
 <div class="display-list_offer_min">
 
-@foreach ($offer as $offers)
-	<div class="annonce" id="{{ $offers->id}}">
+@foreach ($companies as $company)
+	<div class="annonce" id="{{ $company->id}}">
 		<div class="title_offer">
 			<img src="" alt="logo"> 
-			<h3 class="name_entreprise">{{ $offers->title}}</h3>
+			<h3 class="name_entreprise">{{ $company->name}}   {{ number_format($company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </h3>
 		</div>
 		<div class="description">
-			<p> {{ $offers->company->name}} {{ number_format($offers->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
-			<p>{{ $offers->address->city}}</p>
-			<p>{{ Str::limit($offers->description, 50) }}</p>
+			@foreach ($company->address as $address)
+                <span class="place">{{ $address->city }}</span>
+            @endforeach
 		</div>
+        <p>{{ $company->description}}</p>
 	</div>  
 @endforeach
 
@@ -117,10 +118,10 @@
                                 <button id="soumettre" type="submit" class="">
                                     {{ __('Soumettre') }}
                                 </button>
-                                <a href="Update/{{$offers->id}}"  id="update" type="update" class="">
+                                <a href=""  id="update" type="update" class="">
                                     {{ __('update') }}
                                 </a>
-                                <a href="SoftDelete/{{$offers->id}}"  id="delete" type="delete" class="">
+                                <a href=""  id="delete" type="delete" class="">
                                 <i class="fa-solid fa-trash-can"></i>
                                 </a>
                                

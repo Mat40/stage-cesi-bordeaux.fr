@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Offer;
+use App\Models\Company;
 class AdministrateursController extends Controller
 {
     public function Offer(){
@@ -19,14 +20,14 @@ class AdministrateursController extends Controller
     }
 
     public function Entreprise(){
-        $offer = Offer::all();
+        $companies = Company::all();
         $path1="/Admin_offre";
         $path2="/Admin_entreprise";
         $path3="/Admin_etudiant";
         $placeholder="Entreprise, secteur d'activité, lieux...";
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         $title='Panel administration';
-        return view('/administrateur/Admin_entreprise', compact('placeholder','button','title','path1','path2','path3','offer'));
+        return view('/administrateur/Admin_entreprise', compact('placeholder','button','title','path1','path2','path3','companies'));
     }
 
     public function Etudiant(){
