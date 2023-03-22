@@ -21,7 +21,7 @@
                 <span class="place">{{ $address->city }}</span>
             @endforeach
 		</div>
-        <p>{{ $company->description}}</p>
+        <p>{!! $company->description !!}</p>
 	</div>
 @endforeach
 
@@ -30,7 +30,7 @@
 
   <div class="position_entreprise" >
 
-        <form class="form_creation" method="post" action="{{ route('register') }}">
+        <form class="form_creation" method="post" action="{{ route('register/company') }}">
             @csrf
                         <div class="">
 
@@ -104,7 +104,7 @@
                             </div>
                         </div>
 
-
+                        <input type="hidden" name="trust" id="trust">
 
 
                         <div class="">
@@ -168,6 +168,7 @@
     function activeSelect(e){
         check=true;
         document.querySelector('.note').innerHTML = 'Note :' + e.target.dataset.note;
+        document.querySelector('#trust').value = e.target.dataset.note;
     }
 
     function priviousSiblings(data){

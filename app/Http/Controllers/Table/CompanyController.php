@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Table;
+use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Address;
+use App\Models\area_activity;
+use App\Models\Located_at;
+use App\Models\part_of;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -24,80 +27,83 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $company = new Company;
-        $company->name = $request->input('name');
-        $company->city = $request->input('city');
-        $company->number_of_trainees = $request->input('number_of_trainees');
-        $company->description = $request->input('description');
-        //stars
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'number_of_trainees' => 'required|string|max:255',
+            'description' => 'required|string|max:50',
+            'trust' => 'required|string|max:50',
+            'city' => 'required|string|max:255',
+            'area_activity' => 'required|string|max:255',
+        ]);
+
+        $company->name = $validatedData['name'];
+        $company->number_of_trainees = $validatedData['number_of_trainees'];
+        $company->description = $validatedData['description'];
+        $company->trust = $validatedData['trust'];
         $company->save();
 
+        
+
+
+
         $address = new Address;
-        $address->city = $request->input('area_activity');
+        $address->city = $validatedData['city'];
         $address->save();
 
+        $area_activity = new area_activity;
+        $area_activity->name = $validatedData['area_activity'];
+        $area_activity->save();
+        
+
         $located_at = new Located_at;
-        $comment->content = $request->input('commentaire');
-        $comment->company_id = $company->id;
-        $comment->address_id = $address->id;
-        $comment->save();
+        $Located_at->id_Company = $company->id;
+        $Located_at->id = $address->id;
+        $Located_at->save();
+
+        $part_of = new part_of;
+        $part_of->id_Company = $company->id;
+        $part_of->id = $area_activity->id;
+        $part_of->save();
+
+
+        
+
+
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+
+
+    public function softDelete($id){
+        Company::find($id)->delete();
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Company $company)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Company $company)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $company = Commpany::findOrFail($id);
+        //mettre a jour les commentaires suivant pour l'update
+        /*$validatedData = $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'campus' => 'required|string|max:50',
+            'grade' => 'required|string|max:50',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Company $company)
-    {
-        //
-    }
+        $user->firstname = $validatedData['firstname'];
+        $user->lastname = $validatedData['lastname'];
+        $user->campus = $validatedData['campus'];
+        $user->grade = $validatedData['grade'];
+        $user->email = $validatedData['email'];
+        $user->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Company $company)
-    {
-        //
+        return redirect()->back()->with('success', 'L\'utilisateur a été mis à jour avec succès !');*/
     }
 }

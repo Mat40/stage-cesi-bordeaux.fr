@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Table\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Table\OfferController;
 use App\Http\Controllers\Table\CvController;
@@ -36,6 +36,8 @@ Route::get('/pilote/tudiant', [PiloteController::class,'Etudiant'])->middleware(
 Route::get('/delete/{id}', [UserController::class, 'delete'])->middleware('auth');
 Route::post('/update/{id}', [UserController::class, 'update'])->middleware('auth');
 
+
+Route::post('/register/company', [CompanyController::class, 'create'])->name('register/company');
 
 
 Route::group(['middleware' => ['auth']], function() {
