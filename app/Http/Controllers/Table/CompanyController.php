@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -25,7 +26,23 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        $company = new Company;
+        $company->name = $request->input('name');
+        $company->city = $request->input('city');
+        $company->number_of_trainees = $request->input('number_of_trainees');
+        $company->description = $request->input('description');
+        //stars
+        $company->save();
+
+        $address = new Address;
+        $address->city = $request->input('area_activity');
+        $address->save();
+
+        $located_at = new Located_at;
+        $comment->content = $request->input('commentaire');
+        $comment->company_id = $company->id;
+        $comment->address_id = $address->id;
+        $comment->save();
     }
 
     /**
