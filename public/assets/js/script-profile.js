@@ -1,13 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//     const dropdownBtn = document.querySelector(".options-btn");
-//     const dropdownMenu = document.querySelector(".dropdown-menu");
-
-//     dropdownBtn.addEventListener("click", function () {
-//         // Vérification de l'état actuel du menu déroulant
-//         dropdownMenu.style.display = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '' ? 'block' : 'none';
-//     });
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
     const dropdownBtn = document.querySelector(".options-btn");
     const dropdownMenu = document.querySelector(".dropdown-menu");
@@ -43,13 +33,6 @@ $(document).ready(function () {
         $('#file-delete-form').submit();
     });
 });
-
-// // Download
-// $(document).ready(function () {
-//     $('.download-cv-option').click(function () {
-//         $('#file-download-form').submit();
-//     });
-// });
 
 $(document).ready(function () {
     // Upload

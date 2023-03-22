@@ -40,25 +40,6 @@ class UserController extends Controller
         return back();
     }
 
-    public function softDelete($id){
-        User::find($id)->delete();
-        return back();
-    }
-
-
-    // public function update($id){
-
-    //     $user = User::find($id);
-    //     $user->firstname = request('firstname');
-    //     $user->lastname = request('lastname');
-    //     $user->campus = request('campus');
-    //     $user->grade = request('grade');
-    //     $user->email = request('email');
-    //     $user->save();
-    //     flash("Mise à jour effectuée avec succès")->success();
-    //     return back();
-    // }
-
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -79,5 +60,10 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'L\'utilisateur a été mis à jour avec succès !');
+    }
+
+    public function delete($id){
+        User::find($id)->delete();
+        return back();
     }
 }

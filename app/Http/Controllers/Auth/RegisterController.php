@@ -32,7 +32,8 @@ class RegisterController extends Controller
      */
     protected function redirectTo()
     {
-        return redirect()->back();
+        // return route('register');
+        return url()->previous();
     }
 
     /**
