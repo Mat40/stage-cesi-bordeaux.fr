@@ -11,9 +11,9 @@ class AdministrateursController extends Controller
     public function Offer(){
         $offer = Offer::all();
         $title='Panel administration';
-        $path1="/Admin_offre";
-        $path2="/Admin_entreprise";
-        $path3="/Admin_etudiant";
+        $path1="/admin/offre";
+        $path2="/admin/entreprise";
+        $path3="/admin/etudiant";
         $placeholder="Métier, mots-clés, entreprise, compétences ...";
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         return view('/administrateur/Admin_offre', compact('placeholder','button','title','path1','path2','path3','offer'));
@@ -21,9 +21,9 @@ class AdministrateursController extends Controller
 
     public function Entreprise(){
         $companies = Company::all();
-        $path1="/Admin_offre";
-        $path2="/Admin_entreprise";
-        $path3="/Admin_etudiant";
+        $path1="/admin/offre";
+        $path2="/admin/entreprise";
+        $path3="/admin/etudiant";
         $placeholder="Entreprise, secteur d'activité, lieux...";
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         $title='Panel administration';
@@ -32,9 +32,9 @@ class AdministrateursController extends Controller
 
     public function Etudiant(){
         $users = User::all();
-        $path1="/Admin_offre";
-        $path2="/Admin_entreprise";
-        $path3="/Admin_etudiant";
+        $path1="/admin/offre";
+        $path2="/admin/entreprise";
+        $path3="/admin/etudiant";
         $placeholder="Nom, prénom, centre, promotion...";
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         $title='Panel administration';
@@ -43,9 +43,9 @@ class AdministrateursController extends Controller
 
     public function Pilotes(){
         $user = User::all();
-        $path1="/Admin_offre";
-        $path2="/Admin_entreprise";
-        $path3="/Admin_etudiant";
+        $path1="/admin/offre";
+        $path2="/admin/entreprise";
+        $path3="/admin/etudiant";
         $placeholder="Nom, prénom, centre, promotion...";
         $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
         $title='Panel administration';
