@@ -71,15 +71,14 @@
 			<h3 class="name_entreprise">{{ $offers->title}}</h3>
 		</div>
 		<div class="description">
-			<p> {{ $offers->company->name}} {{ number_format($offers->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
-			<p>{{ $offers->address->city}}</p>
-			<p>{{ Str::limit($offers->description, 50) }}</p>
+			<p class="petite_note"> {{ $offers->company->name}} {{ number_format($offers->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
+			<p class ="lieu">{{ $offers->address->city}}</p>
+			<p class="txtdescription">{{ Str::limit($offers->description, 50) }}</p>
 		</div>
 	</div>
 </div>  
 @endforeach
 <div class="grande_offre">
-    <header>
         <h1 class="titre">
         	Titre de l'offre
         </h1>
@@ -105,12 +104,11 @@
                         <button class="btnfavoris"><i class="fa-solid fa-heart"></i></button>
                     </div>
                 </div>
-    </header>
     <div class="titredescription">
         <h2>Description de l'offre</h2>
     </div>
         <div class="description">
-        	<div class="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et iusto rem expedita alias harum, voluptates nesciunt culpa sequi perferendis ea vitae ipsum excepturi earum ullam ratione consequuntur placeat, amet asperiores.</div>
+        	Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et iusto rem expedita alias harum, voluptates nesciunt culpa sequi perferendis ea vitae ipsum excepturi earum ullam ratione consequuntur placeat, amet asperiores.
         </div>
     </div>
 </div>         		

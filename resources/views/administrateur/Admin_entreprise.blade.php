@@ -4,6 +4,7 @@
 
 @include("layout.section_search_all_role")
 <script src="{{asset('assets/js/script-etudiant.js')}}"></script>
+<script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 <div class="display">
 <button class ="add" type="button">+Ajouter entrerise</button>
 
@@ -94,11 +95,12 @@
                                     </span>
                                 @enderror!-->
                                 <p>confiance du pilote de formation </p>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                                <i class="star" data-note="1">&#9733;</i>
+                                <i class="star" data-note="2">&#9733;</i>
+                                <i class="star" data-note="3">&#9733;</i>
+                                <i class="star" data-note="4">&#9733;</i>
+                                <i class="star" data-note="5">&#9733;</i>
+                                <i class="note"></i> 
                             </div>
                         </div>
 
@@ -109,7 +111,7 @@
 
                             <div class="text_area">
                                  <label for="description">Description:</label></br>
-                                <textarea id="description" name="descriptions" rows="10" cols="70"></textarea>
+                                <textarea id="description" name="description" rows="10" cols="70"></textarea>
 
                             </div>
                         </div>
@@ -131,4 +133,53 @@
 
     </div>
 </div>
+
+<script>
+   const stars = document.querySelectorAll('.star');
+    let check=false;
+    stars.forEach(star => {
+        star.addEventListener('mouseover', selectStars);
+        star.addEventListener('mouseleave', unselectStars);
+        star.addEventListener('click', activeSelect);
+
+    })
+
+    function selectStars(e) {
+        const data=e.target;
+        const etoiles=priviousSiblings(data);
+        if(!check){
+            etoiles.forEach(etoiles=>{
+                etoiles.classList.add('hover');
+            })
+        }
+       
+    }
+
+    function unselectStars(e) {
+        const data=e.target;
+        const etoiles=priviousSiblings(data);
+        if(!check){
+            etoiles.forEach(etoiles=>{
+                etoiles.classList.remove('hover');
+            })
+        }  
+    }
+
+    function activeSelect(e){
+        check=true;
+        document.querySelector('.note').innerHTML = 'Note :' + e.target.dataset.note;
+    }
+
+    function priviousSiblings(data){
+        let values=[data];
+        while(data=data.previousSibling){
+            if(data.nodeName==='I'){
+                values.push(data);
+            }
+        }
+        return values;
+    }
+
+    CKEDITOR.replace( 'description' );
+</script>
 @endsection
