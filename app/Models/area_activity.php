@@ -9,4 +9,7 @@ class area_activity extends Model
 {
     use HasFactory;
     protected $table = 'area_activity';
+    protected $fillable = [
+        'name', 
+    ];
 }

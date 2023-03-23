@@ -18,8 +18,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::all();
-        return view('welcome', ['company' => $company]);
+        $companies = Company::all();
+        return view('welcome', ['company' => $companies]);
     }
 
     /**
@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function create(Request $request)
     {
-        $company = new Company;
+        
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -37,43 +37,40 @@ class CompanyController extends Controller
             'description' => 'required|string|max:50',
             'trust' => 'required|string|max:50',
             'city' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:255',
             'area_activity' => 'required|string|max:255',
         ]);
 
-        $company->name = $validatedData['name'];
-        $company->number_of_trainees = $validatedData['number_of_trainees'];
-        $company->description = $validatedData['description'];
-        $company->trust = $validatedData['trust'];
-        $company->save();
-
-        
-
-
+        $company = Company::firstOrCreate(['name' => $validatedData['name']], [
+            'number_of_trainees' => $validatedData['number_of_trainees'],
+            'description' => $validatedData['description'],
+            'trust' => $validatedData['trust']
+        ]);
 
         $address = new Address;
         $address->city = $validatedData['city'];
+        $address->postal_code = $validatedData['postal_code'];
         $address->save();
 
-        $area_activity = new area_activity;
+        /*$address = Address::firstOrCreate([
+            'city' => $validatedData['city'],
+            'postal_code' => $validatedData['postal_code']
+        ]);*/
+
+        /*$area_activity = new area_activity;
         $area_activity->name = $validatedData['area_activity'];
-        $area_activity->save();
-        
+        $area_activity->save();*/
 
-        $located_at = new Located_at;
-        $Located_at->id_Company = $company->id;
-        $Located_at->id = $address->id;
-        $Located_at->save();
-
-        $part_of = new part_of;
-        $part_of->id_Company = $company->id;
-        $part_of->id = $area_activity->id;
-        $part_of->save();
-
-
+        $area_activity = area_activity::firstOrCreate(['name' => $validatedData['area_activity']]);
         
 
 
+       // Association de l'adresse avec l'entreprise
+        $company->address()->attach($address->id);
 
+        // Association de l'activité avec l'entreprise
+        $company->area_activity()->attach($area_activity->id);
+        return back();
     }
 
 
