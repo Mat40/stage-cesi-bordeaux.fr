@@ -1,4 +1,4 @@
-.container-student {
+.container-pilote {
   width: 100%;
   background-color:rgba(39, 37, 31, 0.05);
   height: 700px;
@@ -7,17 +7,17 @@
   display: flex;
 }
 
-.container-student-list {
+.container-pilote-list {
   flex: 1;
   width: 40%;
 }
 
-.container-form-student {
+.container-form-pilote {
   flex: 2;
   width: 60%;
 }
 
-.user-add{
+.pilote-add{
   width: 80%;
   height: 50px;
   border-radius: 12px;
@@ -37,7 +37,7 @@
   margin-top: 5%;
 }
 
-.user-item {
+.pilote-item {
   border:1px solid black;
   width: auto;
   margin-right: 2%;
@@ -52,7 +52,7 @@
   display: flex;
 }
 
-.user-name {
+.pilote-name {
   margin-left: 5%;
 }
 
@@ -79,7 +79,7 @@
 }
 
 
-.card-form-student{
+.card-form-pilote{
   border: 1px solid black;
   width: 75%;
   height: 480px;
@@ -92,7 +92,7 @@
   box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
 }
 
-.form-student input{
+.form-pilote input{
   width: 90%;
   height: 50px;
   border: none;
@@ -103,7 +103,7 @@
   color: rgba(0, 0, 0, 0.8) ;
 }
 
-.form-student-buttons{
+.form-pilote-buttons{
   display: flex;
   justify-content: center;
   width: auto;

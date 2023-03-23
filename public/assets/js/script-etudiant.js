@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('email').value = email;
 
             // Mise à jour de l'attribut "action" du formulaire pour qu'il pointe vers l'action "update"
-            document.querySelector('.form-student').setAttribute('action', '/update/' + id);
+            document.querySelector('.form-student').setAttribute('action', 'etudiant/update/' + id);
 
             // // Affichage des boutons "update" et "delete"
             // document.getElementById('update').style.display = 'inline-block';
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         deleteBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = '/delete/' + id;
+            window.location.href = 'etudiant/delete/' + id;
         });
     });
 

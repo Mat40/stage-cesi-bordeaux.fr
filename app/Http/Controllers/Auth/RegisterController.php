@@ -60,6 +60,7 @@ class RegisterController extends Controller
             'campus' => ['required', 'string', 'max:50'],
             'grade' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'permission' => ['required', 'string', 'max:50'],
             //'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -78,6 +79,7 @@ class RegisterController extends Controller
             'campus' => $data['campus'],
             'grade' => $data['grade'],
             'email' => $data['email'],
+            'permission' => $data['permission'],
             'password' => Hash::make(Str::random(8)),
         ]);
 
