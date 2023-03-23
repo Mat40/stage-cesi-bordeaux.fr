@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-profile.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-section-search_all_role.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanelstudent.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanelpilote.css')}}">
 		<link  rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
 
 		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
@@ -48,7 +49,7 @@
 			<a href="#mention" class="mention">Copyright © CESI Ecole d'Ingénieurs</a>
 		</footer>
 	</body>
-	
+
 	<script>
 		const menuHamburger = document.querySelector(".menu-hamburger");
 		const responsive = document.querySelector(".link_nav-bar");

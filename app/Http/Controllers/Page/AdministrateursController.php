@@ -9,47 +9,27 @@ use App\Models\Company;
 class AdministrateursController extends Controller
 {
     public function Offer(){
-        $offer = Offer::all();
-        $title='Panel administration';
-        $path1="/admin/offre";
-        $path2="/admin/entreprise";
-        $path3="/admin/etudiant";
+        $offers = Offer::all();
         $placeholder="Métier, mots-clés, entreprise, compétences ...";
-        $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
-        return view('/administrateur/Admin_offre', compact('placeholder','button','title','path1','path2','path3','offer'));
+        return view('/administrateur/offres', compact('placeholder','offers'));
     }
 
     public function Entreprise(){
         $companies = Company::all();
-        $path1="/admin/offre";
-        $path2="/admin/entreprise";
-        $path3="/admin/etudiant";
         $placeholder="Entreprise, secteur d'activité, lieux...";
-        $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
-        $title='Panel administration';
-        return view('/administrateur/Admin_entreprise', compact('placeholder','button','title','path1','path2','path3','companies'));
+        return view('/administrateur/entreprises', compact('placeholder','companies'));
     }
 
     public function Etudiant(){
-        $users = User::all();
-        $path1="/admin/offre";
-        $path2="/admin/entreprise";
-        $path3="/admin/etudiant";
+        $users = User::where('permission', '=', 'user')->get();
         $placeholder="Nom, prénom, centre, promotion...";
-        $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
-        $title='Panel administration';
-        return view('/administrateur/Admin_etudiant', compact('placeholder','button','title','path1','path2','path3','users'));
+        return view('/administrateur/etudiants', compact('placeholder','users'));
     }
 
     public function Pilotes(){
-        $user = User::all();
-        $path1="/admin/offre";
-        $path2="/admin/entreprise";
-        $path3="/admin/etudiant";
+        // $pilotes = User::all();
+        $pilotes = User::where('permission', '=', 'pilote')->get();
         $placeholder="Nom, prénom, centre, promotion...";
-        $button='<button type="submit" formaction="/Admin_pilotes">Pilotes</button>';
-        $title='Panel administration';
-        return view('/administrateur/Admin_pilotes', compact('placeholder','button','title','path1','path2','path3','user'));
-
+        return view('/administrateur/pilotes', compact('placeholder','pilotes'));
     }
 }
