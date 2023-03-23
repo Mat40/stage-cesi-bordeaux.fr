@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-profile.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-section-search_all_role.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanelstudent.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanelcompany.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanelcompany.css')}}">
 		<link  rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
 
 		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
