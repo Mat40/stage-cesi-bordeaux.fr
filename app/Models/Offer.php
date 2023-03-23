@@ -9,12 +9,18 @@ class Offer extends Model
 {
     use HasFactory;
     protected $table = 'offer';
+    protected $fillable = [
+        'name', 
+        'city',
+        'type',
+        'release_date',
+        'trust', 
+        'skills', 
+        'salary', 
+        'number_of_places', 
+    ];
 
-    public function company(){
-        return $this->belongsTo(Company::class,'id_Company');
-    }
-
-    public function address(){
-        return $this->belongsTo(Address::class,'id_Address');
+    public function area_activity(){
+        return $this->belongsToMany(area_activity::class, 'possesses', 'id_Area_activity', 'id')->distinct();;    
     }
 }

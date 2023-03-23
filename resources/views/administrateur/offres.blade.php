@@ -9,7 +9,7 @@
 
 <div class="display-list_offer_min">
 
-@foreach ($offer as $offers)
+@foreach ($offers as $offer)
 	<div class="annonce" id="{{ $offers->id}}">
 		<div class="title_offer">
 			<img src="" alt="logo">
@@ -28,7 +28,7 @@
 
   <div class="position_offer" >
 
-        <form class="form_creation" method="post" action="{{ route('register') }}">
+        <form class="form_creation" method="post" action="{{ route('admin/offre') }}">
             @csrf
                         <div class="">
 
