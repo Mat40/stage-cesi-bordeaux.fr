@@ -10,9 +10,9 @@ class OfferController extends Controller
 {
     public function index()
     {
-        $offer = Offer::all();
-        return view('welcome', ['offer' => $offer]);
-       
+        $offers = Offer::all();
+        return view('welcome', ['offers' => $offers]);
+
     }
     public function create(Request $request){
         $validatedData = $request->validate([

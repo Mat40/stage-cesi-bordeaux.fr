@@ -10,15 +10,15 @@
 <div class="display-list_offer_min">
 
 @foreach ($offers as $offer)
-	<div class="annonce" id="{{ $offers->id}}">
+	<div class="annonce" id="{{ $offer->id}}">
 		<div class="title_offer">
 			<img src="" alt="logo">
-			<h3 class="name_entreprise">{{ $offers->title}}</h3>
+			<h3 class="name_entreprise">{{ $offer->title}}</h3>
 		</div>
 		<div class="description">
-			<p> {{ $offers->company->name}} {{ number_format($offers->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
-			<p>{{ $offers->address->city}}</p>
-			<p>{{ Str::limit($offers->description, 50) }}</p>
+			<p> {{ $offer->company->name}} {{ number_format($offer->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
+			<p>{{ $offer->address->city}}</p>
+			<p>{{ Str::limit($offer->description, 50) }}</p>
 		</div>
 	</div>
 @endforeach

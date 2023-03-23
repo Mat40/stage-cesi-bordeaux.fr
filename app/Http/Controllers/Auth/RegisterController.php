@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 
 class RegisterController extends Controller
 {
@@ -83,6 +86,12 @@ class RegisterController extends Controller
             'password' => Hash::make(Str::random(8)),
         ]);
 
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        // Disable automatic login after registration
+        return new Response('', 204);
     }
 }
 

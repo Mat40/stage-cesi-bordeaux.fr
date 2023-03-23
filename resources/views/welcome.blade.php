@@ -13,9 +13,9 @@
 			<div class = "select">
 				<select class="selecteur">
 					<option value="">Type</option>
-					<option value="">First</option>		
-					<option value="">First</option>	
-					<option value="">First</option>	
+					<option value="">First</option>
+					<option value="">First</option>
+					<option value="">First</option>
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -23,9 +23,9 @@
 			<div class = "select">
 				<select class="selecteur">
 					<option value="">Date</option>
-					<option value="">First</option>		
-					<option value="">First</option>	
-					<option value="">First</option>	
+					<option value="">First</option>
+					<option value="">First</option>
+					<option value="">First</option>
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -33,9 +33,9 @@
 			<div class = select>
 				<select class="selecteur">
 					<option value="">Lieux</option>
-					<option value="">First</option>		
-					<option value="">First</option>	
-					<option value="">First</option>	
+					<option value="">First</option>
+					<option value="">First</option>
+					<option value="">First</option>
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -43,9 +43,9 @@
 			<div class = "select" id="Domaine">
 				<select class="selecteur" id="Domaines">
 					<option value="">Domaine</option>
-					<option value="">First</option>		
-					<option value="">First</option>	
-					<option value="">First</option>	
+					<option value="">First</option>
+					<option value="">First</option>
+					<option value="">First</option>
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -53,31 +53,33 @@
 			<div class = "select" id="Entreprise" >
 				<select class="selecteur" id="Entreprises">>
 					<option value="">Entreprise</option>
-					<option value="">First</option>		
-					<option value="">First</option>	
-					<option value="">First</option>	
+					<option value="">First</option>
+					<option value="">First</option>
+					<option value="">First</option>
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
 		</div>
-</form>	
+</form>
 
 <div class="display">
 	<div class="display-list_offer">
-@foreach ($offer as $offers)
-	<div class="annonce" id="{{ $offers->id}}">
-		<div class="title_offer">
-			<img src="" alt="logo"> 
-			<h3 class="name_entreprise">{{ $offers->title}}</h3>
+		@foreach ($offers as $offer)
+		<div class="annonce" id="{{ $offer->id}}">
+			<div class="title_offer">
+				<img src="" alt="logo">
+				<h3 class="name_entreprise">{{ $offer->title}}</h3>
+			</div>
+			<div class="description">
+				<p class="petite_note"> {{ $offer->company->name}} {{ number_format($offer->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
+				<p class ="lieu">{{ $offer->address->city}}</p>
+				<p class="txtdescription">{{ Str::limit($offer->description, 50) }}</p>
+			</div>
 		</div>
-		<div class="description">
-			<p class="petite_note"> {{ $offers->company->name}} {{ number_format($offers->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
-			<p class ="lieu">{{ $offers->address->city}}</p>
-			<p class="txtdescription">{{ Str::limit($offers->description, 50) }}</p>
-		</div>
+		@endforeach
 	</div>
-</div>  
-@endforeach
+</div>
+
 <div class="grande_offre">
         <h1 class="titre">
         	Titre de l'offre
@@ -111,6 +113,6 @@
         	Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et iusto rem expedita alias harum, voluptates nesciunt culpa sequi perferendis ea vitae ipsum excepturi earum ullam ratione consequuntur placeat, amet asperiores.
         </div>
     </div>
-</div>         		
+</div>
 
-@endsection 
+@endsection
