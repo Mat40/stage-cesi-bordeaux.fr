@@ -23,4 +23,12 @@ class Offer extends Model
     public function area_activity(){
         return $this->belongsToMany(area_activity::class, 'possesses', 'id_Area_activity', 'id')->distinct();;    
     }
+
+    public function company(){
+        return $this->belongsTo(Company::class, 'id_Company');
+    }
+
+    public function address(){
+        return $this->belongsTo(Address::class, 'id_Address');
+    }
 }

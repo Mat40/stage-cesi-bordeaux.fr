@@ -31,7 +31,7 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function() {
 /*Route::middleware(['auth', 'checkRole:pilote'])->group(function() {*/
     // Offers
     Route::get('/admin/offre', [AdministrateursController::class, 'Offer']);
-    Route::post('/admin/offre', [PiloteController::class, 'create'])->name('admin/offre');
+    Route::post('/admin/offre', [OfferController::class, 'create'])->name('admin/offre');
 
     // Student
     Route::get('/admin/etudiant', [AdministrateursController::class,'Etudiant']);
