@@ -27,7 +27,6 @@ Route::middleware(['auth', 'checkRole:admin'])->group(function() {
     Route::post('/admin/pilote/update/{id}', [UserController::class, 'update']);
 });
 
-
 Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
     // Offers
     Route::get('/admin/offre', [AdministrateursController::class, 'Offer']);
