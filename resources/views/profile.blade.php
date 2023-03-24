@@ -41,12 +41,7 @@
         <span class="text-danger">{{ $message }}</span>
     @enderror
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
+    @if (auth()->user()->permission == "user")
     <div class="cv">
         <h2>CV</h2>
         <div class="cv-rect">
@@ -106,5 +101,6 @@
         </select>
         </div>
     </div>
+    @endif
 </div>
 @endsection

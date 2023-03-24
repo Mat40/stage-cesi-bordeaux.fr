@@ -17,7 +17,7 @@ class CheckUserRole
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        if (auth()->check() && auth()->user()->permission === "admin"){
+        if (auth()->check() && auth()->user()->permission === "admin" && $role != "user"){
             return $next($request);
         }
         elseif (auth()->check() && auth()->user()->permission === $role){

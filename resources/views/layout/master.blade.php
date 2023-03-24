@@ -24,6 +24,9 @@
 					<li><a class="logo" href="#home"><img src="{{asset('assets/images/cesi.png')}}" class="logo"></a></li>
 					<div class="link_nav-bar">
 						<li class="Recherche_Stage"><a href="{{ route('index') }}">Recherche de stage</a></li>
+						@if (auth()->user()->permission == "admin" || auth()->user()->permission == "pilote")
+							<li class="adminpanel-button"><a href="{{ route('admin/offre') }}">Panel administrateur</a></li>
+						@endif
 						<li class="icon" id="fav"><a href="#favoris" ><i class="fa-regular fa-heart"></i></a></li>
 						<span class="vertical-separator"></span>
 						<li class="icon">
