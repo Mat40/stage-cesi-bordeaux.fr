@@ -1,65 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Récupération de tous les éléments avec la classe "annonce"
-    const users = document.querySelectorAll('.company-item');
+    const companies = document.querySelectorAll('.company-item');
 
     const submitBtn = document.getElementById('submit');
     // const updateBtn = document.getElementById('update');
-    const deleteBtn = document.getElementById('delete');
+        const deleteBtn = document.getElementById('delete');
 
-    // updateBtn.style.display = "none";
-    deleteBtn.style.display = "none";
+        // updateBtn.style.display = "none";
+        deleteBtn.style.display = "none";
 
-    let id;
-    // Boucle sur chaque élément pour ajouter l'événement de clic
-    users.forEach(user => {
+        let id;
+        // Boucle sur chaque élément pour ajouter l'événement de clic
+        companies.forEach(company => {
 
-        const firstname = user.querySelector('.user-firstname').textContent;
-        const lastname = user.querySelector('.user-lastname').textContent;
+            const name = company.querySelector('.company_name').textContent;
+            const description = company.querySelector('.company_trust').getAttribute('data-description');
 
-        var initials = firstname.charAt(0).toUpperCase() + lastname.charAt(0).toUpperCase();
-        var element = user.querySelector(".pp-initials");
 
-        if (element) {
-            element.innerHTML = initials;
-        }
+            company.addEventListener('click', () => {
+                id = company.getAttribute('id');
+                // Récupération des valeurs à partir de l'user cliquée
 
-        user.addEventListener('click', () => {
-            id = user.getAttribute('id');
-            // Récupération des valeurs à partir de l'user cliquée
+                // const firstname = user.querySelector('.user-firstname').textContent;
+                // const lastname = user.querySelector('.user-lastname').textContent;
+                const description = company.querySelector('.description_bdd').getAttribute('data-description');
+                const place = company.querySelector('.place').textContent;
+                const area = company.querySelector('.area').textContent;
+                const postal = company.querySelector('.postal_code').textContent;
+                const number_of_trainees= company.querySelector('.number_of_trainees').textContent;
+                submitBtn.textContent = "Mettre à jour";
 
-            // const firstname = user.querySelector('.user-firstname').textContent;
-            // const lastname = user.querySelector('.user-lastname').textContent;
-            const email = user.querySelector('.user-email').textContent;
-            const campus = user.querySelector('.user-campus').textContent;
-            const grade = user.querySelector('.user-grade').textContent;
-            submitBtn.textContent = "Mettre à jour";
+                // Remplissage du formulaire avec les valeurs récupérées
+                document.getElementById('name').value = name;
+                document.getElementById('area_activity').value = area;
+                document.getElementById('city').value = place;
+                document.getElementById('postal_code').value = postal;
+                document.getElementById('number_of_trainees').value =number_of_trainees ;
+                document.getElementById('note').value = trust;
+                document.getElementById('description').value = description;
 
-            // Remplissage du formulaire avec les valeurs récupérées
-            document.getElementById('firstname').value = firstname;
-            document.getElementById('lastname').value = lastname;
-            document.getElementById('campus').value = campus;
-            document.getElementById('grade').value = grade;
-            document.getElementById('email').value = email;
+                // Mise à jour de l'attribut "action" du formulaire pour qu'il pointe vers l'action "update"
+                document.querySelector('.form_company').setAttribute('action', 'company/update/' + id);
 
-            // Mise à jour de l'attribut "action" du formulaire pour qu'il pointe vers l'action "update"
-            document.querySelector('.form-student').setAttribute('action', '/update/' + id);
-
-            // // Affichage des boutons "update" et "delete"
-            // document.getElementById('update').style.display = 'inline-block';
-            // document.getElementById('delete').style.display = 'inline-block';
-            // submitBtn.style.display = "none";
-            deleteBtn.style.display = "block";
-            // updateBtn.style.display = "block";
-        });
+                // // Affichage des boutons "update" et "delete"
+                // document.getElementById('update').style.display = 'inline-block';
+                // document.getElementById('delete').style.display = 'inline-block';
+                // submitBtn.style.display = "none";
+                deleteBtn.style.display = "block";
+                // updateBtn.style.display = "block";
+            });
 
         deleteBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = '/delete/' + id;
+            window.location.href = 'company/delete/' + id;
         });
     });
 
-    document.querySelector(".user-add").addEventListener("click", function() {
+    document.querySelector(".company-add").addEventListener("click", function() {
         // submitBtn.style.display = "block";
         // updateBtn.style.display = "none";
         deleteBtn.style.display = "none";
@@ -67,11 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelector('.form-student').setAttribute('action', "/register");
 
-        document.getElementById('firstname').value = "";
-        document.getElementById('lastname').value = "";
-        document.getElementById('campus').value = "";
-        document.getElementById('grade').value = "";
-        document.getElementById('email').value = "";
+        document.getElementById('name').value = "";
+        document.getElementById('area_activity').value = "";
+        document.getElementById('city').value = "";
+        document.getElementById('postal_code').value = "";
+        document.getElementById('number_of_trainees').value = "";
+        document.getElementById('trust').value = "";
+        document.getElementById('description').value = "";
     });
 
 

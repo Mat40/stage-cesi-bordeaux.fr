@@ -181,6 +181,10 @@
   font-size: 140%;
 }
 
+.display_lieux{
+ margin-bottom:2%;
+}
+
 .btnfavoris{
     width: 56px;
     height: 56px;
@@ -289,5 +293,5 @@ padding-left: 41px;
 }
 
 .fa-solid.fa-star{
-  color: yellow;
+  color: #FFC853;
 }

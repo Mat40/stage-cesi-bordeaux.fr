@@ -3,7 +3,7 @@
 @section("contenu")
 
 @include("layout.section_search_all_role")
-<script src="{{asset('assets/js/script-etudiant.js')}}"></script>
+<script src="{{asset('assets/js/script_company.js')}}"></script>
 <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
 <div class="container-company">
@@ -16,16 +16,20 @@
                         <div class="title_company">
                             <img src="" alt="logo">
                             <h3 class="name_entreprise">{{ $company->name}}   {{ number_format($company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </h3>
+                            <p class="company_name" style="display: none">{{ $company->name}} </p>
+                             <p class="company_trust" data-description="{{ $company->trust }}"style="display: none">{{ number_format($company->trust, 2, ',', ' ') }} </p>
                         </div>
                         <div class="description">
                             @foreach ($company->address as $address)
                                 <span class="place">{{ $address->city }}</span>
+                                <span class="postal_code" style="display: none">{{ $address->postal_code }}</span>
                             @endforeach
                         </div>
                         @foreach ($company->area_activity as $area)
-                            <span>{{ $area->name }}</sapn>
+                            <span class="area">{{$area->name }}</sapn>
                          @endforeach
-                        <p>{!! $company->description !!}</p>
+                        <p class="description_bdd" data-description="{{ $company->description }}">{!! $company->description !!}</p>
+                        <p class="number_of_trainees" style="display: none">{{$company->number_of_trainees }}</p>
                     </div>
                 @endforeach
             </div>
@@ -97,7 +101,7 @@
                                 <i class="star" data-note="3">&#9733;</i>
                                 <i class="star" data-note="4">&#9733;</i>
                                 <i class="star" data-note="5">&#9733;</i>
-                                <i class="note"></i> 
+                                <i id="note"></i> 
                             </div>
                         </div>
                         <input type="hidden" name="trust" id="trust">

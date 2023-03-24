@@ -73,7 +73,7 @@
 			<div class="description">
 				<p class="petite_note"> {{ $offer->company->name}} {{ number_format($offer->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
 				<p class ="lieu">{{ $offer->address->city}}</p>
-				<p class="txtdescription">{{ Str::limit($offer->description, 50) }}</p>
+				<p class="txtdescription" data-description="{{ $offer->description }}">{{ Str::limit($offer->description, 50) }}</p>
 			</div>
 		</div>
 		@endforeach
@@ -82,35 +82,38 @@
 
 <div class="grande_offre">
         <h1 class="titre">
-        	Titre de l'offre
+        	
         </h1>
         <div class="entreprise">
                 <div class="titreentreprise">
-                    Entreprise
+                    
                 </div>
                 <div class="note">
-                    X,X
+                    
                 </div>
                 	<i class="fa-solid fa-star"></i>
                 </div>
                 <br>
-                <div class="lieux">
-                    Lieux
+                <div >
+                    <span class="lieux"></span>
                 </div>
                 <br>
-                <div class="divbtns">
-                    <div class="divpostul">
-                        <button class="btnpostul" type="submit">Postuler</button>
-                    </div>
-                    <div class="divfavoris">
-                        <button class="btnfavoris"><i class="fa-solid fa-heart"></i></button>
-                    </div>
-                </div>
+				<form method="post"action="">
+					<div class="divbtns">
+						<div class="divpostul">
+							<button class="btnpostul" type="submit">Postuler</button>
+						</div>
+
+						<div class="divfavoris">
+							<button class="btnfavoris"><i class="fa-solid fa-heart"></i></button>
+						</div>
+					</div>
+				</form>
     <div class="titredescription">
-        <h2>Description de l'offre</h2>
+        <h2></h2>
     </div>
         <div class="description">
-        	Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et iusto rem expedita alias harum, voluptates nesciunt culpa sequi perferendis ea vitae ipsum excepturi earum ullam ratione consequuntur placeat, amet asperiores.
+        	
         </div>
     </div>
 </div>

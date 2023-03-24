@@ -76,7 +76,7 @@ class CompanyController extends Controller
 
 
 
-    public function softDelete($id){
+    public function delete($id){
         Company::find($id)->delete();
         return back();
     }

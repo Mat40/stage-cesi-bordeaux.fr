@@ -41,6 +41,7 @@ Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
     Route::get('/admin/entreprise', [AdministrateursController::class, 'Entreprise']);
     Route::post('/register/company', [CompanyController::class, 'create'])->name('register/company');
 });
+Route::get('/', [OfferController::class, 'index'])->name('index');;
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/', [OfferController::class, 'index'])->name('index');;
