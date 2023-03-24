@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 50);
             $table->string('type', 50);
+            $table->string('mail');
             $table->float('duration');
             $table->longText('skills');
             $table->float('salary');
@@ -28,13 +29,8 @@ return new class extends Migration
             $table->foreign('id_Company') ->references('id')->on('Company');
             $table->foreign('id_Address') ->references('id')->on('address');
             $table->timestamps();
-            
-            
-
-            
-           
         });
-       
+
     }
 
     /**
@@ -44,7 +40,7 @@ return new class extends Migration
      */
     public function down()
     {
-        
+
         Schema::dropIfExists('offer');
     }
 };

@@ -15,9 +15,10 @@ class OfferTableSeeder extends Seeder
     public function run()
     {
         \DB::table('offer')->insert([
-            [    
-                'title' => 'Tehcnicien Informatique - Base de données',
+            [
+                'title' => 'Technicien Informatique - Base de données',
                 'type' => 'Stage',
+                'mail' => 'Mail',
                 'duration' => '3',
                 'skills' => 'Connaissances en utilisation de SGBDD, connaître les base du langages SQL.',
                 'salary' => '650',
