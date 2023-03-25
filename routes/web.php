@@ -40,6 +40,8 @@ Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
     // Company
     Route::get('/admin/entreprise', [AdministrateursController::class, 'Entreprise']);
     Route::post('/register/company', [CompanyController::class, 'create'])->name('register/company');
+    Route::get('/admin/company/delete/{id}', [CompanyController::class, 'delete']);
+    Route::post('/admin/company/update/{id}', [CompanyController::class, 'update']);
 });
 Route::get('/', [OfferController::class, 'index'])->name('index');;
 

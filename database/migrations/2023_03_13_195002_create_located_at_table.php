@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('located_at', function (Blueprint $table) {
             $table->bigInteger('id_Company')->unsigned();
             $table->bigInteger('id')->unsigned();
-            $table->foreign('id_Company') ->references('id')->on('Company');
-            $table->foreign('id') ->references('id')->on('address');
+            $table->foreign('id_Company') ->references('id')->on('Company')->onDelete('cascade');
+            $table->foreign('id') ->references('id')->on('address')->onDelete('cascade');
 
             $table->primary(['id', 'id_Company']);
             $table->timestamps();

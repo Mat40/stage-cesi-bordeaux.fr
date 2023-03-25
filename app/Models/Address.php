@@ -11,6 +11,6 @@ class Address extends Model
     protected $table = 'address';
     protected $fillable = [
         'city', 
-        'postal_code'
+        'postal_code',
     ];
 }

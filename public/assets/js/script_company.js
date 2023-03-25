@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
         companies.forEach(company => {
 
             const name = company.querySelector('.company_name').textContent;
-            const description = company.querySelector('.company_trust').getAttribute('data-description');
+            const trust = company.querySelector('.company_trust').getAttribute('data-description');
+            
+           
 
 
             company.addEventListener('click', () => {
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // const firstname = user.querySelector('.user-firstname').textContent;
                 // const lastname = user.querySelector('.user-lastname').textContent;
-                const description = company.querySelector('.description_bdd').getAttribute('data-description');
+                const description = company.querySelector('.description_bdd').textContent;
                 const place = company.querySelector('.place').textContent;
                 const area = company.querySelector('.area').textContent;
                 const postal = company.querySelector('.postal_code').textContent;
@@ -37,8 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('city').value = place;
                 document.getElementById('postal_code').value = postal;
                 document.getElementById('number_of_trainees').value =number_of_trainees ;
-                document.getElementById('note').value = trust;
-                document.getElementById('description').value = description;
+                document.querySelector('#note').textContent = trust;
+                //document.getElementById('description').value = description;
+                CKEDITOR.instances['description'].setData(description);
 
                 // Mise à jour de l'attribut "action" du formulaire pour qu'il pointe vers l'action "update"
                 document.querySelector('.form_company').setAttribute('action', 'company/update/' + id);
@@ -63,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteBtn.style.display = "none";
         submitBtn.textContent = "Soumettre";
 
-        document.querySelector('.form-student').setAttribute('action', "/register");
+        document.querySelector('.form_company').setAttribute('action', "/register/company");
 
         document.getElementById('name').value = "";
         document.getElementById('area_activity').value = "";

@@ -20,11 +20,11 @@ class Company extends Model
 
     public function address()
     {
-        return $this->belongsToMany(Address::class, 'located_at', 'id_Company', 'id')->distinct();;
+        return $this->belongsToMany(Address::class, 'located_at', 'id_Company', 'id');
     }
 
     public function area_activity()
     {
-        return $this->belongsToMany(area_activity::class, 'part_of', 'id_Company', 'id')->distinct();;
+        return $this->belongsToMany(area_activity::class, 'part_of', 'id_Company', 'id');
     }
 }

@@ -21,12 +21,7 @@ class Part_ofTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            [    
-                'id' => '2',
-                'id_Company' => '2',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+       
             [    
                 'id' => '4',
                 'id_Company' => '2',

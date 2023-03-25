@@ -52,23 +52,19 @@ class CompanyController extends Controller
         $address->postal_code = $validatedData['postal_code'];
         $address->save();
 
-        /*$address = Address::firstOrCreate([
-            'city' => $validatedData['city'],
-            'postal_code' => $validatedData['postal_code']
-        ]);*/
-
-        /*$area_activity = new area_activity;
-        $area_activity->name = $validatedData['area_activity'];
-        $area_activity->save();*/
-
-        $area_activity = area_activity::firstOrCreate(['name' => $validatedData['area_activity']]);
+        $area_activity =new area_activity;
+        $area_activity->name = $validatedData['name'];
+        $area_activity->save();
         
-
+        //area_activity::firstOrCreate(['name' => $validatedData['area_activity']]);
+        
+       
 
        // Association de l'adresse avec l'entreprise
         $company->address()->attach($address->id);
 
         // Association de l'activité avec l'entreprise
+        
         $company->area_activity()->attach($area_activity->id);
         return back();
     }
@@ -82,25 +78,41 @@ class CompanyController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
-        $company = Commpany::findOrFail($id);
-        //mettre a jour les commentaires suivant pour l'update
-        /*$validatedData = $request->validate([
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'campus' => 'required|string|max:50',
-            'grade' => 'required|string|max:50',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+    public function update(Request $request, $id) {
+        $validatedData = $request->validate([
+            'name' => 'string|max:255',
+            'number_of_trainees' => 'string|max:255',
+            'description' => 'string|max:50',
+            'trust' => 'string|max:50',
+            'city' => 'string|max:255',
+            'postal_code' => 'string|max:255',
+            'area_activity' => 'string|max:255',
         ]);
+    
+        $company = Company::find($id);
+       
+        $company->name = $validatedData['name'];
+        
+        $company->number_of_trainees = $validatedData['number_of_trainees'];
+        $company->description = $validatedData['description'];
+        $company->trust = $validatedData['trust'];
+       
+        $company->save();
 
-        $user->firstname = $validatedData['firstname'];
-        $user->lastname = $validatedData['lastname'];
-        $user->campus = $validatedData['campus'];
-        $user->grade = $validatedData['grade'];
-        $user->email = $validatedData['email'];
-        $user->save();
-
-        return redirect()->back()->with('success', 'L\'utilisateur a été mis à jour avec succès !');*/
+        foreach ($company->address as $address) {
+        $address->city = $validatedData['city'];
+        $address->postal_code = $validatedData['postal_code'];
+        $address->save();
+        }
+    
+        foreach ($company->area_activity as $area_activity) {
+            $area_activity->name = $validatedData['area_activity'];
+            $area_activity->save();
+        }
+    
+        return back();
     }
 }
+
+
+
