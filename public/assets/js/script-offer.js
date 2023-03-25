@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('skills').value = skills;
             document.getElementById('salary').value = salary;
             document.getElementById('number_of_places').value = numberofplaces;
-            document.getElementById('description').value = description;
+            //document.getElementById('description').value = description;
+            CKEDITOR.instances['description'].setData(description);
 
 
 
@@ -67,16 +68,21 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteBtn.style.display = "none";
         submitBtn.textContent = "Soumettre";
 
-        document.querySelector('.form-offer').setAttribute('action', "/register");
+        document.querySelector('.form-offer').setAttribute('action', "/register/offre");
 
-        document.getElementById('firstname').value = "";
-        document.getElementById('lastname').value = "";
-        document.getElementById('campus').value = "";
-        document.getElementById('grade').value = "";
-        document.getElementById('email').value = "";
+        document.getElementById('title').value = "";
+        document.getElementById('name').value = "";
+        document.getElementById('city').value = "";
+        document.getElementById('type').value = "";
+        document.getElementById('release_date').value = "";
+        document.getElementById('skills').value = "";
+        document.getElementById('number_of_places').value = "";
+        document.getElementById('description').value = "";
+        document.getElementById('salary').value = "";
     });
 
-
+    CKEDITOR.replace( 'description' );
+    CKEDITOR.instances['description'].setData(description);
 
     // Ajout d'un événement de clic au bouton "update"
     // submitBtn.addEventListener('click', (event) => {

@@ -24,15 +24,22 @@ Route::get('/', [OfferController::class, 'index'])->name('index');;
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function() {
     // Pilote
+    
     Route::get('/admin/pilote', [AdministrateursController::class, 'Pilotes']);
     Route::get('/admin/pilote/delete/{id}', [UserController::class, 'delete']);
     Route::post('/admin/pilote/update/{id}', [UserController::class, 'update']);
-});
 
+        // Offers
+        Route::get('/admin/offre', [AdministrateursController::class, 'Offer'])->name('admin/offre');
+        Route::post('/register/offre', [OfferController::class, 'create'])->name('register/offre');
+        Route::get('/admin/offer/delete/{id}', [OfferController::class, 'delete']);
+        Route::post('/admin/offer/update/{id}', [OfferController::class, 'update']);
+
+    
+});
+Route::get('/admin/offre', [AdministrateursController::class, 'Offer'])->name('admin/offre');
 Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
-    // Offers
-    Route::get('/admin/offre', [AdministrateursController::class, 'Offer']);
-    Route::post('/admin/offre', [OfferController::class, 'create'])->name('admin/offre');
+
 
     // Student
     Route::get('/admin/etudiant', [AdministrateursController::class,'Etudiant']);

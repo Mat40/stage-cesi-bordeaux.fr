@@ -10,20 +10,20 @@ class Offer extends Model
     use HasFactory;
     protected $table = 'offer';
     protected $fillable = [
-        'name',
-        'city',
-        'type',
+        'title',
         'mail',
+        'duration',
+        'type',
         'release_date',
-        'trust',
         'skills',
         'salary',
         'number_of_places',
+        'description',
     ];
 
-    public function area_activity(){
+   /* public function area_activity(){
         return $this->belongsToMany(area_activity::class, 'possesses', 'id_Area_activity', 'id')->distinct();;
-    }
+    }*/
 
     public function appliedOffer()
     {

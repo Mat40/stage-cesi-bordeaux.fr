@@ -4,6 +4,7 @@
 
 @include("layout.section_search_all_role")
 <script src="{{asset('assets/js/script-offer.js')}}"></script>
+<script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 <div class="container-offer">
     <div class="container-offer-list">
         <button class ="offer-add" type="button">Ajouter une offre</button>
@@ -36,7 +37,7 @@
 
     <div class="container-form-offer">
         <div class="card-form-offer" >
-            <form class="form-offer" method="post" action="{{ route('admin/offre') }}">
+            <form class="form-offer" method="post" action="{{ route('register/offre') }}">
                 @csrf
                 <div class="">
                     <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')}}" required autocomplete="title" autofocus placeholder="Titre de l'offre">
@@ -118,6 +119,26 @@
                     @enderror
                 </div>
 
+                <div class="">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="">
+                    <input id="duration" type="number" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ old('duration') }}" required autocomplete="duration" placeholder="duration">
+
+                    @error('duration')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
                 <div class="text_area">
                 <label for="description">Description:</label></br>
                 <textarea id="description" name="descriptions" rows="10" cols="70"></textarea>
@@ -125,7 +146,7 @@
                 </div>
 
                 <div class="form-offer-buttons">
-                    <button id="submit" type="submit" class="">
+                    <button id="submit" type="submit">
                         {{ __('Soumettre') }}
                     </button>
                     <button href=""  id="delete" type="delete" class="">

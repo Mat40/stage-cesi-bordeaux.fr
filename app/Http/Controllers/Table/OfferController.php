@@ -8,6 +8,8 @@ use App\Models\Offer;
 use App\Models\Cv;
 use App\Models\applied_job;
 use App\Models\follow;
+use App\Models\Address;
+use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\JobApplicationMail;
 
@@ -26,34 +28,103 @@ class OfferController extends Controller
     public function create(Request $request){
 
         $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'type' => 'required|string|max:50',
             'release_date' => 'required|string|max:50',
-            'trust' => 'required|string|max:50',
             'skills' => 'required|string|max:255',
             'salary' => 'required|string|max:255',
             'number_of_places' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'duration' => 'required|string|max:255',
         ]);
 
 
-        $offer = Offer::firstOrCreate(['name' => $validateData['name']],['city' => $validatedData['city'],
-        'type' => $validatedData['type'],
-        'release_date' => $validatedData['release_date'],
-        'trust' => $validatedData['trust'],
-        'skills' => $validatedData['skills'],
-        'salary' => $validatedData['salary'],
-        'number_of_places' => $validatedData['number_of_places']]);
-
-        $area_activity = area_activity::firstOrCreate(['name' => $validatedData['skills']]);
-
-        $offer->area_activity()->attach($area_activity->id);
+        $offer = Offer::firstOrCreate(
+            
+            ['title' => $validatedData['title']],
+            [
+                'type' => $validatedData['type'],
+                'release_date' => $validatedData['release_date'],
+                'skills' => $validatedData['skills'],
+                'salary' => $validatedData['salary'],
+                'number_of_places' => $validatedData['number_of_places'],
+                'mail' => $validatedData['email'],
+                'duration' => $validatedData['duration'],
+                'description' => $validatedData['description']
+            ]
+        );
+    
+        $address = new Address;
+        $address->city = $validatedData['city'];
+        $address->save();
+    
+        $company = new Company;
+        $company->name = $validatedData['name'];
+        $company->save();
+    
+        // Lier les clés étrangères
+        $offer->address()->associate($address);
+        $offer->company()->associate($company);
+        // Enregistrer l'offre après avoir associé les clés étrangères
+        $offer->save();
+    
         return back();
     }
-    public function softDelete($id){
+
+
+    public function delete($id){
         Offer::find($id)->delete();
         return back();
     }
+
+
+
+    public function update(Request $request, $id){
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'type' => 'required|string|max:50',
+            'release_date' => 'required|string|max:50',
+            'skills' => 'required|string|max:255',
+            'salary' => 'required|string|max:255',
+            'number_of_places' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'duration' => 'required|string|max:255',
+        ]);
+    
+        $offer = Offer::find($id);
+        if ($offer) {
+            $offer->update([
+                'title' => $validatedData['title'],
+                'type' => $validatedData['type'],
+                'release_date' => $validatedData['release_date'],
+                'skills' => $validatedData['skills'],
+                'salary' => $validatedData['salary'],
+                'number_of_places' => $validatedData['number_of_places'],
+                'mail' => $validatedData['email'],
+                'duration' => $validatedData['duration'],
+                'description' => $validatedData['description']
+            ]);
+    
+            $address = Address::find($offer->address_id);
+            if ($address) {
+                $address->update(['city' => $validatedData['city']]);
+            }
+    
+            $company = Company::find($offer->company_id);
+            if ($company) {
+                $company->update(['name' => $validatedData['name']]);
+            }
+        }
+    
+        return back();
+    }
+
 
     public function offerApply($id)
     {
