@@ -11,25 +11,54 @@ window.onscroll = function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelector("nav").classList.remove("hide-nav");
+  let id;
   $(document).ready(function() {
     const annonces = document.querySelectorAll('.annonce');
     const grandeOffre = document.querySelector('.grande_offre');
     annonces.forEach(annonce => {
-      const id = annonce.getAttribute('id');
+      id = annonce.getAttribute('id');
       annonce.addEventListener('click',() => {
         $(".grande_offre").css("visibility", "visible");
         const title = annonce.querySelector('.name_entreprise').textContent;
         const company = annonce.querySelector('.petite_note').textContent;
         const location = annonce.querySelector('.lieu').textContent;
         const description = annonce.querySelector('.txtdescription').getAttribute('data-description');
+
+        document.querySelector('.form-offer').setAttribute('action', 'apply/' + id);
+
         grandeOffre.querySelector('.titre').textContent = title;
         grandeOffre.querySelector('.titreentreprise').textContent = company;
         grandeOffre.querySelector('.lieux').textContent = location;
         grandeOffre.querySelector('.description').textContent = description;
       })
     })
+
+    // Bouton Favoris
+    let btnFavoris = document.querySelector('.btnfavoris');
+    btnFavoris.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'follow/' + id;
+    });
+
+    let btnFavorisClicked = document.querySelector('.btnfavoris.clicked');
+    btnFavorisClicked.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'unfollow/' + id;
+    });
   });
 });
+
+  $(document).ready(function() {
+    $('.form-offer').submit(function() {
+      $(this).find(':submit').prop('disabled', true);
+    });
+  });
+
+  // let button = document.querySelector('.btnfavoris');
+  // button.addEventListener('click', function() {
+  //   button.classList.toggle('clicked');
+  // });
+
 
 
 

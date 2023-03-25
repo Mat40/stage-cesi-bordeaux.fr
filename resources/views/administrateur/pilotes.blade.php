@@ -8,7 +8,7 @@
     <div class="container-pilote-list">
         <button class ="pilote-add" type="button">Ajouter pilote</button>
 
-        <div class="users-list">
+        <div class="pilote-list">
             @foreach ($pilotes as $pilote)
                 <div class="pilote-item" id="{{ $pilote->id }}">
                     <div class="title-item">

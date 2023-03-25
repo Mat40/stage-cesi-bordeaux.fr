@@ -19,7 +19,7 @@
         </div> -->
         <div class="circle">
             @if($user->pp_path)
-                <img src="profil-picture/{{ $user->pp_path }}" alt="Photo de profil">
+                <img src="/profil-picture/{{ $user->pp_path }}" alt="Photo de profil">
             @else
                 <div class="initials">{{ substr($user->firstname, 0, 1) }}{{ substr($user->lastname, 0, 1) }}</div>
             @endif

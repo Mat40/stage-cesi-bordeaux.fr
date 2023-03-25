@@ -20,6 +20,8 @@ use App\Http\Controllers\Auth\LogoutController;
 |
 */
 
+Route::get('/', [OfferController::class, 'index'])->name('index');;
+
 Route::middleware(['auth', 'checkRole:admin'])->group(function() {
     // Pilote
     Route::get('/admin/pilote', [AdministrateursController::class, 'Pilotes']);
@@ -43,13 +45,18 @@ Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
     Route::get('/admin/company/delete/{id}', [CompanyController::class, 'delete']);
     Route::post('/admin/company/update/{id}', [CompanyController::class, 'update']);
 });
-Route::get('/', [OfferController::class, 'index'])->name('index');;
+
+Route::middleware(['auth', 'checkRole:user'])->group(function() {
+    // Pilote
+    Route::post('/apply/{id}', [OfferController::class, 'offerApply']);
+    Route::get('/follow/{id}', [OfferController::class, 'offerFollow']);
+    Route::get('/unfollow/{id}', [OfferController::class, 'offerUnfollow']);
+});
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/', [OfferController::class, 'index'])->name('index');;
     Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
-    Route::get('/register')->name('register');;
-
+    Route::get('/register')->name('register');
 
     Route::get('/profil', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profil', [CvController::class, 'upload'])->name('cv.upload');

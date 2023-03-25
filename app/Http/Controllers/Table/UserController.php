@@ -32,7 +32,7 @@ class UserController extends Controller
                 Storage::delete($oldFilePath);
             }
 
-            $user->pp_path = 'uploads/' . $fileName;
+            $user->pp_path = $fileName;
 
             $user->save();
         }

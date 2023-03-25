@@ -248,17 +248,20 @@ padding-left: 41px;
     padding-left: 41px;
 }
 
-.fa-solid.fa-heart{
-  font-size: 200%;
+.btnfavoris i{
+  font-size: 25px;
 }
 
-.fa-solid.fa-heart:hover{
+.btnfavoris:hover i{
   color: red;
 }
 
+.btnfavoris.clicked i {
+  color: red;
+}
 
  /*style affichage des annonces*/
- .display{
+.display{
   width: 100%;
   background-color:rgba(39, 37, 31, 0.05);
   height: 800px ;
@@ -294,4 +297,8 @@ padding-left: 41px;
 
 .fa-solid.fa-star{
   color: #FFC853;
+}
+
+.d-none {
+  display: none !important;
 }

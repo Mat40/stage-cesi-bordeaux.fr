@@ -5,18 +5,26 @@ namespace App\Http\Controllers\Table;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Offer;
+use App\Models\Cv;
+use App\Models\applied_job;
+use App\Models\follow;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\JobApplicationMail;
 
 class OfferController extends Controller
 {
     public function index()
     {
         $offers = Offer::all();
-        return view('welcome', ['offers' => $offers]);
+        $applied = null;
+        $appliedOffers = auth()->user()->appliedOffer()->pluck('offer_id')->toArray();
+        $followed = null;
+        $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
+        return view('welcome', ['offers' => $offers, 'applied' => $applied, 'appliedOffers' => $appliedOffers, 'followed' => $followed, 'followedOffers' => $followedOffers]);
 
     }
     public function create(Request $request){
 
-        console.log('coucouc');
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -45,5 +53,72 @@ class OfferController extends Controller
     public function softDelete($id){
         Offer::find($id)->delete();
         return back();
+    }
+
+    public function offerApply($id)
+    {
+        $user = auth()->user();
+
+        // Vérifiez que l'utilisateur est connecté et a le rôle "user"
+        if ($user->permission != "user"){
+            return back();
+        }
+
+        // Récupérez l'offre correspondant à l'ID passé en paramètre
+        $offer = Offer::findOrFail($id);
+
+        // Ajoutez la relation entre l'utilisateur actuel et l'offre
+        $appliedOffer = new applied_job(['user_id' => auth()->id()]);
+        $offer->appliedOffer()->save($appliedOffer);
+
+        // Envoi de l'e-mail
+        $cv = Cv::where('id_user', $user->id)->first();
+        $cvUrl = url('/cv/' . $cv->file_name);
+        $mailData = [
+            'offerTitle' => $offer->title,
+            'userFullName' => $user->firstname . ' ' . $user->lastname,
+            'userEmail' => $user->email,
+            'cvUrl' => $cvUrl,
+        ];
+        Mail::to($offer->mail)->send(new JobApplicationMail($mailData));
+
+        return redirect()->back();
+    }
+
+    public function offerFollow($id)
+    {
+        $user = auth()->user();
+
+        // Vérifiez que l'utilisateur est connecté et a le rôle "user"
+        if ($user->permission != "user"){
+            return back();
+        }
+
+        // Récupérez l'offre correspondant à l'ID passé en paramètre
+        $offer = Offer::findOrFail($id);
+
+        // Ajoutez la relation entre l'utilisateur actuel et l'offre
+        $followedOffer = new follow(['user_id' => auth()->id()]);
+        $offer->followedOffer()->save($followedOffer);
+
+        return redirect()->back();
+    }
+
+    public function offerUnfollow($id)
+    {
+        $user = auth()->user();
+
+        // Vérifiez que l'utilisateur est connecté et a le rôle "user"
+        if ($user->permission != "user"){
+            return back();
+        }
+
+        // Récupérez l'offre correspondant à l'ID passé en paramètre
+        $offer = Offer::findOrFail($id);
+
+        // Supprimez la relation entre l'utilisateur actuel et l'offre
+        $offer->followedOffer()->where('user_id', auth()->id())->delete();
+
+        return redirect()->back();
     }
 }

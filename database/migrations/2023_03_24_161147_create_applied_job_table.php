@@ -12,27 +12,26 @@ return new class extends Migration
      * @return void
      */
 
-    public function up()
-    {
-        Schema::create('applied_job', function (Blueprint $table) {
-            $table->bigInteger('id')->unsigned();
-            $table->bigInteger('id_User')->unsigned();
-            $table->foreign('id_User') ->references('id')->on('users');
-            $table->foreign('id') ->references('id')->on('offer');
+     public function up()
+     {
+         Schema::create('applied_job', function (Blueprint $table) {
+             $table->id();
+             $table->unsignedBigInteger('user_id');
+             $table->unsignedBigInteger('offer_id');
+             $table->timestamps();
 
-            $table->primary(['id', 'id_User']);
-            $table->timestamps();
+             $table->foreign('user_id')->references('id')->on('users');
+             $table->foreign('offer_id')->references('id')->on('offer');
+         });
+     }
 
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('applied_job');
-    }
+     /**
+      * Reverse the migrations.
+      *
+      * @return void
+      */
+     public function down()
+     {
+         Schema::dropIfExists('applied_job');
+     }
 };
