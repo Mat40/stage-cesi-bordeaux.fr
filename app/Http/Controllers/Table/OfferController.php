@@ -12,6 +12,7 @@ use App\Models\Address;
 use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\JobApplicationMail;
+use App\Mail\ConfirmationMail;
 
 class OfferController extends Controller
 {
@@ -201,7 +202,7 @@ class OfferController extends Controller
 
         // Ajoutez la relation entre l'utilisateur actuel et l'offre
         $appliedJobs = new applied_job(['user_id' => auth()->id()]);
-        $offer->appliedJobs()->save($appliedJob);
+        $offer->appliedJobs()->save($appliedJobs);
 
         // Envoi de l'e-mail
         $cv = Cv::where('id_user', $user->id)->first();
@@ -213,6 +214,7 @@ class OfferController extends Controller
             'cvUrl' => $cvUrl,
         ];
         Mail::to($offer->mail)->send(new JobApplicationMail($mailData));
+        Mail::to($user->email)->send(new ConfirmationMail($mailData));
 
         return redirect()->back();
     }
