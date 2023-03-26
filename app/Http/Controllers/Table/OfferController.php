@@ -19,7 +19,7 @@ class OfferController extends Controller
     {
         $offers = Offer::all();
         $applied = null;
-        $appliedJobs = auth()->user()->appliedJob()->pluck('offer_id')->toArray();
+        $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
         $followed = null;
         $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
         return view('welcome', compact('offers', 'applied', 'appliedJobs', 'followed', 'followedOffers'));
@@ -200,8 +200,8 @@ class OfferController extends Controller
         $offer = Offer::findOrFail($id);
 
         // Ajoutez la relation entre l'utilisateur actuel et l'offre
-        $appliedJob = new applied_job(['user_id' => auth()->id()]);
-        $offer->appliedJob()->save($appliedJob);
+        $appliedJobs = new applied_job(['user_id' => auth()->id()]);
+        $offer->appliedJobs()->save($appliedJob);
 
         // Envoi de l'e-mail
         $cv = Cv::where('id_user', $user->id)->first();
