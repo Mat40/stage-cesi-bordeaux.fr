@@ -14,19 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('part_of', function (Blueprint $table) {
-
-            $table->bigInteger('id')->unsigned();
-            $table->bigInteger('id_Company')->unsigned();
-
-            $table->foreign('id_Company') ->references('id')->on('company')->onDelete('cascade');;
-            $table->foreign('id') ->references('id')->on('area_activity')->onDelete('cascade');;
-
+            $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('area_id');
             $table->timestamps();
-            $table->primary(['id', 'id_Company']);
 
-          
+            $table->foreign('company_id')->references('id')->on('company');
+            $table->foreign('area_id')->references('id')->on('area_activity');
         });
-        
+
     }
 
     /**
@@ -36,7 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
-       
+
         Schema::dropIfExists('part_of');
     }
 };

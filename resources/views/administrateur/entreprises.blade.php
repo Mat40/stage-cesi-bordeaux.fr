@@ -3,7 +3,7 @@
 @section("contenu")
 
 @include("layout.section_search_all_role")
-<script src="{{asset('assets/js/script_company.js')}}"></script>
+<script src="{{asset('assets/js/script-company.js')}}"></script>
 
 <div class="container-company">
     <div class="container-company-list">
@@ -19,14 +19,14 @@
                              <p class="company_trust" data-description="{{ $company->trust }}"style="display: none">{{ number_format($company->trust, 2, ',', ' ') }} </p>
                         </div>
                         <div class="description">
-                            @foreach ($company->address as $address)
-                                <span class="place">{{ $address->city }}</span>
-                                <span class="postal_code" style="display: none">{{ $address->postal_code }}</span>
+                            @foreach ($company->locatedAt as $located_at)
+                                <span class="place">{{ $located_at->address->city }}</span>
+                                <span class="postal_code" style="display: none">{{ $located_at->address->postal_code }}</span>
                             @endforeach
                         </div>
-                        @foreach ($company->area_activity as $area)
-                            <span class="area">{{$area->name }}</span>
-                         @endforeach
+                        @foreach ($company->partOf as $partOf)
+                            <span class="area">{{ $partOf->area_activity->name }}</span>
+                        @endforeach
                         <p class="description_bdd">{!! $company->description !!}</p>
                         <p class="number_of_trainees" style="display: none">{{$company->number_of_trainees }}</p>
                     </div>

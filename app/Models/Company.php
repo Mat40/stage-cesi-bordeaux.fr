@@ -23,8 +23,9 @@ class Company extends Model
         return $this->hasMany(Located_at::class);
     }
 
-    public function area_activity()
+    public function partOf()
     {
-        return $this->belongsToMany(area_activity::class, 'part_of', 'id_Company', 'id');
+        return $this->hasMany(part_of::class);
     }
+
 }

@@ -29,8 +29,6 @@ class CompanyController extends Controller
      */
     public function create(Request $request)
     {
-
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'number_of_trainees' => 'required|string|max:255',
@@ -41,39 +39,46 @@ class CompanyController extends Controller
             'area_activity' => 'required|string|max:255',
         ]);
 
+        // Création de l'entreprise ou récupération si elle existe déjà
         $company = Company::firstOrCreate(['name' => $validatedData['name']], [
             'number_of_trainees' => $validatedData['number_of_trainees'],
             'description' => $validatedData['description'],
             'trust' => $validatedData['trust']
         ]);
 
-        $address = new Address;
-        $address->city = $validatedData['city'];
-        $address->postal_code = $validatedData['postal_code'];
-        $address->save();
+        // Création de l'adresse et association avec l'entreprise
+        $address = Address::create([
+            'city' => $validatedData['city'],
+            'postal_code' => $validatedData['postal_code']
+        ]);
 
-        $area_activity =new area_activity;
-        $area_activity->name = $validatedData['name'];
-        $area_activity->save();
+        $company->locatedAt()->create(['address_id' => $address->id]);
 
-        //area_activity::firstOrCreate(['name' => $validatedData['area_activity']]);
+        // Création de l'activité de zone et association avec l'entreprise
+        $area_activity = area_activity::firstOrCreate(['name' => $validatedData['area_activity']]);
+        $company->partOf()->create(['area_id' => $area_activity->id]);
 
-
-
-       // Association de l'adresse avec l'entreprise
-        $company->address()->attach($address->id);
-
-        // Association de l'activité avec l'entreprise
-
-        $company->area_activity()->attach($area_activity->id);
         return back();
     }
 
 
 
 
-    public function delete($id){
-        Company::find($id)->delete();
+    public function delete($id)
+    {
+        // Trouver l'entreprise à supprimer
+        $company = Company::findOrFail($id);
+
+        // Supprimer toutes les adresses associées à l'entreprise
+        foreach ($company->locatedAt as $address) {
+            $address->delete();
+        }
+        // Supprimer l'activité de zone associée à l'entreprise
+        foreach ($company->partOf as $area_activity) {
+            $area_activity->delete();
+        }
+        // Supprimer l'entreprise elle-même
+        $company->delete();
         return back();
     }
 
@@ -99,16 +104,18 @@ class CompanyController extends Controller
 
         $company->save();
 
-        foreach ($company->address as $address) {
-        $address->city = $validatedData['city'];
-        $address->postal_code = $validatedData['postal_code'];
-        $address->save();
-        }
+        // Mettre à jour l'adresse de l'entreprise
+        $company->locatedAt->each(function ($locatedAt) use ($validatedData) {
+            $locatedAt->address->city = $validatedData['city'];
+            $locatedAt->address->postal_code = $validatedData['postal_code'];
+            $locatedAt->address->save();
+        });
 
-        foreach ($company->area_activity as $area_activity) {
-            $area_activity->name = $validatedData['area_activity'];
-            $area_activity->save();
-        }
+        // Mettre à jour les activités de l'entreprise
+        $company->partOf->each(function ($partOf) use ($validatedData) {
+            $partOf->area_activity->name = $validatedData['area_activity'];
+            $partOf->area_activity->save();
+        });
 
         return back();
     }
