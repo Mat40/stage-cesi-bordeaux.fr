@@ -30,7 +30,7 @@
 						@if (auth()->user()->permission == "admin" || auth()->user()->permission == "pilote")
 							<li class="adminpanel-button"><a href="{{ route('admin/offre') }}">Panel administrateur</a></li>
 						@endif
-						<li class="icon" id="fav"><a href="#favoris" ><i class="fa-regular fa-heart"></i></a></li>
+						<li class="icon" id="fav"><a href="{{ route('follow') }}" ><i class="fa-regular fa-heart"></i></a></li>
 						<span class="vertical-separator"></span>
 						<li class="icon">
 						<a href="#user" ><i class="fa-regular fa-user"></i></a>

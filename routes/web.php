@@ -7,6 +7,7 @@ use App\Http\Controllers\Table\UserController;
 use App\Http\Controllers\Page\ProfileController;
 use App\Http\Controllers\Page\AdministrateursController;
 use App\Http\Controllers\Page\PiloteController;
+use App\Http\Controllers\Page\FollowController;
 use App\Http\Controllers\Auth\LogoutController;
 
 /*
@@ -52,7 +53,9 @@ Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
 });
 
 Route::middleware(['auth', 'checkRole:user'])->group(function() {
-    // Pilote
+    // User
+    Route::get('follow/', [FollowController::class, 'Follow'])->name('follow');
+    Route::get('apply/', [FollowController::class, 'Apply'])->name('apply');
     Route::post('offre/apply/{id}', [OfferController::class, 'offerApply']);
     Route::get('offre/follow/{id}', [OfferController::class, 'offerFollow']);
     Route::get('offre/unfollow/{id}', [OfferController::class, 'offerUnfollow']);
