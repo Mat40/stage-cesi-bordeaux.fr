@@ -24,22 +24,13 @@ Route::get('/', [OfferController::class, 'index'])->name('index');;
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function() {
     // Pilote
-    
+
     Route::get('/admin/pilote', [AdministrateursController::class, 'Pilotes']);
     Route::get('/admin/pilote/delete/{id}', [UserController::class, 'delete']);
     Route::post('/admin/pilote/update/{id}', [UserController::class, 'update']);
-
-        // Offers
-        Route::get('/admin/offre', [AdministrateursController::class, 'Offer'])->name('admin/offre');
-        Route::post('/register/offre', [OfferController::class, 'create'])->name('register/offre');
-        Route::get('/admin/offer/delete/{id}', [OfferController::class, 'delete']);
-        Route::post('/admin/offer/update/{id}', [OfferController::class, 'update']);
-
-    
 });
-Route::get('/admin/offre', [AdministrateursController::class, 'Offer'])->name('admin/offre');
-Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
 
+Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
 
     // Student
     Route::get('/admin/etudiant', [AdministrateursController::class,'Etudiant']);
@@ -51,13 +42,20 @@ Route::middleware(['auth', 'checkRole:pilote'])->group(function() {
     Route::post('/register/company', [CompanyController::class, 'create'])->name('register/company');
     Route::get('/admin/company/delete/{id}', [CompanyController::class, 'delete']);
     Route::post('/admin/company/update/{id}', [CompanyController::class, 'update']);
+
+    // Offers
+    Route::get('/admin/offre', [AdministrateursController::class, 'Offer'])->name('admin/offre');
+    Route::post('/register/offre', [OfferController::class, 'create'])->name('register/offre');
+    Route::get('/admin/offre/delete/{id}', [OfferController::class, 'delete']);
+    Route::post('/admin/offre/update/{id}', [OfferController::class, 'update']);
+    Route::get('/get-cities/{id}', [CompanyController::class, 'getCities']);
 });
 
 Route::middleware(['auth', 'checkRole:user'])->group(function() {
     // Pilote
-    Route::post('/apply/{id}', [OfferController::class, 'offerApply']);
-    Route::get('/follow/{id}', [OfferController::class, 'offerFollow']);
-    Route::get('/unfollow/{id}', [OfferController::class, 'offerUnfollow']);
+    Route::post('offre/apply/{id}', [OfferController::class, 'offerApply']);
+    Route::get('offre/follow/{id}', [OfferController::class, 'offerFollow']);
+    Route::get('offre/unfollow/{id}', [OfferController::class, 'offerUnfollow']);
 });
 
 Route::middleware(['auth'])->group(function() {

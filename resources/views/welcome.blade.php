@@ -66,7 +66,7 @@
 	<div class="display-list_offer">
 		@foreach ($offers as $offer)
 			@php
-				{{$applied = in_array($offer->id, $appliedOffers);}}
+				{{$applied = in_array($offer->id, $appliedJobs);}}
 				{{$followed = in_array($offer->id, $followedOffers);}}
             @endphp
 

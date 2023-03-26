@@ -1,7 +1,7 @@
 .container-offer {
     width: 100%;
     background-color:rgba(39, 37, 31, 0.05);
-    height: 1250px;
+    height: 1350px;
     padding-top: 3%;
     padding-bottom: 5%;
     display: flex;
@@ -15,7 +15,7 @@
   .container-form-offer {
     flex: 2;
     width: 60%;
-    
+
   }
 
   .offer-add{
@@ -93,7 +93,7 @@
     box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
   }
 
-  .form-offer input{
+  .form-offer input,select {
     width: 90%;
     height: 50px;
     border: none;

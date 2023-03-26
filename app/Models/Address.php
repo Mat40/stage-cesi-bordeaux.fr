@@ -10,7 +10,13 @@ class Address extends Model
     use HasFactory;
     protected $table = 'address';
     protected $fillable = [
-        'city', 
+        'city',
         'postal_code',
     ];
+
+
+    public function locatedAt()
+    {
+        return $this->hasMany(Located_at::class);
+    }
 }

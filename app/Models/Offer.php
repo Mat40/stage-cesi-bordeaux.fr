@@ -25,7 +25,7 @@ class Offer extends Model
         return $this->belongsToMany(area_activity::class, 'possesses', 'id_Area_activity', 'id')->distinct();;
     }*/
 
-    public function appliedOffer()
+    public function appliedJob()
     {
         return $this->hasMany(applied_job::class);
     }

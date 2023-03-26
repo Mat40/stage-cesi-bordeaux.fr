@@ -14,18 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('located_at', function (Blueprint $table) {
-            $table->bigInteger('id_Company')->unsigned();
-            $table->bigInteger('id')->unsigned();
-            $table->foreign('id_Company') ->references('id')->on('Company')->onDelete('cascade');
-            $table->foreign('id') ->references('id')->on('address')->onDelete('cascade');
-
-            $table->primary(['id', 'id_Company']);
+            $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('address_id');
             $table->timestamps();
 
-          
-            
+            $table->foreign('company_id')->references('id')->on('company');
+            $table->foreign('address_id')->references('id')->on('address');
         });
-       
+
     }
 
     /**
@@ -35,7 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
-       
+
         Schema::dropIfExists('located_at');
     }
 };

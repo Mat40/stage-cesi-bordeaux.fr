@@ -12,15 +12,15 @@ class Company extends Model
     use HasFactory;
     protected $table = 'company';
     protected $fillable = [
-        'name', 
+        'name',
         'number_of_trainees',
         'trust',
-        'description'   
+        'description'
     ];
 
-    public function address()
+    public function locatedAt()
     {
-        return $this->belongsToMany(Address::class, 'located_at', 'id_Company', 'id');
+        return $this->hasMany(Located_at::class);
     }
 
     public function area_activity()

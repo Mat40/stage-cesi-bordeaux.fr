@@ -48,7 +48,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function appliedOffer()
+    public function appliedJob()
     {
         return $this->hasMany(applied_job::class);
     }

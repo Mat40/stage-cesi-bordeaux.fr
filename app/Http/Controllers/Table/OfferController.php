@@ -19,12 +19,12 @@ class OfferController extends Controller
     {
         $offers = Offer::all();
         $applied = null;
-        $appliedOffers = auth()->user()->appliedOffer()->pluck('offer_id')->toArray();
+        $appliedJobs = auth()->user()->appliedJob()->pluck('offer_id')->toArray();
         $followed = null;
         $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
-        return view('welcome', ['offers' => $offers, 'applied' => $applied, 'appliedOffers' => $appliedOffers, 'followed' => $followed, 'followedOffers' => $followedOffers]);
-
+        return view('welcome', compact('offers', 'applied', 'appliedJobs', 'followed', 'followedOffers'));
     }
+
     public function create(Request $request){
 
         $validatedData = $request->validate([
@@ -43,7 +43,7 @@ class OfferController extends Controller
 
 
         $offer = Offer::firstOrCreate(
-            
+
             ['title' => $validatedData['title']],
             [
                 'type' => $validatedData['type'],
@@ -56,33 +56,45 @@ class OfferController extends Controller
                 'description' => $validatedData['description']
             ]
         );
-    
+
         $address = new Address;
         $address->city = $validatedData['city'];
         $address->save();
-    
+
         $company = new Company;
         $company->name = $validatedData['name'];
         $company->save();
-    
+
         // Lier les clés étrangères
         $offer->address()->associate($address);
         $offer->company()->associate($company);
         // Enregistrer l'offre après avoir associé les clés étrangères
         $offer->save();
-    
+
         return back();
     }
 
 
-    public function delete($id){
-        Offer::find($id)->delete();
-        return back();
+    public function delete($id) {
+        $offer = Offer::find($id);
+        if ($offer) {
+            // Supprimer les enregistrements correspondants dans applied_jobs et follows
+            $offer->appliedJobs()->delete();
+            $offer->follows()->delete();
+            // Supprimer l'offre
+            $offer->delete();
+            return back();
+        } else {
+            return back();
+        }
     }
 
 
 
     public function update(Request $request, $id){
+
+        // dd($request);
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'name' => 'required|string|max:255',
@@ -92,11 +104,11 @@ class OfferController extends Controller
             'skills' => 'required|string|max:255',
             'salary' => 'required|string|max:255',
             'number_of_places' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'duration' => 'required|string|max:255',
+            'descriptions' => 'required|string|max:255',
         ]);
-    
+
         $offer = Offer::find($id);
         if ($offer) {
             $offer->update([
@@ -108,20 +120,20 @@ class OfferController extends Controller
                 'number_of_places' => $validatedData['number_of_places'],
                 'mail' => $validatedData['email'],
                 'duration' => $validatedData['duration'],
-                'description' => $validatedData['description']
+                'description' => $validatedData['descriptions']
             ]);
-    
+
             $address = Address::find($offer->address_id);
             if ($address) {
                 $address->update(['city' => $validatedData['city']]);
             }
-    
+
             $company = Company::find($offer->company_id);
             if ($company) {
                 $company->update(['name' => $validatedData['name']]);
             }
         }
-    
+
         return back();
     }
 
@@ -139,8 +151,8 @@ class OfferController extends Controller
         $offer = Offer::findOrFail($id);
 
         // Ajoutez la relation entre l'utilisateur actuel et l'offre
-        $appliedOffer = new applied_job(['user_id' => auth()->id()]);
-        $offer->appliedOffer()->save($appliedOffer);
+        $appliedJob = new applied_job(['user_id' => auth()->id()]);
+        $offer->appliedJob()->save($appliedJob);
 
         // Envoi de l'e-mail
         $cv = Cv::where('id_user', $user->id)->first();

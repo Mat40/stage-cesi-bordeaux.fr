@@ -29,7 +29,7 @@ class CompanyController extends Controller
      */
     public function create(Request $request)
     {
-        
+
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -55,16 +55,16 @@ class CompanyController extends Controller
         $area_activity =new area_activity;
         $area_activity->name = $validatedData['name'];
         $area_activity->save();
-        
+
         //area_activity::firstOrCreate(['name' => $validatedData['area_activity']]);
-        
-       
+
+
 
        // Association de l'adresse avec l'entreprise
         $company->address()->attach($address->id);
 
         // Association de l'activité avec l'entreprise
-        
+
         $company->area_activity()->attach($area_activity->id);
         return back();
     }
@@ -88,15 +88,15 @@ class CompanyController extends Controller
             'postal_code' => 'string|max:255',
             'area_activity' => 'string|max:255',
         ]);
-    
+
         $company = Company::find($id);
-       
+
         $company->name = $validatedData['name'];
-        
+
         $company->number_of_trainees = $validatedData['number_of_trainees'];
         $company->description = $validatedData['description'];
         $company->trust = $validatedData['trust'];
-       
+
         $company->save();
 
         foreach ($company->address as $address) {
@@ -104,13 +104,20 @@ class CompanyController extends Controller
         $address->postal_code = $validatedData['postal_code'];
         $address->save();
         }
-    
+
         foreach ($company->area_activity as $area_activity) {
             $area_activity->name = $validatedData['area_activity'];
             $area_activity->save();
         }
-    
+
         return back();
+    }
+
+
+    public function getCities($id)
+    {
+        $addresses = Located_at::where('company_id', $id)->with('address')->get()->pluck('address');
+        return response()->json($addresses);
     }
 }
 

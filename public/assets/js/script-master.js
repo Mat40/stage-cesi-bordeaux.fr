@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const location = annonce.querySelector('.lieu').textContent;
         const description = annonce.querySelector('.txtdescription').getAttribute('data-description');
 
-        document.querySelector('.form-offer').setAttribute('action', 'apply/' + id);
+        document.querySelector('.form-offer').setAttribute('action', 'offre/apply/' + id);
 
         grandeOffre.querySelector('.titre').textContent = title;
         grandeOffre.querySelector('.titreentreprise').textContent = company;
@@ -35,16 +35,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Bouton Favoris
     let btnFavoris = document.querySelector('.btnfavoris');
-    btnFavoris.addEventListener('click', function(event) {
-        event.preventDefault();
-        window.location.href = 'follow/' + id;
-    });
+    if(btnFavoris){
+      btnFavoris.addEventListener('click', function(event) {
+          event.preventDefault();
+          window.location.href = 'offre/follow/' + id;
+      });
+    }
 
     let btnFavorisClicked = document.querySelector('.btnfavoris.clicked');
-    btnFavorisClicked.addEventListener('click', function(event) {
-        event.preventDefault();
-        window.location.href = 'unfollow/' + id;
-    });
+    if(btnFavorisClicked){
+      btnFavorisClicked.addEventListener('click', function(event) {
+          event.preventDefault();
+          window.location.href = 'offre/unfollow/' + id;
+      });
+    }
   });
 });
 

@@ -27,6 +27,8 @@
                         <p class="offer-skills" style="display: none">{{ $offer->skills}}</p>
                         <p class="offer-salary" style="display: none">{{ $offer->salary}}</p>
                         <p class="offer-numberofplaces" style="display: none">{{ $offer->number_of_places}}</p>
+                        <p class="offer-mail" style="display: none">{{ $offer->mail}}</p>
+                        <p class="offer-duration" style="display: none">{{ $offer->duration}}</p>
                         <p class="offer-description" style="display: none">{{ $offer->description}}</p>
 
                     </div>
@@ -50,8 +52,12 @@
                 </div>
 
                 <div class="">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nom de l'entreprise">
-
+                <select id="name" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
+                    <option value="">Sélectionner une entreprise</option>
+                    @foreach($companies as $company)
+                        <option value="{{ $company->id }}" >{{ $company->name }}</option>
+                    @endforeach
+                </select>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -60,8 +66,9 @@
                 </div>
 
                 <div class="">
-                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus placeholder="Lieux">
-
+                    <select id="city" class="form-control @error('city') is-invalid @enderror" name="city" required autofocus>
+                        <option value="">Sélectionner une ville</option>
+                    </select>
                     @error('city')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -70,8 +77,11 @@
                 </div>
 
                 <div class="">
-                    <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus placeholder="Type de poste">
-
+                    <!-- <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus placeholder="Type de poste"> -->
+                    <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" required autofocus>
+                        <option value="">Stage</option>
+                        <option value="">Alternance</option>
+                    </select>
                     @error('type')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -120,7 +130,7 @@
                 </div>
 
                 <div class="">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Mail">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -130,7 +140,7 @@
                 </div>
 
                 <div class="">
-                    <input id="duration" type="number" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ old('duration') }}" required autocomplete="duration" placeholder="duration">
+                    <input id="duration" type="number" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ old('duration') }}" required autocomplete="duration" placeholder="Durée du stage">
 
                     @error('duration')
                         <span class="invalid-feedback" role="alert">

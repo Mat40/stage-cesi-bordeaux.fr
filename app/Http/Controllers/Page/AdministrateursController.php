@@ -10,8 +10,9 @@ class AdministrateursController extends Controller
 {
     public function Offer(){
         $offers = Offer::all();
+        $companies = Company::all();
         $placeholder="Métier, mots-clés, entreprise, compétences ...";
-        return view('/administrateur/offres', compact('placeholder','offers'));
+        return view('/administrateur/offres', compact('placeholder','offers','companies'));
     }
 
     public function Entreprise(){
