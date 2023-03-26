@@ -35,8 +35,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Remplissage du formulaire avec les valeurs récupérées
             document.getElementById('title').value = title;
-            document.getElementById('name').value = company;
-            document.getElementById('city').value = address;
+            const nameSelect = document.getElementById('name');
+            const citySelect = document.getElementById('city');
+
+            for (let i = 0; i < nameSelect.options.length; i++) {
+                if (nameSelect.options[i].text === company) {
+                    nameSelect.selectedIndex = i;
+                    nameSelect.dispatchEvent(new Event('change')); // déclencher l'événement 'change' pour appeler la requête Ajax
+                    break;
+                }
+            }
+
+            for (let i = 0; i < citySelect.options.length; i++) {
+              if (citySelect.options[i].text === address) {
+                citySelect.selectedIndex = i;
+                break;
+              }
+            }
             document.getElementById('type').value = type;
             document.getElementById('release_date').value = date;
             document.getElementById('skills').value = skills;
@@ -86,7 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
         CKEDITOR.instances['description'].setData("");
     });
 
-    CKEDITOR.replace( 'description' );
+    CKEDITOR.replace( 'description', {
+        resize_enabled: false
+    });
 
     // Ajout d'un événement de clic au bouton "update"
     // submitBtn.addEventListener('click', (event) => {
@@ -105,6 +122,7 @@ $(document).ready(function() {
                 url: '/get-cities/' + companyId,
                 type: 'GET',
                 dataType: 'json',
+                async: false,
                 success: function(data) {
 
                     $('#city').empty();

@@ -7,6 +7,10 @@ body{
 
 }
 
+#editor {
+  resize: none;
+}
+
 
 header{
   height:62px;

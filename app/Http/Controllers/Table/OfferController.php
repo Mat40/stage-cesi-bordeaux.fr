@@ -27,6 +27,7 @@ class OfferController extends Controller
 
     public function create(Request $request){
 
+        // dd($request);
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'name' => 'required|string|max:255',
@@ -36,65 +37,97 @@ class OfferController extends Controller
             'skills' => 'required|string|max:255',
             'salary' => 'required|string|max:255',
             'number_of_places' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'descriptions' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'duration' => 'required|string|max:255',
         ]);
 
+        // Trouver la Company correspondante à partir de la clé étrangère "name"
+        $company = Company::where('id', $validatedData['name'])->first();
 
-        $offer = Offer::firstOrCreate(
+        // Trouver l'Address correspondante à partir de la clé étrangère "city"
+        $address = Address::where('id', $validatedData['city'])->first();
 
-            ['title' => $validatedData['title']],
-            [
-                'type' => $validatedData['type'],
-                'release_date' => $validatedData['release_date'],
-                'skills' => $validatedData['skills'],
-                'salary' => $validatedData['salary'],
-                'number_of_places' => $validatedData['number_of_places'],
-                'mail' => $validatedData['email'],
-                'duration' => $validatedData['duration'],
-                'description' => $validatedData['description']
-            ]
-        );
+        if (!$address || !$company) {
+            return back();
+        }
 
-        $address = new Address;
-        $address->city = $validatedData['city'];
-        $address->save();
-
-        $company = new Company;
-        $company->name = $validatedData['name'];
-        $company->save();
+        // Créer l'offre et associer les clés étrangères
+        $offer = new Offer();
+        $offer->title = $validatedData['title'];
+        $offer->type = $validatedData['type'];
+        $offer->release_date = $validatedData['release_date'];
+        $offer->skills = $validatedData['skills'];
+        $offer->salary = $validatedData['salary'];
+        $offer->number_of_places = $validatedData['number_of_places'];
+        $offer->mail = $validatedData['email'];
+        $offer->duration = $validatedData['duration'];
+        $offer->description = $validatedData['descriptions'];
 
         // Lier les clés étrangères
         $offer->address()->associate($address);
         $offer->company()->associate($company);
+
         // Enregistrer l'offre après avoir associé les clés étrangères
         $offer->save();
 
         return back();
     }
 
+    // public function update(Request $request, $id){
 
-    public function delete($id) {
-        $offer = Offer::find($id);
-        if ($offer) {
-            // Supprimer les enregistrements correspondants dans applied_jobs et follows
-            $offer->appliedJobs()->delete();
-            $offer->follows()->delete();
-            // Supprimer l'offre
-            $offer->delete();
-            return back();
-        } else {
-            return back();
-        }
-    }
+    //     dd($request);
 
+    //     $validatedData = $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'name' => 'required|string|max:255',
+    //         'city' => 'required|string|max:255',
+    //         'type' => 'required|string|max:50',
+    //         'release_date' => 'required|string|max:50',
+    //         'skills' => 'required|string|max:255',
+    //         'salary' => 'required|string|max:255',
+    //         'number_of_places' => 'required|string|max:255',
+    //         'email' => 'required|string|max:255',
+    //         'duration' => 'required|string|max:255',
+    //         'descriptions' => 'required|string|max:255',
+    //     ]);
 
+    //     $offer = Offer::find($id);
+    //     if ($offer) {
+    //         $offer->update([
+    //             'title' => $validatedData['title'],
+    //             'type' => $validatedData['type'],
+    //             'release_date' => $validatedData['release_date'],
+    //             'skills' => $validatedData['skills'],
+    //             'salary' => $validatedData['salary'],
+    //             'number_of_places' => $validatedData['number_of_places'],
+    //             'mail' => $validatedData['email'],
+    //             'duration' => $validatedData['duration'],
+    //             'description' => $validatedData['descriptions']
+    //         ]);
+
+    //         $address = Address::find($offer->address_id);
+    //         if ($address) {
+    //             $address->update(['city' => $validatedData['city']]);
+    //         }
+
+    //         $company = Company::find($offer->company_id);
+    //         if ($company) {
+    //             $company->update(['name' => $validatedData['name']]);
+    //         }
+    //     }
+
+    //     return back();
+    // }
 
     public function update(Request $request, $id){
 
         // dd($request);
 
+        // Récupérer l'offre à mettre à jour en fonction de son ID
+        $offer = Offer::find($id);
+
+        //Validation des données du formulaire
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'name' => 'required|string|max:255',
@@ -104,37 +137,53 @@ class OfferController extends Controller
             'skills' => 'required|string|max:255',
             'salary' => 'required|string|max:255',
             'number_of_places' => 'required|string|max:255',
+            'descriptions' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'duration' => 'required|string|max:255',
-            'descriptions' => 'required|string|max:255',
         ]);
 
-        $offer = Offer::find($id);
-        if ($offer) {
-            $offer->update([
-                'title' => $validatedData['title'],
-                'type' => $validatedData['type'],
-                'release_date' => $validatedData['release_date'],
-                'skills' => $validatedData['skills'],
-                'salary' => $validatedData['salary'],
-                'number_of_places' => $validatedData['number_of_places'],
-                'mail' => $validatedData['email'],
-                'duration' => $validatedData['duration'],
-                'description' => $validatedData['descriptions']
-            ]);
+        //Trouver la Company correspondante à partir de la clé étrangère "name"
+        $company = Company::where('id', $validatedData['name'])->first();
 
-            $address = Address::find($offer->address_id);
-            if ($address) {
-                $address->update(['city' => $validatedData['city']]);
-            }
+        //Trouver l'Address correspondante à partir de la clé étrangère "city"
+        $address = Address::where('id', $validatedData['city'])->first();
 
-            $company = Company::find($offer->company_id);
-            if ($company) {
-                $company->update(['name' => $validatedData['name']]);
-            }
+        if (!$address || !$company) {
+            return back();
         }
 
+        //Mettre à jour l'offre avec les nouvelles données et les clés étrangères
+        $offer->title = $validatedData['title'];
+        $offer->type = $validatedData['type'];
+        $offer->release_date = $validatedData['release_date'];
+        $offer->skills = $validatedData['skills'];
+        $offer->salary = $validatedData['salary'];
+        $offer->number_of_places = $validatedData['number_of_places'];
+        $offer->mail = $validatedData['email'];
+        $offer->duration = $validatedData['duration'];
+        $offer->description = $validatedData['descriptions'];
+        $offer->address()->associate($address);
+        $offer->company()->associate($company);
+
+        //Enregistrer les changements dans la base de données
+        $offer->save();
+
+        //Rediriger l'utilisateur vers la page précédente
         return back();
+    }
+
+    public function delete($id) {
+        $offer = Offer::find($id);
+        if ($offer) {
+            // Supprimer les enregistrements correspondants dans applied_jobs et follows
+            $offer->appliedJobs()->delete();
+            $offer->followedOffer()->delete();
+            // Supprimer l'offre
+            $offer->delete();
+            return back();
+        } else {
+            return back();
+        }
     }
 
 

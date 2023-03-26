@@ -4,7 +4,7 @@
 
 @include("layout.section_search_all_role")
 <script src="{{asset('assets/js/script-offer.js')}}"></script>
-<script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+
 <div class="container-offer">
     <div class="container-offer-list">
         <button class ="offer-add" type="button">Ajouter une offre</button>
@@ -79,8 +79,8 @@
                 <div class="">
                     <!-- <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus placeholder="Type de poste"> -->
                     <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" required autofocus>
-                        <option value="">Stage</option>
-                        <option value="">Alternance</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Alternance">Alternance</option>
                     </select>
                     @error('type')
                         <span class="invalid-feedback" role="alert">

@@ -15,6 +15,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 		<script src="{{asset('assets/js/jquery-3.6.3.js')}}"></script>
 		<script src="{{asset('assets/js/script-master.js')}}"></script>
+		<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
 	<title>Stage</title>
 	</head>

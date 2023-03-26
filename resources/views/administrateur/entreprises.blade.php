@@ -4,7 +4,6 @@
 
 @include("layout.section_search_all_role")
 <script src="{{asset('assets/js/script_company.js')}}"></script>
-<script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
 <div class="container-company">
     <div class="container-company-list">
@@ -101,7 +100,7 @@
                                     <i class="star" data-note="3">&#9733;</i>
                                     <i class="star" data-note="4">&#9733;</i>
                                     <i class="star" data-note="5">&#9733;</i>
-                                    <span id="note"> a</span> 
+                                    <span id="note"> a</span>
                                 </div>
                             </div>
                         <input type="hidden" name="trust" id="trust">
@@ -120,7 +119,7 @@
                             </button>
                         </div>
                 </form>
-            </div>    
+            </div>
         </div>
 </div>
 
@@ -142,7 +141,7 @@ function selectStars(e) {
             etoiles.classList.add('hover');
         })
     }
-   
+
 }
 
 function unselectStars(e) {
@@ -152,7 +151,7 @@ function unselectStars(e) {
         etoiles.forEach(etoiles=>{
             etoiles.classList.remove('hover');
         })
-    }  
+    }
 }
 
 function activeSelect(e){
@@ -171,7 +170,9 @@ function previousSiblings(data){
     }
     return values;
 }
-    CKEDITOR.replace( 'description' );
+    CKEDITOR.replace( 'description', {
+        resize_enabled: false
+    });
     CKEDITOR.instances['description'].setData(description);
 </script>
 @endsection
