@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         grandeOffre.querySelector('.titre').textContent = title;
         grandeOffre.querySelector('.titreentreprise').textContent = company;
         grandeOffre.querySelector('.lieux').textContent = location;
-        grandeOffre.querySelector('.description').textContent = description;
+        grandeOffre.querySelector('.description').innerHTML = description;
       })
     })
 

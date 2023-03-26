@@ -19,7 +19,7 @@
                     <div class="description">
                         <p> {{ $offer->company->name}} {{ number_format($offer->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
                         <p>{{ $offer->address->city}}</p>
-                        <p>{{ Str::limit($offer->description, 50) }}</p>
+                        <p>{!! Str::limit($offer->description, 50) !!}</p>
                         <p class="offer-company" style="display: none">{{ $offer->company->name}}</p>
                         <p class="offer-address" style="display: none">{{ $offer->address->city}}</p>
                         <p class="offer-type" style="display: none">{{ $offer->type}}</p>
