@@ -126,7 +126,28 @@ class CompanyController extends Controller
         $addresses = Located_at::where('company_id', $id)->with('address')->get()->pluck('address');
         return response()->json($addresses);
     }
+
+
+
+    public function search_company(){
+        $q=request()->input('q');
+        $placeholder="Entreprise, secteur d'activité, lieux...";
+        $companies=Company::where('name','like',"%$q%")
+            ->orWhere('trust','like',"%$q%")
+            ->orWhere('description','like',"%$q%")
+            ->orWhereHas('locatedAt', function($query) use ($q) {
+                $query->whereHas('address', function($query) use ($q) {
+                    $query->where('city','like',"%$q%");
+                });
+            })
+            ->paginate(6);
+    
+        return view('/administrateur/entreprises', compact('companies','placeholder'));
+    }
 }
+
+
+
 
 
 

@@ -66,4 +66,40 @@ class UserController extends Controller
         User::find($id)->delete();
         return back();
     }
+
+    public function search_student(){
+        $q=request()->input('q');
+        $placeholder="Nom, prénom, centre, promotion...";
+    
+        $users=User::where('permission', '=', 'user')
+            ->where(function($query) use ($q) {
+                $query->where('firstname','like',"%$q%")
+                    ->orWhere('lastname','like',"%$q%")
+                    ->orWhere('campus','like',"%$q%")
+                    ->orWhere('grade','like',"%$q%")
+                    ->orWhere('email','like',"%$q%");
+            })
+            ->paginate(6);
+    
+        return view('/administrateur/etudiants', compact('placeholder','users'));
+    }
+
+
+    public function search_pilote(){
+        $q=request()->input('q');
+        $placeholder="Nom, prénom, centre, promotion...";
+    
+        $pilotes=User::where('permission', '=', 'pilote')
+            ->where(function($query) use ($q) {
+                $query->where('firstname','like',"%$q%")
+                    ->orWhere('lastname','like',"%$q%")
+                    ->orWhere('campus','like',"%$q%")
+                    ->orWhere('grade','like',"%$q%")
+                    ->orWhere('email','like',"%$q%");
+            })
+            ->paginate(6);
+    
+        return view('/administrateur/pilotes', compact('placeholder','pilotes'));
+    }
+
 }

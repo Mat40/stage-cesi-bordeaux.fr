@@ -1,5 +1,5 @@
 
-<form class="search_filter_min" type="get" action="">
+<form class="search_filter_min" type="get" action="{{route('student/search')}}">
 	<h2>Panel administration</h2>
 	<div class="switch_page">
 		<button type="submit" formaction="/admin/offre">Offres</button>
@@ -11,7 +11,7 @@
 	<section class="container_min">
 		<div>
 			<i  class="fa-solid fa-magnifying-glass"></i>
-			<input type="search" name="" id="search_min" placeholder="{{ $placeholder}}">
+			<input type="search" name="q" id="search_min" placeholder="{{ $placeholder}}">
 		</div>
 		<button type="submit" value="Submit">Rechercher</button>
 	</section>

@@ -1,11 +1,11 @@
 @extends("layout.master")
 
 @section("contenu")
-<form class="search_filter" type="get" action="">
+<form class="search_filter" type="get" action="{{route('offer/search')}}">
 		<section class="container">
   			<div>
   				<i class="fa-solid fa-magnifying-glass"></i>
-    			<input type="search" name="" id="search" placeholder="Métier, mots-clés, entreprise, compétences...">
+    			<input type="search" name="q" id="search" placeholder="Métier, mots-clés, entreprise, compétences...">
   			</div>
   			<button type="submit" value="Submit">Rechercher</button>
 		</section>

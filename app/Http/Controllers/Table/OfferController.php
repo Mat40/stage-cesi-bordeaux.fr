@@ -255,4 +255,46 @@ class OfferController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(){
+        $q=request()->input('q');
+        $applied = null;
+        $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
+        $followed = null;
+        $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
+    
+        $offers=Offer::where('title','like',"%$q%")
+            ->orWhere('duration','like',"%$q%")
+            ->orWhere('description','like',"%$q%")
+            ->orWhereHas('company', function($query) use ($q) {
+                $query->where('name','like',"%$q%");
+            })
+            ->orWhereHas('address', function($query) use ($q) {
+                $query->where('city','like',"%$q%");
+            })
+            ->paginate(6);
+    
+        return view('welcome', compact('offers','applied', 'appliedJobs', 'followed', 'followedOffers'));
+    }
+
+
+    public function search_pannel_offer(){
+        $q=request()->input('q');
+        $companies = Company::all();
+        $placeholder="Métier, mots-clés, entreprise, compétences ...";
+    
+        $offers=Offer::where('title','like',"%$q%")
+            ->orWhere('duration','like',"%$q%")
+            ->orWhere('description','like',"%$q%")
+            ->orWhereHas('company', function($query) use ($q) {
+                $query->where('name','like',"%$q%");
+            })
+            ->orWhereHas('address', function($query) use ($q) {
+                $query->where('city','like',"%$q%");
+            })
+            ->paginate(6);
+    
+            
+            return view('/administrateur/offres', compact('placeholder','offers','companies'));
+    }
 }

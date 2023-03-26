@@ -22,6 +22,12 @@ use App\Http\Controllers\Auth\LogoutController;
 */
 
 Route::get('/', [OfferController::class, 'index'])->name('index');;
+Route::get('/offer/search', [OfferController::class, 'search'])->name('offer/search');
+Route::get('/student/search', [UserController::class, 'search_student'])->name('student/search');
+Route::get('/pilote/search', [UserController::class, 'search_pilote'])->name('pilote/search');
+Route::get('/company/search', [CompanyController::class, 'search_company'])->name('company/search');
+Route::get('/pannel/offer/search', [OfferController::class, 'search_pannel_offer'])->name('pannel/offer/search');
+
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function() {
     // Pilote

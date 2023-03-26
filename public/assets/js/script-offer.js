@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Récupération de tous les éléments avec la classe "annonce"
     const pilotes = document.querySelectorAll('.offer-item');
-
+    document.querySelector('.search_filter_min').setAttribute('action', "/pannel/offer/search");
     const submitBtn = document.getElementById('submit');
     // const updateBtn = document.getElementById('update');
     const deleteBtn = document.getElementById('delete');

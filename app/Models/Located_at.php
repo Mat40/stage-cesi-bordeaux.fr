@@ -21,3 +21,5 @@ class Located_at extends Model
         return $this->belongsTo(Company::class);
     }
 }
+
+
