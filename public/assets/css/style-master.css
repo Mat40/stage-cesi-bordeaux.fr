@@ -1,26 +1,52 @@
+
+
 body{
   margin:0;
-
+  height:100%;
   font-family: Inter, sans-serif;
-  
+
 }
-ul {
+
+#editor {
+  resize: none;
+}
+
+
+header{
+  height:62px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  height: 20px;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+nav.hide-nav {
+  opacity: 0;
+}
+
+.content_nav-bar {
   list-style-type: none;
   margin: 0;
-  padding: 0;  
+  padding: 0;
   background-color: rgba(39, 37, 31, 0.15);
   position: fixed;
   top: 0;
   width: 100%;
+  height: 63px;
 }
 
-li a {
+.link_nav-bar li a {
 display: block;
 color: #27251F;
 padding: 14px 16px;
-line-height: 50px;
+line-height: 35px;
 text-decoration: none;
-height: 60px;
+height: 35px;
 font-size: 20px;
 }
 
@@ -29,34 +55,34 @@ float: left;
 }
 .icon {
   float: right;
- 
+
 }
 
 #fav{
-  margin-right: 25px;
+  margin-right:3%;
 }
 
 .icon i,.menu-hamburger{
   font-size:35px;
-  margin-top: 9px;
+  margin-top: 2px;
   color: #27251F;
 }
 
 .vertical-separator {
   margin-top: 10px;
-  height:65px;
+  height:42px;
   border-right: 2px solid black;
   float: right;
   margin-left: 20px;
   margin-right: 20px;
- 
+
 }
 
 .logo{
- height: 60px;
- width: 200;
+ height: 59px;
+ width: 150px;
  background-color: #fff;
- 
+
 }
 
 li a:hover {
@@ -65,7 +91,7 @@ background-color: #FFC853;
 
 .Recherche_Stage a{
   margin-left: 50px;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 
@@ -84,7 +110,7 @@ background-color: #FFC853;
  .mention {
   text-decoration: none;
   color: #27251F;
-  line-height: 50px 
+  line-height: 50px
  }
 
  .mention:hover {
@@ -121,7 +147,7 @@ background-color: #FFC853;
   border-style: none;
   background-color: rgba(39, 37, 31,0);
   width: 50px;
- 
+
 }
 .menu-hamburger:hover{
   background-color: #FFC853;
@@ -145,7 +171,7 @@ background-color: #FFC853;
   display: block;
 }
 
-.responsive{
+.link_nav-bar{
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -157,10 +183,10 @@ background-color: #FFC853;
   align-items: center;
   backdrop-filter: blur(8px);
   margin-left: -100%;
-  
-  
+
+
 }
-.responsive.mobile-menu{
+.link_nav-bar.mobile-menu{
   margin-left: 0px;
   transition: all 0.5s ease;
 }

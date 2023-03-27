@@ -1,0 +1,146 @@
+.container-pilote {
+  width: 100%;
+  background-color:rgba(39, 37, 31, 0.05);
+  height: 700px;
+  padding-top: 3%;
+  padding-bottom: 5%;
+  display: flex;
+}
+
+.container-pilote-list {
+  flex: 1;
+  width: 40%;
+}
+
+.container-form-pilote {
+  flex: 2;
+  width: 60%;
+}
+
+.pilote-add{
+  width: 80%;
+  height: 50px;
+  border-radius: 12px;
+  border:1px solid black;
+  box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+  background-color: #fff;
+  font-size: 20px;
+  margin-right: 1%;
+  margin-left: 20%;
+}
+
+.pilote-list {
+  overflow-y: scroll;
+  height: 89%;
+  width: auto;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+.pilote-item {
+  border:1px solid black;
+  width: auto;
+  margin-right: 2%;
+  border-radius: 15px;
+  padding-left: 1%;
+  box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+  background-color: #fff;
+  margin-bottom: 5%;
+  padding: 20px
+}
+.title-item {
+  display: flex;
+}
+
+.pilote-name {
+  margin-left: 5%;
+}
+
+.pp-circle {
+  margin-left: 0;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background-color: #CCC;
+}
+
+.pp-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pp-circle .pp-initials {
+  font-size: 30px;
+  text-align: center;
+  line-height: 65px;
+}
+
+
+.card-form-pilote{
+  border: 1px solid black;
+  width: 75%;
+  height: 480px;
+  margin-left: 7.5%;
+  margin-top: 3%;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5%;
+  box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+}
+
+.form-pilote input{
+  width: 90%;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin-bottom: 3%;
+  font-size: 20px;
+  padding-left:2% ;
+  color: rgba(0, 0, 0, 0.8) ;
+}
+
+.form-pilote-buttons{
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+#submit {
+  color: rgba(0, 0, 0, 0.8) ;
+  background-color: #FFC853;
+  border-style: none;
+  border-radius: 12px;
+  height: 56px;
+  margin-top: 4%;
+  width: auto;
+  font-size: 20px;
+  padding: 0 5% 0 5%;
+
+}
+
+#delete {
+  width: auto;
+  border-style: none;
+  border-radius: 12px;
+  height: 56px;
+  margin-top: 4%;
+  margin-left: 2%;
+  background-color: rgba(39, 37, 31, 0.15);
+  padding: 0 2% 0% 2%;
+}
+
+
+#delete i{
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+#delete:hover i{
+  color: red;
+}
+

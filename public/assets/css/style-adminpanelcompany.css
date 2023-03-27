@@ -1,0 +1,135 @@
+.container-company {
+    width: 100%;
+    background-color:rgba(39, 37, 31, 0.05);
+    height: 1000px ;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    display: flex;
+  }
+  
+  .container-company-list {
+    flex: 1;
+    width: 40%;
+  }
+  
+  .container-form-company {
+    flex: 2;
+    width: 60%;
+  }
+  
+  .company-add{
+    width: 80%;
+    height: 50px;
+    border-radius: 12px;
+    border:1px solid black;
+    box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+    background-color: #fff;
+    font-size: 20px;
+    margin-right: 1%;
+    margin-left: 20%;
+  }
+  
+  .company-list {
+    overflow-y: scroll;
+    height: 89%;
+    width: auto;
+    margin-left: 20%;
+    margin-top: 5%;
+  }
+  
+  .company-item {
+    border:1px solid black;
+    width: auto;
+    margin-right: 2%;
+    border-radius: 15px;
+    padding-left: 1%;
+    box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+    background-color: #fff;
+    margin-bottom: 5%;
+    padding: 20px
+  }
+  .title-company {
+    display: flex;
+  }
+  
+
+  .card-form-company{
+    border: 1px solid black;
+    width: 75%;
+    height: 915px;
+    margin-left: 7.5%;
+    margin-top: 3%;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5%;
+    box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+  }
+  
+  .form_company input{
+    width: 90%;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 3%;
+    font-size: 20px;
+    padding-left:2% ;
+    color: rgba(0, 0, 0, 0.8) ;
+  }
+  
+  .form-company-buttons{
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+  
+  #submit {
+    color: rgba(0, 0, 0, 0.8) ;
+    background-color: #FFC853;
+    border-style: none;
+    border-radius: 12px;
+    height: 56px;
+    margin-top: 4%;
+    width: auto;
+    font-size: 20px;
+    padding: 0 5% 0 5%;
+  
+  }
+  
+  #delete {
+    width: auto;
+    border-style: none;
+    border-radius: 12px;
+    height: 56px;
+    margin-top: 4%;
+    margin-left: 2%;
+    background-color: rgba(39, 37, 31, 0.15);
+    padding: 0 2% 0% 2%;
+  }
+  
+  
+  #delete i{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+  
+  #delete:hover i{
+    color: red;
+  }
+
+
+  .stars i{
+    font-size: 3rem;
+  }
+
+  .stars p{
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.8) ;
+  }
+
+  .hover{
+    color:#FFC853;
+  }
+  
+  

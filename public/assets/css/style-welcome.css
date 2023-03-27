@@ -1,0 +1,299 @@
+/*style barre de recherche et bouton rechercher*/
+
+.container{
+  margin-left: 15%;
+
+}
+
+.container div {
+    width: 869px;
+    border: 1px solid black;
+    border-radius: 7px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    background-color:rgba(39, 37, 31, 0.05) ;
+    font-size: 22 px;
+  }
+
+
+ .container div input {
+    border:none;
+    outline: none;
+    width: 100%;
+    background-color:rgba(39, 37, 31, 0) ;
+    height: 30px;
+
+  }
+
+#search::placeholder{
+  padding-left:10px ;
+  color: rgba(0, 0, 0, 0.8) ;
+  font-size: 20px;
+}
+
+#search{
+  padding-top: 1%;
+}
+
+ .fa-magnifying-glass {
+    color: rgba(39, 37, 31, 0.5);
+    padding-left: 15px;
+    padding-right: 20px;
+    font-size: 30px;
+  }
+
+  .container button{
+  color: rgba(0, 0, 0, 0.8) ;
+  background-color: #FFC853;
+  border-style: none;
+  border-radius: 7px;
+  height: 45px;
+  width: 224px;
+  margin-left: 25px;
+  font-size: 22px;
+}
+
+.container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+
+
+/*partie filtre */
+.selecteur{
+  width: 158px;
+  background-color:rgba(39, 37, 31, 0.05);
+  border-radius: 5px;
+  border-width: 1px;
+  height:45px;
+  appearance: none;
+  padding-left:30px;
+  margin-right: 20px;
+  font-size: 22px;
+}
+
+.select{
+
+  display: flex;
+  align-items: center;
+}
+
+.select i{
+  position: absolute;
+  margin-left: 127px;
+  color: rgba(39, 37, 31, 0.5);
+  transform: rotate(90deg);
+  height: 15px;
+  width: 19.91px;
+}
+
+.filter {
+  display: flex;
+  margin-left: 15%;
+}
+
+
+
+.selecteur#Domaines{
+    width: 190px;
+}
+.selecteur#Entreprises{
+    width: 210px;
+}
+
+
+
+.select#Domaine,#Entreprise{
+
+  display: flex;
+  align-items: center;
+}
+
+.select#Domaine i{
+  margin-left: 153px;
+
+}
+
+.select#Entreprise i{
+
+  margin-left: 173px;
+
+}
+
+
+/*positionment filtre et barre de recherhce*/
+
+
+
+.search_filter{
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    text-align: center;
+ }
+
+
+
+
+
+
+ @media screen and (max-width: 900px){
+
+ }
+
+ /*Le CSS suivant permet d'afficher les offres en grand quand on click dessus*/
+
+.container-form-offer2 {
+  flex: 2;
+  width: 60%;
+  visibility: hidden;
+}
+
+
+.titre{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 31px;
+    padding-left: 41px;
+}
+
+.btnpostul{
+  color: rgba(0, 0, 0, 0.8) ;
+  background-color: #FFC853;
+  border-style: none;
+  border-radius: 12px;
+  height: 56px;
+  width: 174px;
+  margin-left: 20%;
+  font-size: 140%;
+}
+
+.display_lieux{
+ margin-bottom:2%;
+}
+
+.btnfavoris{
+    width: 56px;
+    height: 56px;
+    background: rgba(39, 37, 31, 0.1);
+    border-radius: 15px;
+    border-style: none;
+    margin-left: 85%;
+}
+
+.description {
+    padding: 0 20px 0 20px;
+}
+.description p{
+  margin: 5px 0 0 0;
+}
+
+.divbtns{
+    display: flex;
+}
+
+.entreprise{
+    display: flex;
+    padding-left: 41px;
+}
+
+.titreentreprise{
+    width: 108px;
+    height: 27px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: #27251F;
+    font-variation-settings: 'slnt' 0;
+    margin-right: 1%;
+}
+
+.note{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  color: #27251F;
+  font-variation-settings: 'slnt' 0;
+  margin-right: 1%;
+}
+
+.lieux{
+width: 57px;
+height: 27px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+color: #27251F;
+font-variation-settings: 'slnt' 0;
+padding-left: 41px;
+}
+
+.titredescription{
+    padding-left: 41px;
+}
+
+.btnfavoris i{
+  font-size: 25px;
+}
+
+.btnfavoris:hover i{
+  color: red;
+}
+
+.btnfavoris.clicked i {
+  color: red;
+}
+
+ /*style affichage des annonces*/
+.display{
+  width: 100%;
+  background-color:rgba(39, 37, 31, 0.05);
+  height: 800px ;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.display-list_offer{
+  overflow-y: scroll;
+  height: 100%;
+  width: 30%;
+  margin-left: 5%;
+
+}
+ .annonce{
+  border:1px solid black;
+  max-width: 100%;
+  max-height: 111%;
+  border-radius: 15px;
+  padding-left: 1%;
+  box-shadow: 2px  2px 3px rgba(39, 37, 31, 0.5);
+  background-color: #fff;
+  margin-bottom: 5%;
+
+}
+.titre_offre{
+  display: flex;
+}
+
+.name_entreprise {
+  padding-left: 5%;
+}
+
+.fa-solid.fa-star{
+  color: #FFC853;
+}
+
+.d-none {
+  display: none !important;
+}
