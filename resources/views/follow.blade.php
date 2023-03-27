@@ -3,6 +3,7 @@
 @section("contenu")
 
 @include("layout.section_search_all_follow")
+<script src="{{asset('assets/js/script-welcome.js')}}"></script>
 
 <div class="display">
 	<div class="display-list_offer">

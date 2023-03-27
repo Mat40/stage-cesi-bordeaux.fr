@@ -13,7 +13,7 @@
             @foreach ($offers as $offer)
                 <div class="offer-item" id="{{ $offer->id}}">
                     <div class="title-item">
-                        <img src="" alt="logo">
+                        <!-- <img src="" alt="logo"> -->
                         <h3 class="offer-title">{{ $offer->title}}</h3>
                     </div>
                     <div class="description">
@@ -79,6 +79,7 @@
                 <div class="">
                     <!-- <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus placeholder="Type de poste"> -->
                     <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" required autofocus>
+                        <option value="">Sélectionner un type d'offre</option>
                         <option value="Stage">Stage</option>
                         <option value="Alternance">Alternance</option>
                     </select>

@@ -15,7 +15,6 @@
   .container-form-offer {
     flex: 2;
     width: 60%;
-
   }
 
   .offer-add{
@@ -51,6 +50,7 @@
   }
   .title-item {
     display: flex;
+    justify-content: center;
   }
 
   .offer-name {

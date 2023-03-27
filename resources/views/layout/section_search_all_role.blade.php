@@ -5,8 +5,9 @@
 		<button type="submit" formaction="/admin/offre">Offres</button>
 		<button type="submit" formaction="/admin/entreprise">Entreprises</button>
 		<button type="submit" formaction="/admin/etudiant">Etudiants</button>
-
-		<button type="submit" formaction="/admin/pilote">Pilotes</button>
+		@if (auth()->user()->permission == "admin")
+			<button type="submit" formaction="/admin/pilote">Pilotes</button>
+		@endif
 	</div>
 	<section class="container_min">
 		<div>
