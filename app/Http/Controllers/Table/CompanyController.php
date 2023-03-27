@@ -140,7 +140,7 @@ class CompanyController extends Controller
                     $query->where('city','like',"%$q%");
                 });
             })
-            ->paginate(6);
+            ->get();
     
         return view('/administrateur/entreprises', compact('companies','placeholder'));
     }

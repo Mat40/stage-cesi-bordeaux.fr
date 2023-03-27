@@ -79,7 +79,7 @@ class UserController extends Controller
                     ->orWhere('grade','like',"%$q%")
                     ->orWhere('email','like',"%$q%");
             })
-            ->paginate(6);
+            ->get();
     
         return view('/administrateur/etudiants', compact('placeholder','users'));
     }
@@ -97,7 +97,7 @@ class UserController extends Controller
                     ->orWhere('grade','like',"%$q%")
                     ->orWhere('email','like',"%$q%");
             })
-            ->paginate(6);
+            ->get();
     
         return view('/administrateur/pilotes', compact('placeholder','pilotes'));
     }

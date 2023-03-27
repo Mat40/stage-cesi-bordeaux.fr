@@ -1,5 +1,7 @@
 @extends("layout.master")
 
+
+
 @section("contenu")
 <form class="search_filter" type="get" action="{{route('offer/search')}}">
 		<section class="container">
@@ -12,10 +14,10 @@
 		<div class="filter">
 			<div class = "select">
 				<select class="selecteur">
-					<option value="">Type</option>
-					<option value="">First</option>
-					<option value="">First</option>
-					<option value="">First</option>
+				<option value="">Type</option>
+					@foreach(\App\Models\Offer::pluck('type') as $type)
+						<option value="{{ $type }}">{{ $type }}</option>
+					@endforeach
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -23,9 +25,9 @@
 			<div class = "select">
 				<select class="selecteur">
 					<option value="">Date</option>
-					<option value="">First</option>
-					<option value="">First</option>
-					<option value="">First</option>
+					@foreach(\App\Models\Offer::pluck('release_date') as $release_date)
+						<option value="{{ $release_date }}">{{ $release_date }}</option>
+					@endforeach
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -33,29 +35,29 @@
 			<div class = select>
 				<select class="selecteur">
 					<option value="">Lieux</option>
-					<option value="">First</option>
-					<option value="">First</option>
-					<option value="">First</option>
+					@foreach(\App\Models\Address::pluck('city') as $city)
+						<option value="{{ $city }}">{{ $city }}</option>
+					@endforeach
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
 
 			<div class = "select" id="Domaine">
 				<select class="selecteur" id="Domaines">
-					<option value="">Domaine</option>
-					<option value="">First</option>
-					<option value="">First</option>
-					<option value="">First</option>
+				<option value="">Domaine</option>
+					@foreach(\App\Models\area_activity::pluck('name') as $name)
+						<option value="{{ $name }}">{{ $name }}</option>
+					@endforeach
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
 
 			<div class = "select" id="Entreprise" >
 				<select class="selecteur" id="Entreprises">>
-					<option value="">Entreprise</option>
-					<option value="">First</option>
-					<option value="">First</option>
-					<option value="">First</option>
+				<option value="">Entreprise</option>
+					@foreach(\App\Models\Company::pluck('name') as $name)
+						<option value="{{ $name }}">{{ $name }}</option>
+					@endforeach
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
@@ -130,5 +132,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection

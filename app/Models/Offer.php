@@ -42,4 +42,9 @@ class Offer extends Model
     public function address(){
         return $this->belongsTo(Address::class, 'id_Address');
     }
+
+    public function possesses()
+    {
+        return $this->hasMany(possess::class);
+    }
 }

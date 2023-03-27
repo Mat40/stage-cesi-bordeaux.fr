@@ -73,5 +73,30 @@
 			}
 		}
 		});
+
+	
+		
+
+			// Sélectionnez tous les éléments de sélection dans votre formulaire
+			const selects = document.querySelectorAll('.selecteur');
+
+			// Créez une fonction pour mettre à jour la barre de recherche avec les valeurs sélectionnées
+			const updateSearchInput = () => {
+				// Récupérez toutes les valeurs sélectionnées
+				const selectedValues = Array.from(selects).map(select => select.value).filter(value => value !== '');
+
+				// Concaténez les valeurs sélectionnées en une seule chaîne
+				const searchValue = selectedValues.join(' ');
+
+				// Sélectionnez la barre de recherche et mettez à jour sa valeur
+				const searchInput = document.querySelector('#search');
+				searchInput.value = searchValue;
+			};
+
+			// Ajoutez un écouteur d'événements pour détecter lorsque l'utilisateur sélectionne une valeur
+			selects.forEach(select => {
+				select.addEventListener('change', updateSearchInput);
+			});
+
 	</script>
 </html>

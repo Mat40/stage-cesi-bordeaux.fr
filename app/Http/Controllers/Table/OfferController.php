@@ -256,7 +256,7 @@ class OfferController extends Controller
         return redirect()->back();
     }
 
-    public function search(){
+    /*public function search(){
         $q=request()->input('q');
         $applied = null;
         $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
@@ -272,10 +272,51 @@ class OfferController extends Controller
             ->orWhereHas('address', function($query) use ($q) {
                 $query->where('city','like',"%$q%");
             })
-            ->paginate(6);
+            ->get();
     
         return view('welcome', compact('offers','applied', 'appliedJobs', 'followed', 'followedOffers'));
+    }*/
+
+
+    public function search()
+{
+    // Récupérez la valeur de la barre de recherche
+    $q = request()->input('q');
+    $applied = null;
+    $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
+    $followed = null;
+    $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
+
+    // Divisez la chaîne en mots-clés individuels
+    $keywords = explode(' ', $q);
+
+    // Créez une requête pour rechercher les offres correspondantes
+    $query = Offer::query();
+
+    // Ajoutez des conditions à la requête pour chaque mot-clé
+    foreach ($keywords as $keyword) {
+        $query->where(function ($query) use ($keyword) {
+            $query->where('title', 'like', "%$keyword%")
+                ->orWhere('duration', 'like', "%$keyword%")
+                ->orWhere('release_date', 'like', "%$keyword%")
+                ->orWhere('type', 'like', "%$keyword%")
+                ->orWhere('description', 'like', "%$keyword%")
+                ->orWhereHas('company', function ($query) use ($keyword) {
+                    $query->where('name', 'like', "%$keyword%");
+                })
+                ->orWhereHas('address', function ($query) use ($keyword) {
+                    $query->where('city', 'like', "%$keyword%");
+                });
+        });
     }
+
+    // Exécutez la requête et récupérez les résultats
+    $offers = $query->get();
+
+
+    // Affichez les résultats dans votre vue
+    return view('welcome', compact('offers','applied', 'appliedJobs', 'followed', 'followedOffers'));
+}
 
 
     public function search_pannel_offer(){
@@ -292,7 +333,7 @@ class OfferController extends Controller
             ->orWhereHas('address', function($query) use ($q) {
                 $query->where('city','like',"%$q%");
             })
-            ->paginate(6);
+            ->get();
     
             
             return view('/administrateur/offres', compact('placeholder','offers','companies'));
