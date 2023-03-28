@@ -111,21 +111,17 @@
 				@csrf
 				<div class="divbtns">
 					<div class="divpostul">
-						@if (!$applied)
-							@if($hasCv)
-								<button class="btnpostul" type="submit">Postuler</button>
-							@else
-								<button class="btnpostul" type="submit" style="font-size: 15px" disabled>Veuillez ajouter un CV</button>
-							@endif
+						@if($hasCv)
+							<button class="btnpostul" type="submit">Postuler</button>
+						@else
+							<button class="btnpostul" type="submit" style="font-size: 15px" disabled>Veuillez ajouter un CV</button>
 						@endif
 					</div>
 
 					<div class="divfavoris">
-						@if ($followed)
-							<button class="btnfavoris clicked"><i class="fa-solid fa-heart"></i></button>
-						@else
-							<button class="btnfavoris"><i class="fa-solid fa-heart"></i></button>
-						@endif
+						<button class="btnfavoris @if($followed) clicked @endif">
+							<i class="fa-solid fa-heart"></i>
+						</button>
 					</div>
 				</div>
 			</form>

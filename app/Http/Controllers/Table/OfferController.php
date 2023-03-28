@@ -29,6 +29,20 @@ class OfferController extends Controller
         return view('welcome', compact('offers', 'applied', 'appliedJobs', 'followed', 'followedOffers', 'hasCv'));
     }
 
+    public function checkOfferApplied(Request $request)
+    {
+    $offerId = $request->input('offer_id');
+    $isApplied = auth()->user()->appliedJobs()->where('offer_id', $offerId)->exists();
+    return response()->json(['isApplied' => $isApplied]);
+    }
+
+    public function checkOfferFollowed(Request $request)
+    {
+    $offerId = $request->input('offer_id');
+    $isFollowed = auth()->user()->followedOffer()->where('offer_id', $offerId)->exists();
+    return response()->json(['isFollowed' => $isFollowed]);
+    }
+
     public function create(Request $request){
 
         // dd($request);
