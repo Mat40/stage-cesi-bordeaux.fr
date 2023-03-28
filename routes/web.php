@@ -88,6 +88,8 @@ Route::middleware(['auth'])->group(function() {
         $path = storage_path('app/uploads/' . $filename);
         return response()->file($path);
     });
+
+    Route::get('offre/apply/{id}',[OfferController::class, 'responsive']);
  });
 
 Auth::routes();

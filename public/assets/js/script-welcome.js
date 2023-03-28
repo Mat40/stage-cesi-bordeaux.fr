@@ -46,3 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
         $(this).find(':submit').prop('disabled', true);
       });
     });
+
+    $(document).ready(function() {
+      $('.offer-item').each(function() {
+        const id = $(this).attr('id');
+        $(this).on('click', function() {
+          if (window.innerWidth < 768) {
+            window.open('offre/apply/' + id);
+          }
+        });
+      });
+    });

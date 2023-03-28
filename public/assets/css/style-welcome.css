@@ -297,3 +297,90 @@ padding-left: 41px;
 .d-none {
   display: none !important;
 }
+
+@media screen and (max-width: 900px) {
+  /* Styles pour les écrans de téléphone */
+  .search_filter {
+    margin-left: 1%;
+  }
+
+  .search_filter input[type="search"] {
+  width: 100%;
+  font-size: 16px;
+
+  }
+
+  .filter {
+    display: none;
+  }
+
+  .container div {
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 7px;
+    height: 45px;
+    align-items: center;
+    background-color:rgba(39, 37, 31, 0.05) ;
+    font-size: 22 px;
+  }
+
+
+  .container button{
+    color: rgba(0, 0, 0, 0.8) ;
+    background-color: #FFC853;
+    border-style: none;
+    border-radius: 7px;
+    height: 45px;
+    width: 100px;
+    margin-left: 25px;
+    font-size: 15px;
+  }
+
+  #search::placeholder{
+    padding-left:2px ;
+    color: rgba(0, 0, 0, 0.8) ;
+    font-size: 15px;
+  }
+
+  .fa-magnifying-glass {
+    color: rgba(39, 37, 31, 0.5);
+    padding-left: 15px;
+    padding-right: 20px;
+    font-size:15px;
+  }
+
+
+    .container-form-offer2 {
+      display: none;
+
+    }
+
+  .container-offer {
+    width: 10%;
+    background-color:rgba(39, 37, 31, 0.05);
+    height: 1350px;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    display: flex;
+  }
+
+  .container-offer-list {
+    flex: 1;
+    width: 100%;
+  }
+
+  .description p{
+    margin: 0px 0 0 0;
+  }
+
+  .offer-list {
+    height: 89%;
+    width: 100%;
+    margin-left: 2%;
+    margin-top: 5%;
+  }
+
+
+
+
+}

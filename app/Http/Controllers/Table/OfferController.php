@@ -341,4 +341,17 @@ class OfferController extends Controller
 
             return view('/administrateur/offres', compact('placeholder','offers','companies'));
     }
+
+
+    public function responsive($id)
+    {
+        $offer = Offer::find($id);
+        $applied = null;
+        $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
+        $followed = null;
+        $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
+        $cvController = new CvController();
+        $hasCv = $cvController->hasCv();
+        return view('offre_responsive', compact('offer', 'applied', 'appliedJobs', 'followed', 'followedOffers', 'hasCv'));
+    }
 }
