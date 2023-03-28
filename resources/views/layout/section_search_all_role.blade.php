@@ -1,5 +1,4 @@
-
-<form class="search_filter_min" type="get" action="{{route('student/search')}}">
+<form class="search_filter_min" method="get" action="{{route('student/search')}}">
 	<h2>Panel administration</h2>
 	<div class="switch_page">
 		<button type="submit" formaction="/admin/offre">Offres</button>
@@ -28,5 +27,3 @@
 
 </form>
 <body>
-
-

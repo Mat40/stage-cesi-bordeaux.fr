@@ -9,8 +9,21 @@ window.onscroll = function() {
   prevScrollPos = currentScrollPos;
 }
 
-if (!navigator.serviceWorker.controller) {
-  navigator.serviceWorker.register("/sw.js").then(function (reg) {
-      console.log("Service worker has been registered for scope: " + reg.scope);
+document.addEventListener("DOMContentLoaded", function () {
+  const menuHamburger = document.querySelector(".menu-hamburger");
+  const responsive = document.querySelector(".link_nav-bar");
+  let defaultStyle = 'block'; // Remplacez cette valeur par la valeur par défaut que vous souhaitez
+
+  menuHamburger.addEventListener('click', () => {
+    responsive.classList.toggle('mobile-menu');
+    var elements = document.getElementsByClassName('fa-play');
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].style.display === 'none') {
+        elements[i].style.display = defaultStyle;
+      } else {
+        defaultStyle = elements[i].style.display;
+        elements[i].style.display = 'none';
+      }
+    }
   });
-}
+});

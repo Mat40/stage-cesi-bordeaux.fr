@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Password;
 
 
 class RegisterController extends Controller
@@ -86,12 +87,6 @@ class RegisterController extends Controller
             'password' => Hash::make(Str::random(8)),
         ]);
 
-    }
-
-    protected function registered(Request $request, $user)
-    {
-        // Disable automatic login after registration
-        return new Response('', 204);
     }
 }
 

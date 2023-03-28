@@ -42,7 +42,7 @@
             <form class="form-offer" method="post" action="{{ route('register/offre') }}">
                 @csrf
                 <div class="">
-                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')}}" required autocomplete="title" autofocus placeholder="Titre de l'offre">
+                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')}}" required autocomplete="title" placeholder="Titre de l'offre">
 
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="">
-                <select id="name" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
+                <select id="name" class="form-control @error('name') is-invalid @enderror" name="name" required>
                     <option value="">Sélectionner une entreprise</option>
                     @foreach($companies as $company)
                         <option value="{{ $company->id }}" >{{ $company->name }}</option>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="">
-                    <select id="city" class="form-control @error('city') is-invalid @enderror" name="city" required autofocus>
+                    <select id="city" class="form-control @error('city') is-invalid @enderror" name="city" required >
                         <option value="">Sélectionner une ville</option>
                     </select>
                     @error('city')
@@ -78,7 +78,7 @@
 
                 <div class="">
                     <!-- <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus placeholder="Type de poste"> -->
-                    <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" required autofocus>
+                    <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" required >
                         <option value="">Sélectionner un type d'offre</option>
                         <option value="Stage">Stage</option>
                         <option value="Alternance">Alternance</option>
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="">
-                    <input id="release_date" type="date" class="form-control @error('release_date') is-invalid @enderror" name="release_date" value="{{ old('release_date') }}" required autocomplete="release_date" placeholder="Durée">
+                    <input id="release_date" type="date" class="form-control @error('release_date') is-invalid @enderror" name="release_date" value="{{ old('release_date') }}" required autocomplete="release_date">
 
                     @error('release_date')
                         <span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="text_area">
-                <label for="description">Description:</label></br>
+                <label for="description">Description:</label><br>
                 <textarea id="description" name="descriptions" rows="10" cols="70"></textarea>
 
                 </div>

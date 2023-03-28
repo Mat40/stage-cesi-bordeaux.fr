@@ -16,7 +16,7 @@
 			<div class = "select">
 				<select class="selecteur">
 				<option value="">Type</option>
-					@foreach(\App\Models\Offer::pluck('type') as $type)
+					@foreach(\App\Models\Offer::pluck('type')->unique() as $type)
 						<option value="{{ $type }}">{{ $type }}</option>
 					@endforeach
 				</select>
@@ -26,7 +26,7 @@
 			<div class = "select">
 				<select class="selecteur">
 					<option value="">Date</option>
-					@foreach(\App\Models\Offer::pluck('release_date') as $release_date)
+					@foreach(\App\Models\Offer::pluck('release_date')->unique() as $release_date)
 						<option value="{{ $release_date }}">{{ $release_date }}</option>
 					@endforeach
 				</select>
@@ -36,7 +36,7 @@
 			<div class = select>
 				<select class="selecteur">
 					<option value="">Lieux</option>
-					@foreach(\App\Models\Address::pluck('city') as $city)
+					@foreach(\App\Models\Address::pluck('city')->unique() as $city)
 						<option value="{{ $city }}">{{ $city }}</option>
 					@endforeach
 				</select>
@@ -46,7 +46,7 @@
 			<div class = "select" id="Domaine">
 				<select class="selecteur" id="Domaines">
 				<option value="">Domaine</option>
-					@foreach(\App\Models\area_activity::pluck('name') as $name)
+					@foreach(\App\Models\area_activity::pluck('name')->unique() as $name)
 						<option value="{{ $name }}">{{ $name }}</option>
 					@endforeach
 				</select>
@@ -56,7 +56,7 @@
 			<div class = "select" id="Entreprise" >
 				<select class="selecteur" id="Entreprises">>
 				<option value="">Entreprise</option>
-					@foreach(\App\Models\Company::pluck('name') as $name)
+					@foreach(\App\Models\Company::pluck('name')->unique() as $name)
 						<option value="{{ $name }}">{{ $name }}</option>
 					@endforeach
 				</select>
@@ -112,7 +112,11 @@
 				<div class="divbtns">
 					<div class="divpostul">
 						@if (!$applied)
-							<button class="btnpostul" type="submit">Postuler</button>
+							@if($hasCv)
+								<button class="btnpostul" type="submit">Postuler</button>
+							@else
+								<button class="btnpostul" type="submit" style="font-size: 15px" disabled>Veuillez ajouter un CV</button>
+							@endif
 						@endif
 					</div>
 

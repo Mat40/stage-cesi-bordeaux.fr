@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('CV', function (Blueprint $table) {
+        Schema::create('cv', function (Blueprint $table) {
             $table->id();
             $table->string('file_name', 50);
             $table->string('file_path', 50);
@@ -32,6 +32,6 @@ return new class extends Migration
     public function down()
     {
 
-        Schema::dropIfExists('CV');
+        Schema::dropIfExists('cv');
     }
 };
