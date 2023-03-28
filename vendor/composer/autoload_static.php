@@ -123,6 +123,7 @@ class ComposerStaticInit0eeec596841669921abf8833605af8dd
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
+            'LaravelPWA\\' => 11,
             'Ladumor\\LaravelPwa\\' => 19,
         ),
         'I' => 
@@ -417,6 +418,10 @@ class ComposerStaticInit0eeec596841669921abf8833605af8dd
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
+        'LaravelPWA\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/silviolleite/laravelpwa',
+        ),
         'Ladumor\\LaravelPwa\\' => 
         array (
             0 => __DIR__ . '/..' . '/ladumor/laravel-pwa/src',
@@ -572,6 +577,7 @@ class ComposerStaticInit0eeec596841669921abf8833605af8dd
         'App\\Models\\area_activity' => __DIR__ . '/../..' . '/app/Models/area_activity.php',
         'App\\Models\\follow' => __DIR__ . '/../..' . '/app/Models/follow.php',
         'App\\Models\\part_of' => __DIR__ . '/../..' . '/app/Models/part_of.php',
+        'App\\Models\\possess' => __DIR__ . '/../..' . '/app/Models/possess.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -2746,6 +2752,11 @@ class ComposerStaticInit0eeec596841669921abf8833605af8dd
         'Ladumor\\LaravelPwa\\LaravelPwa' => __DIR__ . '/..' . '/ladumor/laravel-pwa/src/LaravelPwa.php',
         'Ladumor\\LaravelPwa\\PWAServiceProvider' => __DIR__ . '/..' . '/ladumor/laravel-pwa/src/PWAServiceProvider.php',
         'Ladumor\\LaravelPwa\\commands\\PublishPWA' => __DIR__ . '/..' . '/ladumor/laravel-pwa/src/commands/PublishPWA.php',
+        'LaravelPWA\\Http\\Controllers\\LaravelPWAController' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Http/Controllers/LaravelPWAController.php',
+        'LaravelPWA\\Providers\\LaravelPWAServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/LaravelPWAServiceProvider.php',
+        'LaravelPWA\\Providers\\RouteServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/RouteServiceProvider.php',
+        'LaravelPWA\\Services\\ManifestService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/ManifestService.php',
+        'LaravelPWA\\Services\\MetaService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/MetaService.php',
         'Laravel\\Sail\\Console\\AddCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/AddCommand.php',
         'Laravel\\Sail\\Console\\Concerns\\InteractsWithDockerComposeServices' => __DIR__ . '/..' . '/laravel/sail/src/Console/Concerns/InteractsWithDockerComposeServices.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',

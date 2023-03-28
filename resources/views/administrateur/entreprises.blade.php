@@ -7,13 +7,13 @@
 
 <div class="container-company">
     <div class="container-company-list">
-        <button class ="company-add" type="button">+ Ajouter entrerise</button>
+        <button class ="company-add" type="button">Ajouter entrerise</button>
 
             <div class="company-list">
                 @foreach ($companies as $company)
                     <div class="company-item" id="{{ $company->id}}">
                         <div class="title_company">
-                            <img src="" alt="logo">
+                            <!-- <img src="" alt="logo"> -->
                             <h3 class="name_entreprise">{{ $company->name}}   {{ number_format($company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </h3>
                             <p class="company_name" style="display: none">{{ $company->name}} </p>
                              <p class="company_trust" data-description="{{ $company->trust }}"style="display: none">{{ number_format($company->trust, 2, ',', ' ') }} </p>
@@ -40,7 +40,7 @@
                         @csrf
                             <div >
                                 <div>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name')}}" required autocomplete="name" autofocus placeholder="Nom de l'entreprise">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name')}}" required autofocus placeholder="Nom de l'entreprise">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
 
                             <div >
                                 <div>
-                                    <input id="area_activity" type="text" class="form-control @error('area_activity') is-invalid @enderror" name="area_activity" value="{{ old('area_activity') }}" required autocomplete="area_activity" autofocus placeholder="Secteur d'activités">
+                                    <input id="area_activity" type="text" class="form-control @error('area_activity') is-invalid @enderror" name="area_activity" value="{{ old('area_activity') }}" required placeholder="Secteur d'activités">
                                     @error('area_activity')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
 
                             <div>
                                 <div>
-                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus placeholder="Lieux">
+                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required placeholder="Lieux">
                                     @error('city')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
 
                             <div>
                                 <div>
-                                    <input id="postal_code" type="number" class="form-control @error('city') is-invalid @enderror" name="postal_code" value="{{ old('city') }}" required autocomplete="postal_code" autofocus placeholder="Code postal">
+                                    <input id="postal_code" type="number" class="form-control @error('city') is-invalid @enderror" name="postal_code" value="{{ old('city') }}" required placeholder="Code postal">
                                     @error('postal_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -84,7 +84,7 @@
                             </div>
                             <div >
                                 <div>
-                                    <input id="number_of_trainees" type="number" class="form-control @error('number_of_trainees') is-invalid @enderror" name="number_of_trainees" value="{{ old('number_of_trainees') }}" required autocomplete="number_of_trainees" autofocus placeholder="Nombre de stage effectués par des étudiants">
+                                    <input id="number_of_trainees" type="number" class="form-control @error('number_of_trainees') is-invalid @enderror" name="number_of_trainees" value="{{ old('number_of_trainees') }}" required placeholder="Nombre de stage effectués par des étudiants">
                                     @error('number_of_trainees')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

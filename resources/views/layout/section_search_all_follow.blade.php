@@ -1,5 +1,4 @@
-
-<form class="search_filter_min" type="get" action="">
+<form class="search_filter_min" method="get" action="">
 	<h2>Vos offres enregistrés</h2>
 	<div class="switch_page">
 		<button type="submit" formaction="/follow">Offres enregistrées</button>
@@ -24,5 +23,3 @@
 
 </form>
 <body>
-
-

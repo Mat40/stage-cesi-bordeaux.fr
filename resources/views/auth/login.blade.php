@@ -10,11 +10,11 @@
   </head>
   <body>
     <div class="image_gauche">
-      <img src="{{ asset('assets/images/main.jpg') }}">
+      <img src="{{ asset('assets/images/main.jpg') }}" alt="background">
     </div>
     <div class="right">
       <div class="header-right">
-        <img src="{{ asset('assets/images/cesi.png') }}">
+        <img src="{{ asset('assets/images/cesi.png') }}" alt="logo">
       </div>
       <div class="formulaire">
         <br>
@@ -57,13 +57,5 @@
       </div>
       <footer class="condition">© 2016 Microsoft Home Aide</footer>
     </div>
-    <script src="{{ asset('/sw.js') }}"></script>
-		<script>
-			if (!navigator.serviceWorker.controller) {
-				navigator.serviceWorker.register("/sw.js").then(function (reg) {
-					console.log("Service worker has been registered for scope: " + reg.scope);
-				});
-			}
-		</script>
   </body>
 </html>

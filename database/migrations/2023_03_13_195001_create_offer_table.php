@@ -26,7 +26,7 @@ return new class extends Migration
             $table->longText('description');
             $table->bigInteger('id_Company')->unsigned();
             $table->bigInteger('id_Address')->unsigned();
-            $table->foreign('id_Company') ->references('id')->on('Company');
+            $table->foreign('id_Company') ->references('id')->on('company');
             $table->foreign('id_Address') ->references('id')->on('address');
             $table->timestamps();
         });

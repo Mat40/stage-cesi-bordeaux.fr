@@ -13,6 +13,7 @@ use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\JobApplicationMail;
 use App\Mail\ConfirmationMail;
+use App\Http\Controllers\Table\CvController;
 
 class OfferController extends Controller
 {
@@ -23,7 +24,9 @@ class OfferController extends Controller
         $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
         $followed = null;
         $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
-        return view('welcome', compact('offers', 'applied', 'appliedJobs', 'followed', 'followedOffers'));
+        $cvController = new CvController();
+        $hasCv = $cvController->hasCv();
+        return view('welcome', compact('offers', 'applied', 'appliedJobs', 'followed', 'followedOffers', 'hasCv'));
     }
 
     public function create(Request $request){
@@ -262,7 +265,7 @@ class OfferController extends Controller
         $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
         $followed = null;
         $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
-    
+
         $offers=Offer::where('title','like',"%$q%")
             ->orWhere('duration','like',"%$q%")
             ->orWhere('description','like',"%$q%")
@@ -273,7 +276,7 @@ class OfferController extends Controller
                 $query->where('city','like',"%$q%");
             })
             ->get();
-    
+
         return view('welcome', compact('offers','applied', 'appliedJobs', 'followed', 'followedOffers'));
     }*/
 
@@ -323,7 +326,7 @@ class OfferController extends Controller
         $q=request()->input('q');
         $companies = Company::all();
         $placeholder="Métier, mots-clés, entreprise, compétences ...";
-    
+
         $offers=Offer::where('title','like',"%$q%")
             ->orWhere('duration','like',"%$q%")
             ->orWhere('description','like',"%$q%")
@@ -334,8 +337,8 @@ class OfferController extends Controller
                 $query->where('city','like',"%$q%");
             })
             ->get();
-    
-            
+
+
             return view('/administrateur/offres', compact('placeholder','offers','companies'));
     }
 }

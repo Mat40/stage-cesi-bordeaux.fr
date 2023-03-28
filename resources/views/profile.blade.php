@@ -98,7 +98,6 @@
                     </form>
                 @endif
             </div>
-        </select>
         </div>
     </div>
     @endif

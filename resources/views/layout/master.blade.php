@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
-		<html lang="fr">
 		<link rel="stylesheet" href="{{asset('assets/css/style-master.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-welcome.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-profile.css')}}">
@@ -11,16 +10,13 @@
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpaneloffer.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-adminpanelcompany.css')}}">
 		<link  rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
-		<script src="{{asset('assets/js/jquery-3.6.3.js')}}"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 		<script src="{{asset('assets/js/script-master.js')}}"></script>
 		<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
-		<!-- PWA  -->
-		<meta name="theme-color" content="#6777ef"/>
-		<link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
-		<link rel="manifest" href="{{ asset('/manifest.json') }}">
+		@laravelPWA
 	<title>Stage</title>
 	</head>
 	<body>
@@ -58,33 +54,5 @@
 		<footer>
 			<a href="#mention" class="mention">Copyright © CESI Ecole d'Ingénieurs</a>
 		</footer>
-
-		<script src="{{ asset('/sw.js') }}"></script>
-		<script>
-			if (!navigator.serviceWorker.controller) {
-				navigator.serviceWorker.register("/sw.js").then(function (reg) {
-					console.log("Service worker has been registered for scope: " + reg.scope);
-				});
-			}
-		</script>
 	</body>
-
-	<script>
-		const menuHamburger = document.querySelector(".menu-hamburger");
-		const responsive = document.querySelector(".link_nav-bar");
-		let defaultStyle = 'block'; // Remplacez cette valeur par la valeur par défaut que vous souhaitez
-
-		menuHamburger.addEventListener('click', () => {
-		responsive.classList.toggle('mobile-menu');
-		var elements = document.getElementsByClassName('fa-play');
-		for (var i = 0; i < elements.length; i++) {
-			if (elements[i].style.display === 'none') {
-			elements[i].style.display = defaultStyle;
-			} else {
-			defaultStyle = elements[i].style.display;
-			elements[i].style.display = 'none';
-			}
-		}
-		});
-	</script>
 </html>
