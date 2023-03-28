@@ -88,6 +88,14 @@ Route::middleware(['auth'])->group(function() {
         $path = storage_path('app/uploads/' . $filename);
         return response()->file($path);
     });
+
+    Route::get('offre/apply/{id}',[OfferController::class, 'responsive']);
+
+    // Route pour vérifier si l'offre est appliquée
+    Route::get('/check-offer-applied', [OfferController::class, 'checkOfferApplied']);
+
+    // Route pour vérifier si l'offre est suivie
+    Route::get('/check-offer-followed', [OfferController::class, 'checkOfferFollowed']);
  });
 
 Auth::routes();

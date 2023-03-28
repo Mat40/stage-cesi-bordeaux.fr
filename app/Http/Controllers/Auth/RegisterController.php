@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Mail\SendPasswordResetEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
 
@@ -77,7 +79,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'campus' => $data['campus'],
@@ -86,7 +88,13 @@ class RegisterController extends Controller
             'permission' => $data['permission'],
             'password' => Hash::make(Str::random(8)),
         ]);
+        // Générer un token de réinitialisation de mot de passe
+        $token = Password::createToken($user);
 
+        // Envoyer l'email de réinitialisation de mot de passe
+        Mail::to($user->email)->send(new SendPasswordResetEmail($token, $user));
+
+        return $user;
     }
 }
 

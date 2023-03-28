@@ -4,7 +4,9 @@
 
 @section("contenu")
 <script src="{{asset('assets/js/script-welcome.js')}}"></script>
-<form class="search_filter" type="get" action="{{route('offer/search')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-offerresponsive.css')}}">
+
+    <form class="search_filter" type="get" action="{{route('offer/search')}}">
 		<section class="container">
   			<div>
   				<i class="fa-solid fa-magnifying-glass"></i>
@@ -16,7 +18,7 @@
 			<div class = "select">
 				<select class="selecteur">
 				<option value="">Type</option>
-					@foreach(\App\Models\Offer::pluck('type')->unique() as $type)
+					@foreach(\App\Models\Offer::pluck('type') as $type)
 						<option value="{{ $type }}">{{ $type }}</option>
 					@endforeach
 				</select>
@@ -26,7 +28,7 @@
 			<div class = "select">
 				<select class="selecteur">
 					<option value="">Date</option>
-					@foreach(\App\Models\Offer::pluck('release_date')->unique() as $release_date)
+					@foreach(\App\Models\Offer::pluck('release_date') as $release_date)
 						<option value="{{ $release_date }}">{{ $release_date }}</option>
 					@endforeach
 				</select>
@@ -36,7 +38,7 @@
 			<div class = select>
 				<select class="selecteur">
 					<option value="">Lieux</option>
-					@foreach(\App\Models\Address::pluck('city')->unique() as $city)
+					@foreach(\App\Models\Address::pluck('city') as $city)
 						<option value="{{ $city }}">{{ $city }}</option>
 					@endforeach
 				</select>
@@ -46,7 +48,7 @@
 			<div class = "select" id="Domaine">
 				<select class="selecteur" id="Domaines">
 				<option value="">Domaine</option>
-					@foreach(\App\Models\area_activity::pluck('name')->unique() as $name)
+					@foreach(\App\Models\area_activity::pluck('name') as $name)
 						<option value="{{ $name }}">{{ $name }}</option>
 					@endforeach
 				</select>
@@ -56,55 +58,36 @@
 			<div class = "select" id="Entreprise" >
 				<select class="selecteur" id="Entreprises">>
 				<option value="">Entreprise</option>
-					@foreach(\App\Models\Company::pluck('name')->unique() as $name)
-						<option value="{{ $name }}">{{ $name }}</option>
+					@foreach(\App\Models\Company::pluck('name') as $name)
+						<option value="{{$name }}">{{ $name }}</option>
 					@endforeach
 				</select>
 				<i class="fa-solid fa-play"></i>
 			</div>
 		</div>
-</form>
+    </form>
 
 <div class="container-offer">
-	<div class="container-offer-list">
-		<div class="offer-list">
-			@foreach ($offers as $offer)
-				@php
-					{{$applied = in_array($offer->id, $appliedJobs);}}
-					{{$followed = in_array($offer->id, $followedOffers);}}
-				@endphp
 
-
-				<div class="offer-item" id="{{ $offer->id}}">
-					<div class="title-item">
-						<!-- <img src="" alt="logo"> -->
-						<h3 class="offer-title">{{ $offer->title }}</h3>
-					</div>
-					<div class="description">
-						<p class="company-trust"> {{ $offer->company->name}} {{ number_format($offer->company->trust, 2, ',', ' ') }} <i class="fa-solid fa-star"></i> </p>
-						<p class ="offer-city">{{ $offer->address->city}}</p>
-						<p class="offer-description" data-description="{{ $offer->description }}">{!! Str::limit($offer->description, 50) !!}</p>
-					</div>
-				</div>
-			@endforeach
-		</div>
-	</div>
 
     <div class="container-form-offer2">
         <div class="card-form-offer">
-			<h1 class="titre">
 
+			<h1 class="titre">
+                {{ $offer->title }}
 			</h1>
 			<div class="entreprise">
 					<div class="titreentreprise">
+                        {{ $offer->company->name}}
 					</div>
 					<div class="note">
+                        {{ number_format($offer->company->trust, 2, ',', ' ') }}
 					</div>
 					<i class="fa-solid fa-star"></i>
 			</div>
 			<br>
 			<div >
-				<span class="lieux"></span>
+				<span class="lieux">{{ $offer->address->city}}</span>
 			</div>
 			<br>
 			<form class="form-offer" method="post" action="">
@@ -126,12 +109,12 @@
 				</div>
 			</form>
 			<div class="titredescription">
-				<h2></h2>
+				<h2>{!! Str::limit($offer->description, 50) !!}</h2>
 			</div>
 			<div class="description">
 			</div>
 		</div>
-	</div>
-</div>
 
+	</div>
+    </div>
 @endsection

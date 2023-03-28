@@ -29,6 +29,20 @@ class OfferController extends Controller
         return view('welcome', compact('offers', 'applied', 'appliedJobs', 'followed', 'followedOffers', 'hasCv'));
     }
 
+    public function checkOfferApplied(Request $request)
+    {
+    $offerId = $request->input('offer_id');
+    $isApplied = auth()->user()->appliedJobs()->where('offer_id', $offerId)->exists();
+    return response()->json(['isApplied' => $isApplied]);
+    }
+
+    public function checkOfferFollowed(Request $request)
+    {
+    $offerId = $request->input('offer_id');
+    $isFollowed = auth()->user()->followedOffer()->where('offer_id', $offerId)->exists();
+    return response()->json(['isFollowed' => $isFollowed]);
+    }
+
     public function create(Request $request){
 
         // dd($request);
@@ -340,5 +354,18 @@ class OfferController extends Controller
 
 
             return view('/administrateur/offres', compact('placeholder','offers','companies'));
+    }
+
+
+    public function responsive($id)
+    {
+        $offer = Offer::find($id);
+        $applied = null;
+        $appliedJobs = auth()->user()->appliedJobs()->pluck('offer_id')->toArray();
+        $followed = null;
+        $followedOffers = auth()->user()->followedOffer()->pluck('offer_id')->toArray();
+        $cvController = new CvController();
+        $hasCv = $cvController->hasCv();
+        return view('offre_responsive', compact('offer', 'applied', 'appliedJobs', 'followed', 'followedOffers', 'hasCv'));
     }
 }

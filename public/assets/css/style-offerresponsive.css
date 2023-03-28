@@ -1,0 +1,20 @@
+.container-form-offer2 {
+
+    width: 60%;
+    visibility: visible;
+  }
+
+@media screen and (max-width: 900px) {
+    /* Styles pour les écrans de téléphone */
+    .container-form-offer2 {
+        display: block;
+
+      }
+
+    .container-form-offer2 {
+        width: 60%;
+        visibility: visible;
+      }
+
+
+  }
